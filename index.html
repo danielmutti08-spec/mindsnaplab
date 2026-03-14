@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' https://cdn.tailwindcss.com https://cdnjs.cloudflare.com https://fonts.googleapis.com 'unsafe-inline' 'unsafe-eval';
+      style-src 'self' https://fonts.googleapis.com https://cdn.tailwindcss.com 'unsafe-inline';
+      font-src 'self' https://fonts.gstatic.com data:;
+      img-src 'self' data: https:;
+      connect-src 'self' https://api.anthropic.com;
+      frame-ancestors 'none';
+      base-uri 'self';
+      form-action 'self';
+      upgrade-insecure-requests;
+    ">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=()">
+    <title>MindSnapLab | Neural Interface</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.8/purify.min.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00e5ff",
+                        "acid": "#9fff00",
+                        "acid-green": "#39FF14",
+                        "danger": "#ff3b3b",
+                        "background-light": "#f5f8f8",
+                        "background-dark": "#0f2123",
+                        "deep-black": "#050a0a",
+                        "surface-dark": "#162a2c",
+                        "neutral-dark": "#121d1e",
+                        "auth-red": "#ff4b4b",
+                        "lib-green": "#00e676",
+                        "left-red": "#ff5252",
+                        "right-blue": "#448aff",
+                        "centrist-gray": "#b0bec5"
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "syne": ["Syne", "sans-serif"],
+                        "mono": ["DM Mono", "monospace"],
+                        "heading": ["Syne", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    animation: {
+                        'pulse-fast': 'pulse-custom 0.4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        'pulse-custom': {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '1' },
+                            '50%': { transform: 'scale(1.15)', opacity: '0.9' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #080B0F;
+        }
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 255, 0, 0.02));
+            background-size: 100% 3px, 3px 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+        .grid-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(to right, rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 40;
+        }
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCzBcpip5qUfXnsd9z7DvwYbSKG3qEyVFI0SQw3G8W2ji5rvPxu-h40qy8nI2AQzAbaILGAa38J7lA7BTyAmYLnR2o-rEG1ypGLnDoY3rcYztd8uJ_cNrs7CHl1gaCke421iQMhyAaLhc2930NAYq41ecTB1LXhen6z99OuorkYejWo6jPHpuIhwpzhbcwbbpTH_AnVUHOQLlyD9Dv-tecJOb5dDn_ufPeKkFBrMgWYNbcMFAipyEBxGZaAiWc54-k3H5tQF0kEcLo);
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 60;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            background: rgba(8, 11, 15, 0.8);
+            border-bottom: 1px solid rgba(0, 225, 255, 0.1);
+        }
+        .glow-hover:hover {
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
+            border-color: #00e5ff;
+        }
+        .progress-gradient {
+            background: linear-gradient(90deg, #00e5ff 0%, #9fff00 100%);
+        }
+        .crt-flicker {
+            animation: flicker 0.15s infinite;
+        }
+        @keyframes flicker {
+            0% { opacity: 0.98; }
+            100% { opacity: 1; }
+        }
+        .cyan-glow-text {
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.5);
+        }
+        .acid-overlay {
+            background-color: #39FF14 !important;
+        }
+        .compass-grid {
+            background-size: 50px 50px;
+            background-image: linear-gradient(to right, rgba(0, 229, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
+        }
+        .user-dot-glow {
+            box-shadow: 0 0 20px #00e5ff, 0 0 40px rgba(0, 229, 255, 0.4);
+        }
+        .quadrant-authoritarian-left { background: rgba(255, 75, 75, 0.04); }
+        .quadrant-authoritarian-right { background: rgba(68, 138, 255, 0.04); }
+        .quadrant-libertarian-left { background: rgba(0, 230, 118, 0.04); }
+        .quadrant-libertarian-right { background: rgba(255, 215, 0, 0.04); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="bg-background-dark font-display text-white selection:bg-primary/40 selection:text-white">
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
