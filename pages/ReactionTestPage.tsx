@@ -3,6 +3,8 @@ import React from 'react';
 import { Page } from '../types';
 import { useReactionTest } from '../hooks/useReactionTest';
 import { quizzes } from '../data/quizzes';
+import Navbar from '../components/Navbar';
+import { incrementQuizCompletions } from '../utils/stats';
 
 interface Props {
   navigate: (p: Page) => void;
@@ -14,13 +16,21 @@ const ReactionTestPage: React.FC<Props> = ({ navigate }) => {
 
   const stats = getFinalStats();
 
+  React.useEffect(() => {
+    if (phase === 'result') {
+      incrementQuizCompletions('rapid-response-iq');
+    }
+  }, [phase]);
+
   return (
-    <main 
-      className={`relative z-[90] h-screen w-screen flex flex-col items-center justify-center transition-colors duration-75 cursor-crosshair select-none ${
-        phase === 'ready' ? 'acid-overlay' : 'bg-background-dark'
-      }`}
-      onClick={phase === 'idle' ? startRound : handleClick}
-    >
+    <div className="relative min-h-screen">
+      <Navbar navigate={navigate} />
+      <main 
+        className={`relative z-[90] h-screen w-screen flex flex-col items-center justify-center transition-colors duration-75 cursor-crosshair select-none mt-20 ${
+          phase === 'ready' ? 'acid-overlay' : 'bg-background-dark'
+        }`}
+        onClick={phase === 'idle' ? startRound : handleClick}
+      >
       {/* Background Dots */}
       <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>
 
@@ -144,6 +154,7 @@ const ReactionTestPage: React.FC<Props> = ({ navigate }) => {
         <div className={`w-1 h-8 ${phase === 'ready' ? 'bg-black' : 'bg-primary'}`}></div>
       </div>
     </main>
+    </div>
   );
 };
 

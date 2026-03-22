@@ -1,7 +1,8 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Page, Quiz } from '../types';
 import { quizzes } from '../data/quizzes';
+import { getQuizCompletions, formatParticipants } from '../utils/stats';
 
 interface Props {
   navigate: (p: Page) => void;
@@ -11,6 +12,27 @@ interface Props {
 const QuizListPage: React.FC<Props> = ({ navigate, categoryId }) => {
   const [activeFilter, setActiveFilter] = useState<string>(categoryId || 'all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [completions, setCompletions] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    if (categoryId) {
+      setActiveFilter(categoryId);
+    }
+  }, [categoryId]);
+
+  useEffect(() => {
+    const updateCompletions = () => {
+      const counts: Record<string, number> = {};
+      quizzes.forEach(q => {
+        counts[q.id] = getQuizCompletions(q.id);
+      });
+      setCompletions(counts);
+    };
+
+    updateCompletions();
+    window.addEventListener('storage_update', updateCompletions);
+    return () => window.removeEventListener('storage_update', updateCompletions);
+  }, []);
 
   const filteredQuizzes = quizzes.filter(q => {
     const matchesCategory = activeFilter === 'all' || q.categoryId === activeFilter.toLowerCase();
@@ -110,6 +132,7 @@ const QuizListPage: React.FC<Props> = ({ navigate, categoryId }) => {
               <QuizCard 
                 key={quiz.id}
                 quiz={quiz}
+                completions={completions[quiz.id] || 0}
                 onClick={() => {
                   if (quiz.type === 'reaction') {
                     navigate({ name: 'reaction-test' });
@@ -150,7 +173,7 @@ const QuizListPage: React.FC<Props> = ({ navigate, categoryId }) => {
 // QUIZ CARD COMPONENT
 // Fix: Use React.FC to explicitly define the component as a React Functional Component,
 // which correctly types standard React props like 'key' in TypeScript.
-const QuizCard: React.FC<{ quiz: Quiz; onClick: () => void }> = ({ quiz, onClick }) => {
+const QuizCard: React.FC<{ quiz: Quiz; completions: number; onClick: () => void }> = ({ quiz, completions, onClick }) => {
   return (
     <div 
       onClick={onClick}
@@ -181,14 +204,14 @@ const QuizCard: React.FC<{ quiz: Quiz; onClick: () => void }> = ({ quiz, onClick
           </span>
         )}
       </div>
-      <div className="space-y-2">
-        <div className="flex justify-between text-[10px] font-mono text-primary/40 uppercase">
-          <span>Completion</span>
-          <span>0%</span>
+      <div className="flex justify-between items-center pt-4 border-t border-primary/10">
+        <div className="flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+          <span className="font-mono text-[10px] text-primary uppercase tracking-widest">
+            {formatParticipants(completions)}
+          </span>
         </div>
-        <div className="h-[2px] w-full bg-primary/10">
-          <div className="h-full bg-primary w-0 group-hover:w-full transition-all duration-700"></div>
-        </div>
+        <span className="material-icons text-primary/40 text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
       </div>
       <div className="absolute -bottom-1 -right-1 w-8 h-8 border-b-2 border-r-2 border-primary/40 group-hover:border-primary"></div>
     </div>

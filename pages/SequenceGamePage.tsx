@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Page } from '../types';
 import { quizzes } from '../data/quizzes';
+import Navbar from '../components/Navbar';
+import { incrementQuizCompletions } from '../utils/stats';
 
 interface Props { navigate: (p: Page) => void; }
 type Phase = 'intro' | 'showing' | 'input' | 'correct' | 'wrong' | 'result';
@@ -63,7 +65,11 @@ export function SequenceGamePage({ navigate }: Props) {
       setLives(newLives);
       setPhase('wrong');
       timeoutRef.current = setTimeout(() => {
-        if (newLives <= 0) { setPhase('result'); return; }
+        if (newLives <= 0) { 
+          incrementQuizCompletions('sequence-snap');
+          setPhase('result'); 
+          return; 
+        }
         startRound();
       }, 1200);
       return;
@@ -96,7 +102,8 @@ export function SequenceGamePage({ navigate }: Props) {
 
   return (
     <div className="min-h-screen bg-[#080B0F] text-white font-display flex flex-col items-center justify-center relative overflow-hidden">
-      <div className="scanlines fixed inset-0 pointer-events-none z-50" />
+      <Navbar navigate={navigate} />
+      <div className="scanlines fixed inset-0 pointer-events-none z-50 mt-20" />
       <div className="grid-overlay fixed inset-0 pointer-events-none z-40" />
 
       {/* Header */}

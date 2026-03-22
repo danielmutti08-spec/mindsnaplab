@@ -2,38 +2,29 @@
 import { Quiz, QuizSession, PersonalityResult } from '../types';
 
 export function calcPersonality(quiz: Quiz, session: QuizSession): PersonalityResult & { stats: { label: string; value: number }[] } {
-  // Conta punteggi per ogni tipo
   const scores: Record<string, number> = {};
   const maxScores: Record<string, number> = {};
 
+  // Calculate scores and max possible scores per trait
   quiz.questions.forEach(q => {
-    const ans = q.answers.find(a => a.id === session.answers[q.id]);
-    if (!ans?.scores) return;
-
-    Object.entries(ans.scores).forEach(([type, points]) => {
-      scores[type] = (scores[type] || 0) + points;
+    const selectedAnsId = session.answers[q.id];
+    const selectedAns = q.answers.find(a => a.id === selectedAnsId);
+    
+    // Track all traits present in this question
+    const traitsInQ = new Set<string>();
+    q.answers.forEach(a => {
+      if (a.scores) Object.keys(a.scores).forEach(t => traitsInQ.add(t));
     });
 
-    // Calcola punteggio massimo possibile per ogni tipo
-    q.answers.forEach(a => {
-      Object.entries(a.scores || {}).forEach(([type, points]) => {
-        // We need to track the maximum possible points for each trait across all questions
-        // But wait, the user's logic for maxScores in the prompt is slightly flawed if it just sums all points.
-        // Usually max score for a trait is the sum of the highest possible points for that trait in each question.
+    // Add selected points
+    if (selectedAns?.scores) {
+      Object.entries(selectedAns.scores).forEach(([trait, points]) => {
+        scores[trait] = (scores[trait] || 0) + points;
       });
-    });
-  });
+    }
 
-  // Corrected max score calculation: for each trait, sum the maximum points available in each question
-  quiz.questions.forEach(q => {
-    const traitsInQuestion = new Set<string>();
-    q.answers.forEach(a => {
-      if (a.scores) {
-        Object.keys(a.scores).forEach(t => traitsInQuestion.add(t));
-      }
-    });
-
-    traitsInQuestion.forEach(trait => {
+    // Add max possible points for each trait in this question
+    traitsInQ.forEach(trait => {
       let maxForTraitInQ = 0;
       q.answers.forEach(a => {
         if (a.scores && a.scores[trait] !== undefined) {
@@ -44,34 +35,36 @@ export function calcPersonality(quiz: Quiz, session: QuizSession): PersonalityRe
     });
   });
 
-  // Trova tipo vincente o calcola punteggio totale se basato su score
   const isScoreBased = quiz.results?.some(r => r.minScore !== undefined);
   let baseResult: PersonalityResult;
 
   if (isScoreBased) {
-    // Se è basato su score (come Smartphone Addiction), usiamo il tratto primario per il punteggio totale
-    // Per Smartphone Addiction Index usiamo 'addiction'
-    const primaryTrait = quiz.id === 'smartphone-addiction-index' ? 'addiction' : Object.keys(scores)[0];
+    // For score-based quizzes, we usually sum a primary trait or all traits
+    // If there's only one trait (like 'stress' or 'addiction'), we use that.
+    // If there are multiple, we might sum them or use the first one.
+    const traits = Object.keys(scores);
+    const primaryTrait = traits.length === 1 ? traits[0] : (quiz.id.includes('addiction') ? 'addiction' : (quiz.id.includes('stress') ? 'stress' : traits[0]));
+    
     const totalScore = Math.round((scores[primaryTrait] / (maxScores[primaryTrait] || 1)) * 100);
     
     baseResult = quiz.results!.find(r => 
       totalScore >= (r.minScore ?? 0) && totalScore <= (r.maxScore ?? 100)
     ) ?? quiz.results![0];
   } else {
+    // Winner takes all
     const winner = Object.entries(scores).sort(([,a],[,b]) => b - a)[0]?.[0];
     baseResult = quiz.results!.find(r => r.type === winner) ?? quiz.results![0];
   }
 
-  // ⚠️ CALCOLA STATS DINAMICAMENTE
-  // Converti i punteggi in percentuali 0-100
+  // Calculate stats for display
   const stats = Object.entries(scores)
-    .sort(([,a],[,b]) => b - a) // ordina per punteggio decrescente
-    .slice(0, 4) // prendi i top 4 tratti
+    .sort(([,a],[,b]) => b - a)
+    .slice(0, 8) // Show up to 8 traits (Gardner has 8)
     .map(([type, score]) => {
       const max = maxScores[type] || 1;
       const percentage = Math.round((score / max) * 100);
       return {
-        label: type.charAt(0).toUpperCase() + type.slice(1), // capitalizza
+        label: type.charAt(0).toUpperCase() + type.slice(1),
         value: percentage,
       };
     });
@@ -81,14 +74,28 @@ export function calcPersonality(quiz: Quiz, session: QuizSession): PersonalityRe
 
 export function calcPolitical(quiz: Quiz, session: QuizSession) {
   let eco = 0, soc = 0;
+  let maxEco = 0, maxSoc = 0;
+
   quiz.questions.forEach(q => {
     const ans = q.answers.find(a => a.id === session.answers[q.id]);
     eco += ans?.economic ?? 0;
     soc += ans?.social   ?? 0;
+
+    // Calculate max possible absolute values for normalization
+    let qMaxEco = 0;
+    let qMaxSoc = 0;
+    q.answers.forEach(a => {
+      if (a.economic !== undefined) qMaxEco = Math.max(qMaxEco, Math.abs(a.economic));
+      if (a.social !== undefined) qMaxSoc = Math.max(qMaxSoc, Math.abs(a.social));
+    });
+    maxEco += qMaxEco;
+    maxSoc += qMaxSoc;
   });
-  const maxPossible = quiz.questions.length * 3;
-  const e = parseFloat(Math.max(-10, Math.min(10, (eco/maxPossible)*10)).toFixed(1));
-  const s = parseFloat(Math.max(-10, Math.min(10, (soc/maxPossible)*10)).toFixed(1));
+
+  // Normalize to -10 to +10 range
+  const e = parseFloat(Math.max(-10, Math.min(10, (eco / (maxEco || 1)) * 10)).toFixed(1));
+  const s = parseFloat(Math.max(-10, Math.min(10, (soc / (maxSoc || 1)) * 10)).toFixed(1));
+  
   return { economic: e, social: s, label: getLabel(e, s), description: getDesc(e, s) };
 }
 

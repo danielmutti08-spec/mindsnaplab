@@ -4,6 +4,8 @@ import { getQuizById } from '../data/quizzes';
 import { calculateIQFromScore } from '../utils/iqScoring';
 import { Page } from '../types';
 import { sanitizeHTML } from '../utils/security';
+import Navbar from '../components/Navbar';
+import { incrementQuizCompletions } from '../utils/stats';
 
 interface Props { navigate: (p: Page) => void; }
 
@@ -20,6 +22,7 @@ export function IQTestPage({ navigate }: Props) {
 
   const finishTest = useCallback(() => {
     clearInterval(timerRef.current);
+    incrementQuizCompletions('iq-test-professional');
     setPhase('result');
   }, []);
 
@@ -74,7 +77,8 @@ export function IQTestPage({ navigate }: Props) {
   if (phase === 'intro') {
     return (
       <div className="min-h-screen bg-[#080B0F] text-white font-display flex items-center justify-center relative overflow-hidden">
-        <div className="scanlines fixed inset-0 pointer-events-none z-50" />
+        <Navbar navigate={navigate} />
+        <div className="scanlines fixed inset-0 pointer-events-none z-50 mt-20" />
         <div className="grid-overlay fixed inset-0 pointer-events-none z-40" />
         
         <div className="text-center max-w-2xl px-8 relative z-10">
@@ -122,7 +126,8 @@ export function IQTestPage({ navigate }: Props) {
   if (phase === 'test') {
     return (
       <div className="min-h-screen bg-[#0f2123] text-white font-display relative overflow-hidden">
-        <div className="scanlines fixed inset-0 pointer-events-none z-50" />
+        <Navbar navigate={navigate} />
+        <div className="scanlines fixed inset-0 pointer-events-none z-50 mt-20" />
         <div className="grid-overlay fixed inset-0 pointer-events-none z-40" />
 
         {/* Header */}

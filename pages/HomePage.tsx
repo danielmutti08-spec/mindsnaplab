@@ -4,6 +4,8 @@ import { Page } from '../types';
 import { quizzes } from '../data/quizzes';
 import { getTotalCompletions, getQuizCompletions, formatParticipants } from '../utils/stats';
 import { shareResults } from '../utils/share';
+import Navbar from '../components/Navbar';
+import Logo from '../components/Logo';
 
 interface Props {
   navigate: (p: Page) => void;
@@ -53,27 +55,7 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
 
   return (
     <div className="font-display text-white selection:bg-primary selection:text-black">
-      {/* Navbar */}
-      <nav className="fixed top-0 w-full z-[70] glass-nav">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary flex items-center justify-center rounded-sm">
-              <span className="material-icons text-background-dark text-xl font-bold">psychology</span>
-            </div>
-            <span className="font-display text-2xl font-extrabold tracking-tighter text-white">
-              Mind<span className="text-primary">Snap</span>Lab
-            </span>
-          </div>
-          <div className="hidden md:flex items-center gap-10">
-            <button onClick={() => navigate({ name: 'home' })} className="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest cursor-pointer">Home</button>
-            <button onClick={() => navigate({ name: 'quiz-list' })} className="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest cursor-pointer">All Tests</button>
-            <button onClick={() => navigate({ name: 'quiz-list', categoryId: 'personality' })} className="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest cursor-pointer">Personality</button>
-            <button onClick={() => navigate({ name: 'quiz-list', categoryId: 'cognitive' })} className="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest cursor-pointer">Cognitive</button>
-          </div>
-          <div>
-          </div>
-        </div>
-      </nav>
+      <Navbar navigate={navigate} activePage="home" />
 
       <main className="pt-32 pb-20 relative z-10">
         {/* Hero Section */}
@@ -284,13 +266,8 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
       <footer className="border-t border-white/5 bg-background-dark pt-16 pb-8 relative z-10">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-6 h-6 bg-primary flex items-center justify-center rounded-sm">
-                <span className="material-icons text-background-dark text-sm font-bold">psychology</span>
-              </div>
-            <span className="font-display text-xl font-extrabold tracking-tighter text-white">
-              Mind<span className="text-primary">Snap</span>Lab
-            </span>
+            <div className="flex flex-col gap-6 mb-6">
+              <Logo size="sm" />
             </div>
             <p className="text-white/40 text-sm max-w-sm font-mono leading-relaxed">
               A proprietary neural testing environment for the modern architect. Data driven. Experimentally verified. 

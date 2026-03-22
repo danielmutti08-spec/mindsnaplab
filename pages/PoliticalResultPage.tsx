@@ -2,6 +2,8 @@
 import React from 'react';
 import { Page } from '../types';
 import { getQuizCompletions, formatParticipants } from '../utils/stats';
+import Navbar from '../components/Navbar';
+import Logo from '../components/Logo';
 
 interface Props {
   navigate: (p: Page) => void;
@@ -27,35 +29,9 @@ const PoliticalResultPage: React.FC<Props> = ({ navigate, economic, social, labe
 
   return (
     <div className="bg-background-dark text-slate-200 min-h-screen relative selection:bg-primary/30 font-display">
-      <nav className="border-b border-primary/10 bg-background-dark/80 backdrop-blur-md sticky top-0 z-[80]">
-        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div onClick={() => navigate({ name: 'home' })} className="flex items-center gap-2 cursor-pointer">
-            <div className="w-8 h-8 bg-primary flex items-center justify-center rounded-sm">
-              <span className="material-symbols-outlined text-background-dark text-xl font-bold">psychology</span>
-            </div>
-            <span className="font-display text-xl font-extrabold tracking-tighter text-white">
-              Mind<span className="text-primary">Snap</span>Lab
-            </span>
-          </div>
-          <div className="hidden md:flex items-center gap-8 text-xs font-medium tracking-widest uppercase">
-            <a className="hover:text-primary transition-colors cursor-pointer">Diagnostics</a>
-            <a className="text-primary underline underline-offset-8 cursor-pointer">Results</a>
-            <a className="hover:text-primary transition-colors cursor-pointer">Global Metrics</a>
-            <a className="hover:text-primary transition-colors cursor-pointer">Account</a>
-          </div>
-          <div className="flex items-center gap-4">
-            <div className="flex flex-col items-end">
-              <span className="text-[10px] text-slate-500 uppercase tracking-widest">Test Session</span>
-              <span className="text-xs font-mono text-primary">#MS-9942-X</span>
-            </div>
-            <div className="w-10 h-10 rounded-full border border-primary/30 p-0.5 overflow-hidden">
-              <img src="https://picsum.photos/seed/mind/100/100" alt="Avatar" className="w-full h-full object-cover rounded-full" />
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navbar navigate={navigate} />
 
-      <main className="max-w-7xl mx-auto px-6 py-12 relative z-[70]">
+      <main className="max-w-7xl mx-auto px-6 py-12 relative z-[70] mt-20">
         <div className="flex flex-col lg:flex-row gap-12 items-start justify-center">
           {/* Compass Graph */}
           <div className="relative group">

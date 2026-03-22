@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { Page, Quiz } from '../types';
 import { getQuizById } from '../data/quizzes';
 import { useQuiz } from '../hooks/useQuiz';
+import Navbar from '../components/Navbar';
 import { calcPersonality, calcTrivia, calcPolitical } from '../utils/scoring';
 import { calculateIQFromScore } from '../utils/iqScoring';
 import { logSecurityEvent, checkRateLimit } from '../utils/security';
+import { incrementQuizCompletions } from '../utils/stats';
 
 interface Props {
   navigate: (p: Page) => void;
@@ -51,6 +53,7 @@ const QuizPlayerPage: React.FC<Props> = ({ navigate, quizId }) => {
 
   const handleFinalize = () => {
     logSecurityEvent('QUIZ_COMPLETED', { quizId: quiz.id });
+    incrementQuizCompletions(quiz.id);
     if (quiz.type === 'personality') {
       const resultData = calcPersonality(quiz, session);
       navigate({ name: 'result', quizId: quiz.id, resultData });
@@ -81,8 +84,9 @@ const QuizPlayerPage: React.FC<Props> = ({ navigate, quizId }) => {
 
   return (
     <div className="relative z-[70] h-screen flex flex-col text-white font-display">
+      <Navbar navigate={navigate} />
       {/* Top Bar */}
-      <header className="h-16 border-b border-primary/10 flex items-center justify-between px-8 bg-background-dark/80 backdrop-blur-md">
+      <header className="h-16 border-b border-primary/10 flex items-center justify-between px-8 bg-background-dark/80 backdrop-blur-md mt-20">
         <div className="flex items-center gap-6">
           <button 
             onClick={() => navigate({ name: 'home' })}

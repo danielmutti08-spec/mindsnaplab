@@ -2,6 +2,8 @@
 import React from 'react';
 import { Page, PersonalityResult } from '../types';
 import { shareOnX, shareOnWhatsApp, copyLink } from '../utils/share';
+import Navbar from '../components/Navbar';
+import Logo from '../components/Logo';
 
 interface Props {
   navigate: (p: Page) => void;
@@ -33,6 +35,8 @@ const ResultPage: React.FC<Props> = ({ navigate, quizId, resultData }) => {
 
   return (
     <div className="bg-deep-black min-h-screen relative font-display text-white overflow-hidden selection:bg-primary/30">
+      <Navbar navigate={navigate} />
+      
       {/* Particle Background Area (Static Mockup) */}
       <div className="absolute top-0 left-0 w-full h-[40vh] pointer-events-none flex justify-center overflow-hidden">
         <div className="relative w-full max-w-4xl h-full">
@@ -45,15 +49,10 @@ const ResultPage: React.FC<Props> = ({ navigate, quizId, resultData }) => {
         </div>
       </div>
 
-      <main className="relative z-[70] flex flex-col items-center justify-center min-h-screen p-6 py-20">
+      <main className="relative z-[70] flex flex-col items-center justify-center min-h-screen p-6 py-20 mt-10">
         {/* Header Branding */}
-        <div className="mb-12 flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
-            <span className="material-icons text-background-dark text-xl font-bold">psychology</span>
-          </div>
-          <span className="font-display text-xl font-extrabold tracking-tighter text-white">
-            Mind<span className="text-primary">Snap</span>Lab
-          </span>
+        <div className="mb-12">
+          <Logo size="md" />
         </div>
 
         {/* Result Card */}

@@ -2,6 +2,8 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Page } from '../types';
 import { quizzes } from '../data/quizzes';
+import Navbar from '../components/Navbar';
+import { incrementQuizCompletions } from '../utils/stats';
 
 interface Props { navigate: (p: Page) => void; }
 
@@ -51,6 +53,7 @@ export function MemoryGamePage({ navigate }: Props) {
       setPhase('wrong');
       timeoutRef.current = setTimeout(() => {
         if (mistakes + 1 >= MAX_MISTAKES) {
+          incrementQuizCompletions('memory-matrix');
           setPhase('result');
         } else {
           startRound(); // riprova stesso livello
@@ -87,9 +90,9 @@ export function MemoryGamePage({ navigate }: Props) {
 
   return (
     <div className="min-h-screen bg-[#0f2123] text-white font-display flex flex-col items-center justify-center relative overflow-hidden">
-
+      <Navbar navigate={navigate} />
       {/* Scanlines */}
-      <div className="scanlines fixed inset-0 pointer-events-none z-50" />
+      <div className="scanlines fixed inset-0 pointer-events-none z-50 mt-20" />
       <div className="grid-overlay fixed inset-0 pointer-events-none z-40" />
 
       {/* Header */}

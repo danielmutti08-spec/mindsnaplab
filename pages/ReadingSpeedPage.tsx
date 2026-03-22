@@ -1,6 +1,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { Page } from '../types';
+import Navbar from '../components/Navbar';
+import { incrementQuizCompletions } from '../utils/stats';
 
 interface Props {
   navigate: (p: Page) => void;
@@ -37,13 +39,15 @@ const ReadingSpeedPage: React.FC<Props> = ({ navigate }) => {
       const durationInMinutes = (endTime - startTime) / 60000;
       const calculatedWpm = Math.round(wordCount / durationInMinutes);
       setWpm(calculatedWpm);
+      incrementQuizCompletions('reading-speed-test');
       setFinished(true);
     }
   };
 
   return (
     <div className="min-h-screen bg-background-dark text-white font-display flex flex-col pt-20">
-      <header className="h-16 border-b border-primary/10 flex items-center justify-between px-8 fixed top-0 w-full bg-background-dark/80 backdrop-blur-md z-50">
+      <Navbar navigate={navigate} />
+      <header className="h-16 border-b border-primary/10 flex items-center justify-between px-8 fixed top-20 w-full bg-background-dark/80 backdrop-blur-md z-50">
         <button 
           onClick={() => navigate({ name: 'home' })}
           className="flex items-center gap-2 text-primary/60 hover:text-primary transition-colors group"
