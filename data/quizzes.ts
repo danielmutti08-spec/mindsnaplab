@@ -7,13 +7,12 @@ export const quizzes: Quiz[] = [
     id: 'architect-persona',
     categoryId: 'personality',
     type: 'personality',
-    title: 'The Architect Persona',
-    description: 'Structural thinking patterns and organizational logic mapping.',
+    title: "What's Your Personality Type?",
+    description: 'Analysis of structural thinking patterns and organizational logic.',
     icon: 'account_tree',
     estimatedMinutes: 12,
     version: 'v2.1',
     tag: 'NEW PROTOCOL',
-    participants: '12k participants',
     questions: [
       {
         id: 'q1',
@@ -65,6 +64,56 @@ export const quizzes: Quiz[] = [
           { id: 'd', text: 'Novelty and breakthrough.',            scores: { innovator: 2 } },
         ],
       },
+      {
+        id: 'q6',
+        text: 'How do you handle unexpected changes in a project?',
+        answers: [
+          { id: 'a', text: 'I quickly adapt the plan and keep moving.', scores: { strategist: 2 } },
+          { id: 'b', text: 'I take immediate action to address the change.', scores: { executor: 2 } },
+          { id: 'c', text: 'I consult the team to find the best way forward.', scores: { connector: 2 } },
+          { id: 'd', text: 'I see it as an opportunity for a new approach.', scores: { innovator: 2 } },
+        ],
+      },
+      {
+        id: 'q7',
+        text: 'In a team setting, you are usually the one who...',
+        answers: [
+          { id: 'a', text: 'Provides the long-term vision and strategy.', scores: { strategist: 2 } },
+          { id: 'b', text: 'Ensures tasks are completed efficiently.', scores: { executor: 2 } },
+          { id: 'c', text: 'Facilitates communication and harmony.', scores: { connector: 2 } },
+          { id: 'd', text: 'Challenges the status quo with new ideas.', scores: { innovator: 2 } },
+        ],
+      },
+      {
+        id: 'q8',
+        text: 'When learning a new skill, you prefer...',
+        answers: [
+          { id: 'a', text: 'A systematic, step-by-step approach.', scores: { strategist: 2 } },
+          { id: 'b', text: 'Learning by doing and immediate practice.', scores: { executor: 2 } },
+          { id: 'c', text: 'Learning through discussion and collaboration.', scores: { connector: 2 } },
+          { id: 'd', text: 'Exploring and experimenting on your own.', scores: { innovator: 2 } },
+        ],
+      },
+      {
+        id: 'q9',
+        text: 'Your reaction to a major setback is to...',
+        answers: [
+          { id: 'a', text: 'Analyze the failure and revise the strategy.', scores: { strategist: 2 } },
+          { id: 'b', text: 'Work harder and faster to overcome it.', scores: { executor: 2 } },
+          { id: 'c', text: 'Talk it through with others for support.', scores: { connector: 2 } },
+          { id: 'd', text: 'Pivot and try a completely different angle.', scores: { innovator: 2 } },
+        ],
+      },
+      {
+        id: 'q10',
+        text: 'You feel most energized when...',
+        answers: [
+          { id: 'a', text: 'A complex plan comes together perfectly.', scores: { strategist: 2 } },
+          { id: 'b', text: 'You hit a difficult deadline ahead of time.', scores: { executor: 2 } },
+          { id: 'c', text: 'The team achieves a goal together.', scores: { connector: 2 } },
+          { id: 'd', text: 'You discover a truly original solution.', scores: { innovator: 2 } },
+        ],
+      },
     ],
     results: [
       {
@@ -105,13 +154,12 @@ export const quizzes: Quiz[] = [
     id: 'big-five-personality',
     categoryId: 'personality',
     type: 'personality',
-    title: 'Big Five Personality Assessment',
-    description: 'Measure yourself on the 5 major personality dimensions: Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism.',
+    title: 'Discover Your 5 Dominant Traits',
+    description: 'Measure yourself on the Big Five dimensions: Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism.',
     icon: 'group',
     estimatedMinutes: 8,
     version: 'v2.0',
     tag: 'POPULAR',
-    participants: '10k participants',
     questions: [
       {
         id: 'bf1',
@@ -317,13 +365,12 @@ Steve Jobs, Marie Curie, Elon Musk, Virginia Woolf
     id: 'rapid-response-iq',
     categoryId: 'cognitive',
     type: 'trivia',
-    title: 'Rapid Response IQ',
-    description: 'Measure processing lag during high-stress decision matrices.',
+    title: 'Rapid Logic Challenge',
+    description: 'Measure your processing speed under pressure.',
     icon: 'bolt',
     estimatedMinutes: 8,
     version: 'v1.4',
     tag: 'POPULAR',
-    participants: '45k participants',
     passingScore: 70,
     questions: [
       {
@@ -381,6 +428,61 @@ Steve Jobs, Marie Curie, Elon Musk, Virginia Woolf
         ],
         explanation: 'Transitive logic: Bloop → Razzie → Lazzie.',
       },
+      {
+        id: 't6',
+        text: 'A clock shows 3:15. What is the angle between the hour and minute hands?',
+        answers: [
+          { id: 'a', text: '0°', correct: false },
+          { id: 'b', text: '7.5°', correct: true },
+          { id: 'c', text: '15°', correct: false },
+          { id: 'd', text: '90°', correct: false },
+        ],
+        explanation: 'At 3:15, the minute hand is at 90°. The hour hand has moved 1/4 of the way from 3 to 4. 30° / 4 = 7.5°.',
+      },
+      {
+        id: 't7',
+        text: 'If 5 machines take 5 minutes to make 5 widgets, how long would it take 100 machines to make 100 widgets?',
+        answers: [
+          { id: 'a', text: '100 minutes', correct: false },
+          { id: 'b', text: '50 minutes', correct: false },
+          { id: 'c', text: '5 minutes', correct: true },
+          { id: 'd', text: '1 minute', correct: false },
+        ],
+        explanation: 'Each machine takes 5 minutes to make 1 widget.',
+      },
+      {
+        id: 't8',
+        text: 'Which word is the odd one out?',
+        answers: [
+          { id: 'a', text: 'Apple', correct: false },
+          { id: 'b', text: 'Banana', correct: false },
+          { id: 'c', text: 'Carrot', correct: true },
+          { id: 'd', text: 'Grape', correct: false },
+        ],
+        explanation: 'Carrot is a vegetable; the others are fruits.',
+      },
+      {
+        id: 't9',
+        text: 'If you rearrange the letters "CIFAIPC", you get the name of a(n):',
+        answers: [
+          { id: 'a', text: 'City', correct: false },
+          { id: 'b', text: 'Animal', correct: false },
+          { id: 'c', text: 'Ocean', correct: true },
+          { id: 'd', text: 'Country', correct: false },
+        ],
+        explanation: 'PACIFIC is an ocean.',
+      },
+      {
+        id: 't10',
+        text: 'What is the square root of 144?',
+        answers: [
+          { id: 'a', text: '10', correct: false },
+          { id: 'b', text: '11', correct: false },
+          { id: 'c', text: '12', correct: true },
+          { id: 'd', text: '14', correct: false },
+        ],
+        explanation: '12 * 12 = 144.',
+      },
     ],
   },
   // ── POLITICAL COMPASS ────────────────────────────────────
@@ -388,13 +490,12 @@ Steve Jobs, Marie Curie, Elon Musk, Virginia Woolf
     id: 'political-compass',
     categoryId: 'political',
     type: 'political',
-    title: 'Political Compass',
+    title: 'Where Do You Stand Politically?',
     description: 'Find your position on the political spectrum.',
     icon: 'explore',
     estimatedMinutes: 5,
     version: 'v3.0',
     tag: 'POPULAR',
-    participants: '280k participants',
     questions: [
       {
         id: 'p1',
@@ -476,6 +577,26 @@ Steve Jobs, Marie Curie, Elon Musk, Virginia Woolf
           { id: 'd', text: 'Strongly Disagree',  social: -3 },
         ],
       },
+      {
+        id: 'p9',
+        text: 'The death penalty should be an option for the most serious crimes.',
+        answers: [
+          { id: 'a', text: 'Strongly Agree',    social: -3 },
+          { id: 'b', text: 'Agree',              social: -1 },
+          { id: 'c', text: 'Disagree',           social:  1 },
+          { id: 'd', text: 'Strongly Disagree',  social:  3 },
+        ],
+      },
+      {
+        id: 'p10',
+        text: 'Military spending should be increased to ensure national security.',
+        answers: [
+          { id: 'a', text: 'Strongly Agree',    economic:  1, social: -2 },
+          { id: 'b', text: 'Agree',              economic:  0, social: -1 },
+          { id: 'c', text: 'Disagree',           economic:  0, social:  1 },
+          { id: 'd', text: 'Strongly Disagree',  economic: -1, social:  2 },
+        ],
+      },
     ],
   },
   // ── DARK TRIAD ───────────────────────────────────────────
@@ -483,13 +604,12 @@ Steve Jobs, Marie Curie, Elon Musk, Virginia Woolf
     id: 'dark-triad-index',
     categoryId: 'behavioral',
     type: 'personality',
-    title: 'Dark Triad Personality Index',
-    description: 'Measure your levels of Machiavellianism (manipulation), Narcissism (ego), and Psychopathy (callousness) through behavioral scenarios.',
+    title: 'Your Dark Side (Dark Triad)',
+    description: 'Measure your levels of Machiavellianism, Narcissism, and Psychopathy.',
     icon: 'masks',
     estimatedMinutes: 10,
     version: 'v2.0',
     tag: 'POPULAR',
-    participants: '6k participants',
     questions: [
       {
         id: 'dt1',
@@ -718,13 +838,12 @@ Traditional psychopaths lack empathy. You have cognitive AND affective empathy, 
     id: 'cognitive-bias',
     categoryId: 'cognitive',
     type: 'trivia',
-    title: 'Cognitive Bias Detector',
-    description: 'Do you know when your brain is tricking you? Identify the bias hidden in each scenario.',
+    title: 'Are You a Victim of Cognitive Biases?',
+    description: 'Discover how much your mind deceives you in decision-making processes.',
     icon: 'psychology',
     estimatedMinutes: 5,
     version: 'v2.0',
     tag: 'NEW PROTOCOL',
-    participants: '34k participants',
     passingScore: 60,
     questions: [
       {
@@ -793,6 +912,50 @@ Traditional psychopaths lack empathy. You have cognitive AND affective empathy, 
         ],
         explanation: 'Hindsight Bias: after learning an outcome, we falsely believe we would have predicted it.',
       },
+      {
+        id: 'cb7',
+        text: 'You only read news sources that align with your existing political views. This is...',
+        answers: [
+          { id: 'a', text: 'Confirmation Bias',         correct: true },
+          { id: 'b', text: 'Availability Heuristic',    correct: false },
+          { id: 'c', text: 'Anchoring Bias',            correct: false },
+          { id: 'd', text: 'Halo Effect',               correct: false },
+        ],
+        explanation: 'Confirmation Bias: the tendency to search for, interpret, favor, and recall information in a way that confirms one\'s prior beliefs.',
+      },
+      {
+        id: 'cb8',
+        text: 'You assume a physically attractive person is also intelligent and kind. This is...',
+        answers: [
+          { id: 'a', text: 'Halo Effect',               correct: true },
+          { id: 'b', text: 'Horn Effect',               correct: false },
+          { id: 'c', text: 'Selection Bias',            correct: false },
+          { id: 'd', text: 'Self-serving Bias',         correct: false },
+        ],
+        explanation: 'Halo Effect: a cognitive bias in which our overall impression of a person influences how we feel and think about their character.',
+      },
+      {
+        id: 'cb9',
+        text: 'A beginner chess player overestimates their skill compared to experts. This is...',
+        answers: [
+          { id: 'a', text: 'Dunning-Kruger Effect',     correct: true },
+          { id: 'b', text: 'Imposter Syndrome',         correct: false },
+          { id: 'c', text: 'Optimism Bias',             correct: false },
+          { id: 'd', text: 'Hindsight Bias',            correct: false },
+        ],
+        explanation: 'Dunning-Kruger Effect: a cognitive bias in which people with limited competence in a particular domain overestimate their abilities.',
+      },
+      {
+        id: 'cb10',
+        text: 'You attribute your success to your hard work, but your failures to bad luck. This is...',
+        answers: [
+          { id: 'a', text: 'Self-serving Bias',         correct: true },
+          { id: 'b', text: 'Fundamental Attribution Error', correct: false },
+          { id: 'c', text: 'Confirmation Bias',         correct: false },
+          { id: 'd', text: 'Just-World Hypothesis',     correct: false },
+        ],
+        explanation: 'Self-serving Bias: the common habit of a person taking credit for positive events or outcomes, but blaming outside factors for negative events.',
+      },
     ],
   },
   // ── STRESS INDEX ─────────────────────────────────────────
@@ -800,52 +963,111 @@ Traditional psychopaths lack empathy. You have cognitive AND affective empathy, 
     id: 'stress-index',
     categoryId: 'behavioral',
     type: 'personality',
-    title: 'Stress Response Index',
-    description: 'How does your nervous system react under pressure? Map your threat response profile.',
+    title: 'Stress Level Assessment',
+    description: 'Measure your current stress levels and burnout risk.',
     icon: 'monitor_heart',
-    estimatedMinutes: 4,
-    version: 'v1.0',
-    tag: null,
-    participants: '12k participants',
+    estimatedMinutes: 5,
+    version: 'v1.1',
+    tag: 'ESSENTIAL',
     questions: [
       {
         id: 's1',
-        text: 'A last-minute deadline appears. Your first reaction is...',
+        text: 'How often do you feel overwhelmed by your daily tasks?',
         answers: [
-          { id: 'a', text: 'Immediate focus — you enter "flow" mode.',            scores: { resilient: 2 } },
-          { id: 'b', text: 'Anxiety spike, then gradual control.',                scores: { adaptive: 2 } },
-          { id: 'c', text: 'Panic, difficulty prioritizing.',                     scores: { reactive: 2 } },
-          { id: 'd', text: 'Delegate, detach, execute — no emotional spike.',     scores: { detached: 2 } },
+          { id: 'a', text: 'Never',      scores: { stress: 0 } },
+          { id: 'b', text: 'Sometimes',  scores: { stress: 1 } },
+          { id: 'c', text: 'Often',      scores: { stress: 2 } },
+          { id: 'd', text: 'Always',     scores: { stress: 3 } },
         ],
       },
       {
         id: 's2',
-        text: 'You\'re criticized publicly in a meeting. You...',
+        text: 'Do you have trouble sleeping due to racing thoughts?',
         answers: [
-          { id: 'a', text: 'Stay calm and respond with facts.',                   scores: { resilient: 2 } },
-          { id: 'b', text: 'Feel hurt but recover after the meeting.',            scores: { adaptive: 2 } },
-          { id: 'c', text: 'Feel the criticism for days.',                        scores: { reactive: 2 } },
-          { id: 'd', text: 'Barely react — external opinions don\'t register.',   scores: { detached: 2 } },
+          { id: 'a', text: 'Never',      scores: { stress: 0 } },
+          { id: 'b', text: 'Rarely',     scores: { stress: 1 } },
+          { id: 'c', text: 'Frequently', scores: { stress: 2 } },
+          { id: 'd', text: 'Every night', scores: { stress: 3 } },
         ],
       },
       {
         id: 's3',
-        text: 'How do you sleep before a high-stakes event?',
+        text: 'How often do you feel physically exhausted even after resting?',
         answers: [
-          { id: 'a', text: 'Fine — pressure helps you prepare better.',           scores: { resilient: 2 } },
-          { id: 'b', text: 'Slightly restless but manageable.',                   scores: { adaptive: 2 } },
-          { id: 'c', text: 'Poorly — your mind races with worst-case scenarios.', scores: { reactive: 2 } },
-          { id: 'd', text: 'You sleep like a stone regardless.',                  scores: { detached: 2 } },
+          { id: 'a', text: 'Never',      scores: { stress: 0 } },
+          { id: 'b', text: 'Sometimes',  scores: { stress: 1 } },
+          { id: 'c', text: 'Often',      scores: { stress: 2 } },
+          { id: 'd', text: 'Always',     scores: { stress: 3 } },
         ],
       },
       {
         id: 's4',
-        text: 'When multiple crises hit simultaneously, you...',
+        text: 'Do you find it difficult to concentrate on one task at a time?',
         answers: [
-          { id: 'a', text: 'Triage ruthlessly and execute with clarity.',         scores: { resilient: 2 } },
-          { id: 'b', text: 'Get overwhelmed briefly, then find your footing.',    scores: { adaptive: 2 } },
-          { id: 'c', text: 'Freeze or become paralyzed by the volume.',           scores: { reactive: 2 } },
-          { id: 'd', text: 'Compartmentalize and process one item at a time.',    scores: { detached: 2 } },
+          { id: 'a', text: 'Not at all',  scores: { stress: 0 } },
+          { id: 'b', text: 'A little',   scores: { stress: 1 } },
+          { id: 'c', text: 'Quite a bit', scores: { stress: 2 } },
+          { id: 'd', text: 'Extremely',  scores: { stress: 3 } },
+        ],
+      },
+      {
+        id: 's5',
+        text: 'How often do you feel irritable or short-tempered with others?',
+        answers: [
+          { id: 'a', text: 'Never',      scores: { stress: 0 } },
+          { id: 'b', text: 'Rarely',     scores: { stress: 1 } },
+          { id: 'c', text: 'Often',      scores: { stress: 2 } },
+          { id: 'd', text: 'Very often', scores: { stress: 3 } },
+        ],
+      },
+      {
+        id: 's6',
+        text: 'Do you experience physical symptoms like headaches or muscle tension?',
+        answers: [
+          { id: 'a', text: 'Never',      scores: { stress: 0 } },
+          { id: 'b', text: 'Occasionally', scores: { stress: 1 } },
+          { id: 'c', text: 'Frequently', scores: { stress: 2 } },
+          { id: 'd', text: 'Constantly', scores: { stress: 3 } },
+        ],
+      },
+      {
+        id: 's7',
+        text: 'How often do you feel like you have no control over your life?',
+        answers: [
+          { id: 'a', text: 'Never',      scores: { stress: 0 } },
+          { id: 'b', text: 'Sometimes',  scores: { stress: 1 } },
+          { id: 'c', text: 'Often',      scores: { stress: 2 } },
+          { id: 'd', text: 'Always',     scores: { stress: 3 } },
+        ],
+      },
+      {
+        id: 's8',
+        text: 'Do you neglect your hobbies or social life due to work or stress?',
+        answers: [
+          { id: 'a', text: 'Not at all',  scores: { stress: 0 } },
+          { id: 'b', text: 'A little',   scores: { stress: 1 } },
+          { id: 'c', text: 'Significantly', scores: { stress: 2 } },
+          { id: 'd', text: 'Completely', scores: { stress: 3 } },
+        ],
+      },
+      {
+        id: 's9',
+        text: 'How often do you feel anxious or worried about the future?',
+        answers: [
+          { id: 'a', text: 'Never',      scores: { stress: 0 } },
+          { id: 'b', text: 'Rarely',     scores: { stress: 1 } },
+          { id: 'c', text: 'Often',      scores: { stress: 2 } },
+          { id: 'd', text: 'Constantly', scores: { stress: 3 } },
+        ],
+      },
+      {
+        id: 's10',
+        text: 'Do you feel a sense of dread when starting your workday?',
+        answers: [
+          { id: 'a', text: 'Never',      scores: { stress: 0 } },
+          { id: 'b', text: 'Occasionally', scores: { stress: 1 } },
+          { id: 'c', text: 'Frequently', scores: { stress: 2 } },
+          { id: 'd', text: 'Every day',  scores: { stress: 3 } },
         ],
       },
     ],
@@ -889,12 +1111,11 @@ Traditional psychopaths lack empathy. You have cognitive AND affective empathy, 
     categoryId: 'behavioral',
     type: 'personality',
     title: 'Smartphone Addiction Index',
-    description: 'Are you addicted to your phone? Measure screen time dependency, social media compulsion, and digital wellness habits.',
+    description: 'Evaluate your level of dependency on mobile devices.',
     icon: 'phonelink_lock',
     estimatedMinutes: 5,
     version: 'v1.0',
     tag: 'NEW PROTOCOL',
-    participants: '2k participants',
     questions: [
       {
         id: 'dd1',
@@ -1063,7 +1284,6 @@ Traditional psychopaths lack empathy. You have cognitive AND affective empathy, 
     estimatedMinutes: 3,
     version: 'v1.0',
     tag: 'NEW PROTOCOL',
-    participants: '5k participants',
     questions: [], // Handled by component
   },
   {
@@ -1076,20 +1296,18 @@ Traditional psychopaths lack empathy. You have cognitive AND affective empathy, 
     estimatedMinutes: 4,
     version: 'v1.1',
     tag: 'POPULAR',
-    participants: '21k participants',
     questions: [], // Handled by component
   },
   {
     id: 'iq-test-professional',
     categoryId: 'cognitive',
     type: 'iq-test',
-    title: 'Professional IQ Assessment',
-    description: 'Comprehensive intelligence test: matrix puzzles, number series, analogies, logic problems. 48 questions, 40 minutes.',
+    title: 'Professional IQ Test',
+    description: 'A comprehensive assessment of your cognitive abilities and intelligence quotient.',
     icon: 'school',
     estimatedMinutes: 40,
     version: 'v3.0',
     tag: 'VERIFIED',
-    participants: '127k participants',
     questions: [
       // ═══ TIPO 1: MATRIX 3×3 (6 domande) ═══
       {
@@ -1352,64 +1570,64 @@ Traditional psychopaths lack empathy. You have cognitive AND affective empathy, 
     results: [
       {
         id: 'genius-level',
-        title: 'Genius Level Intelligence',
-        description: 'Your score places you in the top 2% of the population. You demonstrate exceptional pattern recognition, logical reasoning, and abstract thinking abilities.',
+        title: 'Intelligenza di Livello Genio',
+        description: 'Il tuo punteggio ti colloca nel top 2% della popolazione. Dimostri eccezionali capacità di riconoscimento di pattern, ragionamento logico e pensiero astratto.',
         minScore: 130,
         maxScore: 160,
         recommendation: `
-**Cognitive Strengths:**
+**Punti di Forza Cognitivi:**
 - Superior fluid intelligence and pattern recognition
 - Exceptional abstract reasoning and logical deduction
 
-**Career Paths:**
-Research, data science, engineering, mathematics, theoretical physics
+**Percorsi di Carriera:**
+Ricerca, data science, ingegneria, matematica, fisica teorica
 
-**Development Tips:**
-- Challenge yourself with advanced mathematics
-- Engage in competitive programming
-- Study complex strategy games
+**Suggerimenti di Sviluppo:**
+- Sfida te stesso con matematica avanzata
+- Partecipa a competizioni di programmazione
+- Studia giochi di strategia complessi
       `,
       },
       {
         id: 'above-average',
-        title: 'Above Average Intelligence',
-        description: 'You performed better than 70% of test-takers. You have strong analytical skills and good pattern recognition.',
+        title: 'Intelligenza Sopra la Media',
+        description: 'Hai ottenuto un risultato migliore del 70% dei partecipanti. Hai forti capacità analitiche e un buon riconoscimento di pattern.',
         minScore: 110,
         maxScore: 129,
         recommendation: `
-**Cognitive Strengths:**
-- Good logical reasoning and problem-solving
-- Solid pattern detection
+**Punti di Forza Cognitivi:**
+- Buon ragionamento logico e problem-solving
+- Solida rilevazione di pattern
 
-**Development Tips:**
-- Practice with logic puzzles
-- Learn a programming language
+**Suggerimenti di Sviluppo:**
+- Esercitati con puzzle logici
+- Impara un linguaggio di programmazione
       `,
       },
       {
         id: 'average-range',
-        title: 'Average Intelligence Range',
-        description: 'Your performance is in the typical range, similar to 50% of the population.',
+        title: 'Fascia di Intelligenza Media',
+        description: 'La tua performance è nella fascia tipica, simile al 50% della popolazione.',
         minScore: 90,
         maxScore: 109,
         recommendation: `
-**Development Tips:**
-- Daily brain training
-- Pattern practice
-- Memory exercises
+**Suggerimenti di Sviluppo:**
+- Allenamento cerebrale quotidiano
+- Pratica con i pattern
+- Esercizi di memoria
       `,
       },
       {
         id: 'below-average',
-        title: 'Below Average Range',
-        description: 'Your score is lower than typical. This could be due to test anxiety or unfamiliarity with the format.',
+        title: 'Fascia Sotto la Media',
+        description: 'Il tuo punteggio è inferiore alla media. Ciò potrebbe essere dovuto all\'ansia da test o alla scarsa familiarità con il formato.',
         minScore: 0,
         maxScore: 89,
         recommendation: `
-**Immediate Actions:**
-1. Retake when optimal
-2. Practice format
-3. Health check
+**Azioni Immediate:**
+1. Ripeti il test quando sei riposato
+2. Pratica con il formato del test
+3. Controllo dello stato di salute generale
       `,
       },
     ],
@@ -1418,14 +1636,790 @@ Research, data science, engineering, mathematics, theoretical physics
     id: 'reading-speed-test',
     categoryId: 'cognitive',
     type: 'special',
-    title: 'Reading Speed Test',
-    description: 'Measure your Words Per Minute (WPM) and comprehension efficiency. A long-form text analysis protocol.',
+    title: 'Reading Speed & Comprehension',
+    description: 'Measure how many words per minute you can process.',
     icon: 'auto_stories',
     estimatedMinutes: 3,
     version: 'v1.0',
     tag: 'NEW',
-    participants: '2k participants',
-    questions: [], // Special handling
+    questions: [
+      {
+        id: 'rs1',
+        text: 'Read the following text carefully. Click "NEXT" when you have finished reading.',
+        answers: [
+          { id: 'a', text: 'I have finished reading.', scores: { speed: 1 } },
+        ],
+        readingPassage: 'The human brain is an incredible organ, capable of processing vast amounts of information in milliseconds. Reading is a complex cognitive task that involves visual processing, language comprehension, and memory. When we read, our eyes move in quick jumps called saccades, pausing briefly on words to extract meaning. The average adult reads at a speed of about 200 to 250 words per minute. However, speed reading techniques can significantly increase this rate while maintaining comprehension. Factors such as vocabulary size, familiarity with the subject matter, and the difficulty of the text all play a role in reading speed. Improving your reading speed can enhance your productivity and allow you to consume more information in less time.',
+      },
+      {
+        id: 'rs2',
+        text: 'Read this second passage about artificial intelligence.',
+        answers: [
+          { id: 'a', text: 'I have finished reading.', scores: { speed: 1 } },
+        ],
+        readingPassage: 'Artificial Intelligence (AI) is transforming the way we live and work. From virtual assistants to autonomous vehicles, AI systems are becoming increasingly integrated into our daily lives. At its core, AI involves creating algorithms that can learn from data and make predictions or decisions. Machine learning, a subset of AI, allows systems to improve their performance over time without being explicitly programmed. As AI continues to evolve, it raises important ethical questions about privacy, bias, and the future of work. Understanding the capabilities and limitations of AI is crucial for navigating the modern world.',
+      },
+      {
+        id: 'rs3',
+        text: 'Read this third passage about the history of psychology.',
+        answers: [
+          { id: 'a', text: 'I have finished reading.', scores: { speed: 1 } },
+        ],
+        readingPassage: 'The history of psychology is a fascinating journey from philosophical speculation to scientific inquiry. Early thinkers like Plato and Aristotle pondered the nature of the mind and soul. In the late 19th century, Wilhelm Wundt established the first psychology laboratory, marking the birth of psychology as a formal science. Since then, various schools of thought have emerged, including behaviorism, psychoanalysis, and cognitive psychology. Each perspective has contributed to our understanding of human behavior and mental processes. Today, psychology is a diverse field with applications in health, education, and industry.',
+      },
+      {
+        id: 'rs4',
+        text: 'Read this fourth passage about the benefits of meditation.',
+        answers: [
+          { id: 'a', text: 'I have finished reading.', scores: { speed: 1 } },
+        ],
+        readingPassage: 'Meditation is a practice that has been used for thousands of years to promote relaxation and mental clarity. Research has shown that regular meditation can reduce stress, improve focus, and enhance emotional well-being. There are many different types of meditation, including mindfulness meditation, loving-kindness meditation, and transcendental meditation. By focusing on the present moment and observing thoughts without judgment, practitioners can develop a greater sense of peace and self-awareness. Incorporating meditation into your daily routine can have a profound impact on your overall health.',
+      },
+      {
+        id: 'rs5',
+        text: 'Read this fifth passage about the importance of sleep.',
+        answers: [
+          { id: 'a', text: 'I have finished reading.', scores: { speed: 1 } },
+        ],
+        readingPassage: 'Sleep is essential for physical and mental health. During sleep, the body repairs tissues, consolidates memories, and regulates hormones. Chronic sleep deprivation can lead to a range of health problems, including obesity, heart disease, and impaired cognitive function. Most adults need between seven and nine hours of sleep per night to function at their best. Establishing a regular sleep schedule and creating a relaxing bedtime routine can help improve sleep quality. Prioritizing sleep is one of the most important things you can do for your well-being.',
+      },
+      {
+        id: 'rs6',
+        text: 'Read this sixth passage about the power of habits.',
+        answers: [
+          { id: 'a', text: 'I have finished reading.', scores: { speed: 1 } },
+        ],
+        readingPassage: 'Habits are the small actions we take every day that shape our lives. According to research, about 40% of our daily activities are driven by habits rather than conscious decisions. Habits are formed through a loop of cue, craving, response, and reward. By understanding this loop, we can learn to break bad habits and build positive ones. Consistency is key when it comes to habit formation. Small, incremental changes can lead to significant long-term results. Mastering your habits is a powerful way to achieve your goals and live a more fulfilling life.',
+      },
+      {
+        id: 'rs7',
+        text: 'Read this seventh passage about the science of happiness.',
+        answers: [
+          { id: 'a', text: 'I have finished reading.', scores: { speed: 1 } },
+        ],
+        readingPassage: 'The science of happiness, also known as positive psychology, explores what makes life worth living. Researchers have identified several factors that contribute to well-being, including strong social connections, a sense of purpose, and gratitude. While genetics and life circumstances play a role, a significant portion of our happiness is within our control. Practicing mindfulness, engaging in acts of kindness, and pursuing meaningful goals can all increase our levels of happiness. Happiness is not just a fleeting emotion, but a skill that can be cultivated over time.',
+      },
+      {
+        id: 'rs8',
+        text: 'Read this eighth passage about the impact of social media.',
+        answers: [
+          { id: 'a', text: 'I have finished reading.', scores: { speed: 1 } },
+        ],
+        readingPassage: 'Social media has revolutionized the way we communicate and share information. It allows us to connect with people all over the world and stay informed about current events. However, social media also has its downsides, including the potential for addiction, cyberbullying, and the spread of misinformation. The constant comparison to others\' curated lives can also negatively impact self-esteem. It is important to use social media mindfully and set boundaries to protect your mental health. Finding a balance between online and offline life is essential for well-being.',
+      },
+      {
+        id: 'rs9',
+        text: 'Read this ninth passage about the benefits of exercise.',
+        answers: [
+          { id: 'a', text: 'I have finished reading.', scores: { speed: 1 } },
+        ],
+        readingPassage: 'Regular exercise is one of the best things you can do for your health. It improves cardiovascular fitness, strengthens muscles and bones, and helps maintain a healthy weight. Exercise also has significant mental health benefits, including reducing symptoms of anxiety and depression and improving mood. Physical activity releases endorphins, which are natural mood boosters. Whether it\'s walking, swimming, or weightlifting, finding an activity you enjoy is key to staying active. Aim for at least 150 minutes of moderate-intensity exercise per week.',
+      },
+      {
+        id: 'rs10',
+        text: 'Read this tenth passage about the future of technology.',
+        answers: [
+          { id: 'a', text: 'I have finished reading.', scores: { speed: 1 } },
+        ],
+        readingPassage: 'The future of technology holds exciting possibilities and significant challenges. From quantum computing to biotechnology, emerging technologies are poised to reshape our world. These advancements have the potential to solve some of humanity\'s most pressing problems, such as climate change and disease. However, they also raise important ethical and societal questions. As technology continues to advance at an exponential rate, it is crucial that we consider its impact on privacy, security, and equality. Navigating the future of technology requires a thoughtful and proactive approach.',
+      },
+    ],
+  },
+  // ── NEW PSYCHOLOGICAL QUIZZES ─────────────────────────────
+  {
+    id: 'intro-extro-scale',
+    categoryId: 'personality',
+    type: 'personality',
+    title: "Are You Introverted or Extroverted?",
+    description: "Discover where your social energy lies on Jung's scale.",
+    icon: 'psychology',
+    estimatedMinutes: 8,
+    version: 'v1.1',
+    tag: 'NEW',
+    questions: [
+      {
+        id: 'ie1',
+        text: 'After a long week of work, how do you prefer to recharge?',
+        answers: [
+          { id: 'a', text: 'Going out with a group of friends to a lively place.', scores: { extro: 4 } },
+          { id: 'b', text: 'Spending quiet time alone or with a loved one.', scores: { intro: 4 } },
+          { id: 'c', text: 'Depends on how tired I am; sometimes I go out, sometimes I stay in.', scores: { ambi: 4 } },
+          { id: 'd', text: 'Doing something active but not necessarily social.', scores: { ambi: 2, intro: 2 } },
+        ],
+      },
+      {
+        id: 'ie2',
+        text: 'In a large group, you tend to...',
+        answers: [
+          { id: 'a', text: 'Be the center of attention and lead the conversation.', scores: { extro: 4 } },
+          { id: 'b', text: 'Listen more than talk and stay a bit in the background.', scores: { intro: 4 } },
+          { id: 'c', text: 'Speak up when the topic interests me a lot.', scores: { ambi: 4 } },
+          { id: 'd', text: 'Look for one or two people to talk to in depth.', scores: { intro: 2, ambi: 2 } },
+        ],
+      },
+      {
+        id: 'ie3',
+        text: 'How do you react to unexpected social invitations (e.g., a last-minute invite)?',
+        answers: [
+          { id: 'a', text: 'They excite me; I almost always accept with pleasure.', scores: { extro: 4 } },
+          { id: 'b', text: 'They make me anxious or annoyed; I prefer planned schedules.', scores: { intro: 4 } },
+          { id: 'c', text: 'I evaluate at the moment, but I don\'t mind them.', scores: { ambi: 4 } },
+          { id: 'd', text: 'I often make up an excuse not to go.', scores: { intro: 3 } },
+        ],
+      },
+      {
+        id: 'ie4',
+        text: 'What is your approach to networking or meeting new people?',
+        answers: [
+          { id: 'a', text: 'It comes naturally to me and I enjoy it a lot.', scores: { extro: 4 } },
+          { id: 'b', text: 'I find it exhausting and try to avoid it if possible.', scores: { intro: 4 } },
+          { id: 'c', text: 'I can do it well, but then I need to be alone to recover.', scores: { ambi: 4 } },
+          { id: 'd', text: 'I prefer others to approach me.', scores: { intro: 2 } },
+        ],
+      },
+      {
+        id: 'ie5',
+        text: 'When you need to solve a problem, you prefer...',
+        answers: [
+          { id: 'a', text: 'Talking it out loud with others to clarify my ideas.', scores: { extro: 4 } },
+          { id: 'b', text: 'Thinking about it alone in silence before talking about it.', scores: { intro: 4 } },
+          { id: 'c', text: 'A mix of solitary reflection and quick comparison.', scores: { ambi: 4 } },
+          { id: 'd', text: 'Writing my thoughts down on paper.', scores: { intro: 3 } },
+        ],
+      },
+      {
+        id: 'ie6',
+        text: 'In a noisy and crowded environment, you feel...',
+        answers: [
+          { id: 'a', text: 'Stimulated and full of energy.', scores: { extro: 4 } },
+          { id: 'b', text: 'Overwhelmed and wanting to leave.', scores: { intro: 4 } },
+          { id: 'c', text: 'Comfortable for a while, but then I need to disconnect.', scores: { ambi: 4 } },
+          { id: 'd', text: 'Indifferent; I can isolate myself if I want.', scores: { intro: 2, ambi: 2 } },
+        ],
+      },
+      {
+        id: 'ie7',
+        text: 'How would you describe your conversation style?',
+        answers: [
+          { id: 'a', text: 'I talk a lot and jump from one topic to another.', scores: { extro: 4 } },
+          { id: 'b', text: 'I talk little, but I go very deep.', scores: { intro: 4 } },
+          { id: 'c', text: 'I adapt to the interlocutor; I can be both talkative and silent.', scores: { ambi: 4 } },
+          { id: 'd', text: 'I prefer to listen and ask questions rather than talk about myself.', scores: { intro: 3 } },
+        ],
+      },
+      {
+        id: 'ie8',
+        text: 'After a social event, you usually feel...',
+        answers: [
+          { id: 'a', text: 'Electrified and ready for more.', scores: { extro: 4 } },
+          { id: 'b', text: 'Completely drained and in need of sleep.', scores: { intro: 4 } },
+          { id: 'c', text: 'Satisfied but ready for some peace.', scores: { ambi: 4 } },
+          { id: 'd', text: 'Depends on who was there; some people charge me, others drain me.', scores: { ambi: 3 } },
+        ],
+      },
+      {
+        id: 'ie9',
+        text: 'When you are in a new environment, you usually...',
+        answers: [
+          { id: 'a', text: 'Start talking to the first person I see.', scores: { extro: 4 } },
+          { id: 'b', text: 'Find a quiet corner to observe first.', scores: { intro: 4 } },
+          { id: 'c', text: 'Wait for someone to introduce themselves to me.', scores: { ambi: 2, intro: 2 } },
+          { id: 'd', text: 'Look for someone I already know.', scores: { intro: 2, ambi: 2 } },
+        ],
+      },
+      {
+        id: 'ie10',
+        text: 'How do you feel about public speaking?',
+        answers: [
+          { id: 'a', text: 'I love it; it gives me a rush of energy.', scores: { extro: 4 } },
+          { id: 'b', text: 'I find it terrifying and try to avoid it.', scores: { intro: 4 } },
+          { id: 'c', text: 'I can do it if I have to, but I need to prepare a lot.', scores: { ambi: 4 } },
+          { id: 'd', text: 'I prefer to be in the audience asking questions.', scores: { intro: 2, ambi: 2 } },
+        ],
+      },
+    ],
+    results: [
+      {
+        id: 'introverso-puro',
+        type: 'intro',
+        title: 'Introverso Puro',
+        description: 'La tua energia è rivolta verso l\'interno. Ricarichi le batterie nella solitudine e trovi le interazioni sociali prolungate molto stancanti. Sei riflessivo, osservatore e preferisci la qualità alla quantità nelle relazioni.',
+        icon: 'self_improvement',
+      },
+      {
+        id: 'estroverso-puro',
+        type: 'extro',
+        title: 'Estroverso Puro',
+        description: 'Sei una persona che trae energia dal mondo esterno e dalle persone. Ami l\'azione, la varietà e le interazioni sociali. Ti senti vivo quando sei circondato da altri e tendi a pensare ad alta voce.',
+        icon: 'celebration',
+      },
+      {
+        id: 'ambiverso',
+        type: 'ambi',
+        title: 'Ambiverso Equilibrato',
+        description: 'Ti trovi nel mezzo dello spettro. Hai tratti di entrambi i mondi: apprezzi la socialità ma hai anche bisogno dei tuoi momenti di solitudine. Sei flessibile e sai adattarti a diverse situazioni sociali con facilità.',
+        icon: 'balance',
+      },
+      {
+        id: 'introverso-sociale',
+        type: 'intro-soc',
+        title: 'Introverso Sociale',
+        description: 'Ti piace stare con le persone, ma preferisci piccoli gruppi di amici intimi. Non sei timido, ma la tua "batteria sociale" si scarica velocemente in ambienti troppo caotici o con sconosciuti.',
+        icon: 'groups',
+      },
+    ],
+  },
+  {
+    id: 'learning-style-vark',
+    categoryId: 'cognitive',
+    type: 'personality',
+    title: "What's Your Learning Style?",
+    description: "Discover the best way for you to learn and retain information.",
+    icon: 'school',
+    estimatedMinutes: 8,
+    version: 'v1.1',
+    tag: 'NEW',
+    questions: [
+      {
+        id: 'ls1',
+        text: 'When you are learning something new, you prefer...',
+        answers: [
+          { id: 'a', text: 'Reading instructions or looking at diagrams.', scores: { visual: 4 } },
+          { id: 'b', text: 'Listening to an explanation or a podcast.', scores: { auditory: 4 } },
+          { id: 'c', text: 'Trying it out immediately and learning by doing.', scores: { kinesthetic: 4 } },
+          { id: 'd', text: 'Taking notes and summarizing in your own words.', scores: { read: 4 } },
+        ],
+      },
+      {
+        id: 'ls2',
+        text: 'To remember a phone number, you usually...',
+        answers: [
+          { id: 'a', text: 'Visualize the numbers in your mind.', scores: { visual: 4 } },
+          { id: 'b', text: 'Repeat it out loud several times.', scores: { auditory: 4 } },
+          { id: 'c', text: 'Type it several times to "feel" the movement.', scores: { kinesthetic: 4 } },
+          { id: 'd', text: 'Write it down on a piece of paper.', scores: { read: 4 } },
+        ],
+      },
+      {
+        id: 'ls3',
+        text: 'In a lesson or conference, what helps you the most?',
+        answers: [
+          { id: 'a', text: 'Slides, charts, and videos shown.', scores: { visual: 4 } },
+          { id: 'b', text: 'The tone of voice and words of the speaker.', scores: { auditory: 4 } },
+          { id: 'c', text: 'Taking detailed notes word for word.', scores: { read: 4 } },
+          { id: 'd', text: 'Practical exercises or group activities.', scores: { kinesthetic: 4 } },
+        ],
+      },
+      {
+        id: 'ls4',
+        text: 'If you have to explain a concept to someone, you tend to...',
+        answers: [
+          { id: 'a', text: 'Draw a diagram or a chart.', scores: { visual: 4 } },
+          { id: 'b', text: 'Use verbal metaphors and explain out loud.', scores: { auditory: 4 } },
+          { id: 'c', text: 'Write a list of key points.', scores: { read: 4 } },
+          { id: 'd', text: 'Show how it\'s done or use physical objects.', scores: { kinesthetic: 4 } },
+        ],
+      },
+      {
+        id: 'ls5',
+        text: 'What is your favorite type of test?',
+        answers: [
+          { id: 'a', text: 'Tests with maps, charts, or image identification.', scores: { visual: 4 } },
+          { id: 'b', text: 'Oral exams or discussions.', scores: { auditory: 4 } },
+          { id: 'c', text: 'Essays or written open-ended questions.', scores: { read: 4 } },
+          { id: 'd', text: 'Practical tests, labs, or simulations.', scores: { kinesthetic: 4 } },
+        ],
+      },
+      {
+        id: 'ls6',
+        text: 'When you read a book, what do you notice most?',
+        answers: [
+          { id: 'a', text: 'Visual descriptions that create "movies" in your mind.', scores: { visual: 4 } },
+          { id: 'b', text: 'The rhythm of the sentences and the "sound" of the words.', scores: { auditory: 4 } },
+          { id: 'c', text: 'The logical structure and precision of the language.', scores: { read: 4 } },
+          { id: 'd', text: 'The physical emotions or action described.', scores: { kinesthetic: 4 } },
+        ],
+      },
+      {
+        id: 'ls7',
+        text: 'To orient yourself in a new city...',
+        answers: [
+          { id: 'a', text: 'I look at a map or use visual GPS.', scores: { visual: 4 } },
+          { id: 'b', text: 'I ask passersby for verbal directions.', scores: { auditory: 4 } },
+          { id: 'c', text: 'I read street names and textual signs.', scores: { read: 4 } },
+          { id: 'd', text: 'I start walking and "feel" the direction.', scores: { kinesthetic: 4 } },
+        ],
+      },
+      {
+        id: 'ls8',
+        text: 'What distracts you most while studying?',
+        answers: [
+          { id: 'a', text: 'Visual clutter or people passing by.', scores: { visual: 4 } },
+          { id: 'b', text: 'Background noise, music, or people talking.', scores: { auditory: 4 } },
+          { id: 'c', text: 'Poorly written text or typos.', scores: { read: 4 } },
+          { id: 'd', text: 'An uncomfortable chair or the need to move.', scores: { kinesthetic: 4 } },
+        ],
+      },
+      {
+        id: 'ls9',
+        text: 'When you are trying to solve a puzzle, you...',
+        answers: [
+          { id: 'a', text: 'Look at the picture on the box for reference.', scores: { visual: 4 } },
+          { id: 'b', text: 'Talk to yourself about where the pieces might go.', scores: { auditory: 4 } },
+          { id: 'c', text: 'Move the pieces around until they click.', scores: { kinesthetic: 4 } },
+          { id: 'd', text: 'Sort the pieces by color or shape first.', scores: { read: 4 } },
+        ],
+      },
+      {
+        id: 'ls10',
+        text: 'In a classroom setting, you prefer...',
+        answers: [
+          { id: 'a', text: 'Teachers who use lots of visual aids.', scores: { visual: 4 } },
+          { id: 'b', text: 'Lectures and group discussions.', scores: { auditory: 4 } },
+          { id: 'c', text: 'Hands-on activities and experiments.', scores: { kinesthetic: 4 } },
+          { id: 'd', text: 'Reading assignments and writing essays.', scores: { read: 4 } },
+        ],
+      },
+    ],
+    results: [
+      {
+        id: 'visivo',
+        type: 'visual',
+        title: 'Visual Learning',
+        description: 'You learn best through sight. You need to see charts, diagrams, mind maps, and videos to process information. You often think in images.',
+        icon: 'visibility',
+      },
+      {
+        id: 'uditivo',
+        type: 'auditory',
+        title: 'Auditory Learning',
+        description: 'Your preferred channel is hearing. You remember well what is said, love debates, podcasts, and oral explanations. You often repeat things to yourself to memorize them.',
+        icon: 'hearing',
+      },
+      {
+        id: 'cinestetico',
+        type: 'kinesthetic',
+        title: 'Kinesthetic Learning',
+        description: 'You learn by doing. You need to move, touch, build, and experiment physically. Purely theoretical lessons bore you; you excel in labs and practical activities.',
+        icon: 'touch_app',
+      },
+      {
+        id: 'lettura-scrittura',
+        type: 'read',
+        title: 'Reading and Writing',
+        description: 'Your style is based on text. You love reading manuals, taking endless notes, and making lists. You process information by transforming it into written words.',
+        icon: 'edit_note',
+      },
+    ],
+  },
+  {
+    id: 'stress-management-style',
+    categoryId: 'behavioral',
+    type: 'personality',
+    title: "How Do You Manage Stress?",
+    description: "Identify your coping style: are you proactive or reactive?",
+    icon: 'spa',
+    estimatedMinutes: 8,
+    version: 'v1.1',
+    tag: 'NEW',
+    questions: [
+      {
+        id: 'sm1',
+        text: 'When you feel overwhelmed by commitments, your first reaction is...',
+        answers: [
+          { id: 'a', text: 'Making a list of priorities and starting to solve them immediately.', scores: { solver: 4 } },
+          { id: 'b', text: 'Looking for someone to vent to emotionally.', scores: { emotional: 4 } },
+          { id: 'c', text: 'Ignoring the problem and watching a TV series to distract myself.', scores: { avoider: 4 } },
+          { id: 'd', text: 'Taking a deep breath and accepting the situation calmly.', scores: { resilient: 4 } },
+        ],
+      },
+      {
+        id: 'sm2',
+        text: 'In the face of an unexpected failure, you...',
+        answers: [
+          { id: 'a', text: 'Analyze what went wrong so as not to repeat the mistake.', scores: { solver: 4 } },
+          { id: 'b', text: 'Feel very down and need time to recover.', scores: { emotional: 4 } },
+          { id: 'c', text: 'Pretend that nothing serious happened.', scores: { avoider: 4 } },
+          { id: 'd', text: 'See it as a necessary growth opportunity.', scores: { resilient: 4 } },
+        ],
+      },
+      {
+        id: 'sm3',
+        text: 'How do you react to constructive criticism at work?',
+        answers: [
+          { id: 'a', text: 'I use it as data to improve my performance.', scores: { solver: 4 } },
+          { id: 'b', text: 'I take it personally and feel hurt.', scores: { emotional: 4 } },
+          { id: 'c', text: 'I nod but then keep doing as before.', scores: { avoider: 4 } },
+          { id: 'd', text: 'I sincerely thank for the feedback received.', scores: { resilient: 4 } },
+        ],
+      },
+      {
+        id: 'sm4',
+        text: 'What helps you most to relax after a heavy day?',
+        answers: [
+          { id: 'a', text: 'Planning the next day to feel in control.', scores: { solver: 4 } },
+          { id: 'b', text: 'Calling a friend and telling them everything.', scores: { emotional: 4 } },
+          { id: 'c', text: 'Eating something good or compulsive shopping.', scores: { avoider: 4 } },
+          { id: 'd', text: 'Meditating or taking a walk in nature.', scores: { resilient: 4 } },
+        ],
+      },
+      {
+        id: 'sm5',
+        text: 'When you have too much to do, you tend to...',
+        answers: [
+          { id: 'a', text: 'Delegate or eliminate non-essential activities.', scores: { solver: 4 } },
+          { id: 'b', text: 'Get anxious and complain about the workload.', scores: { emotional: 4 } },
+          { id: 'c', text: 'Procrastinate and do things at the last minute.', scores: { avoider: 4 } },
+          { id: 'd', text: 'Keep calm and proceed one step at a time.', scores: { resilient: 4 } },
+        ],
+      },
+      {
+        id: 'sm6',
+        text: 'In a heated discussion, you...',
+        answers: [
+          { id: 'a', text: 'Try to bring everything back to logic and facts.', scores: { solver: 4 } },
+          { id: 'b', text: 'Raise your voice or burst into tears.', scores: { emotional: 4 } },
+          { id: 'c', text: 'Leave the room to avoid conflict.', scores: { avoider: 4 } },
+          { id: 'd', text: 'Try to understand the other\'s point of view without judging.', scores: { resilient: 4 } },
+        ],
+      },
+      {
+        id: 'sm7',
+        text: 'How do you see your future?',
+        answers: [
+          { id: 'a', text: 'As a series of goals to be achieved with effort.', scores: { solver: 4 } },
+          { id: 'b', text: 'With a bit of fear for emotional uncertainties.', scores: { emotional: 4 } },
+          { id: 'c', text: 'I prefer not to think about it and live day by day.', scores: { avoider: 4 } },
+          { id: 'd', text: 'With confidence in my ability to face anything.', scores: { resilient: 4 } },
+        ],
+      },
+      {
+        id: 'sm8',
+        text: 'What is your relationship with change?',
+        answers: [
+          { id: 'a', text: 'I see it as a logical challenge to manage.', scores: { solver: 4 } },
+          { id: 'b', text: 'It scares me a lot and destabilizes me.', scores: { emotional: 4 } },
+          { id: 'c', text: 'I try to resist as long as possible.', scores: { avoider: 4 } },
+          { id: 'd', text: 'I welcome it as a natural evolution.', scores: { resilient: 4 } },
+        ],
+      },
+      {
+        id: 'sm9',
+        text: 'When you feel overwhelmed, you...',
+        answers: [
+          { id: 'a', text: 'Take a break to clear your head.', scores: { resilient: 4 } },
+          { id: 'b', text: 'Keep pushing until you burn out.', scores: { emotional: 4 } },
+          { id: 'c', text: 'Call a friend to vent.', scores: { social: 4 } },
+          { id: 'd', text: 'Go to sleep to avoid the situation.', scores: { avoider: 4 } },
+        ],
+      },
+      {
+        id: 'sm10',
+        text: 'How do you handle criticism?',
+        answers: [
+          { id: 'a', text: 'I listen and try to improve.', scores: { solver: 4 } },
+          { id: 'b', text: 'I take it personally and get defensive.', scores: { emotional: 4 } },
+          { id: 'c', text: 'I ask others if they agree with the criticism.', scores: { social: 4 } },
+          { id: 'd', text: 'I ignore it and pretend it didn\'t happen.', scores: { avoider: 4 } },
+        ],
+      },
+    ],
+    results: [
+      {
+        id: 'problem-solver',
+        type: 'solver',
+        title: 'The Problem Solver',
+        description: 'Your approach to stress is rational and action-oriented. You try to eliminate the source of stress by acting directly on the cause. You are very efficient but risk neglecting your emotions.',
+        icon: 'build',
+      },
+      {
+        id: 'emotivo',
+        type: 'emotional',
+        title: 'Emotional Coping',
+        description: 'You manage stress through sharing and processing feelings. You need social support and to express what you feel. You are very empathetic but stress can paralyze you if you don\'t find a listener.',
+        icon: 'favorite',
+      },
+      {
+        id: 'evitante',
+        type: 'avoider',
+        title: 'The Avoider',
+        description: 'Your main strategy is distraction. You try not to think about what stresses you, hoping it will pass on its own or taking refuge in pleasant activities. Useful in the short term, but problems tend to accumulate.',
+        icon: 'visibility_off',
+      },
+      {
+        id: 'resiliente',
+        type: 'resilient',
+        title: 'The Resilient',
+        description: 'You have a high capacity for adaptation. You accept stress as part of life and maintain inner calm. You manage to transform difficulties into strength without being overwhelmed.',
+        icon: 'psychology',
+      },
+    ],
+  },
+  {
+    id: 'leadership-style-test',
+    categoryId: 'behavioral',
+    type: 'personality',
+    title: "What Kind of Leader Are You?",
+    description: "Discover your natural approach to leading a team.",
+    icon: 'leaderboard',
+    estimatedMinutes: 8,
+    version: 'v1.1',
+    tag: 'NEW',
+    questions: [
+      {
+        id: 'ld1',
+        text: 'In an emergency situation where you need to decide quickly:',
+        answers: [
+          { id: 'a', text: 'I take command and tell everyone exactly what to do.', scores: { autocratic: 4 } },
+          { id: 'b', text: 'I ask the team for a quick opinion before deciding.', scores: { democratic: 4 } },
+          { id: 'c', text: 'I let the most experienced members decide independently.', scores: { laissez: 4 } },
+          { id: 'd', text: 'I inspire the team by reminding them of our common goal.', scores: { transform: 4 } },
+        ],
+      },
+      {
+        id: 'ld2',
+        text: 'How do you handle a team member who is not performing well?',
+        answers: [
+          { id: 'a', text: 'I give them stricter instructions and monitor their work.', scores: { autocratic: 4 } },
+          { id: 'b', text: 'I sit down with them to understand the difficulties and find solutions together.', scores: { democratic: 4 } },
+          { id: 'c', text: 'I give them space, trusting they will find their way.', scores: { laissez: 4 } },
+          { id: 'd', text: 'I try to motivate them by showing them their future potential.', scores: { transform: 4 } },
+        ],
+      },
+      {
+        id: 'ld3',
+        text: 'What is your main priority as a leader?',
+        answers: [
+          { id: 'a', text: 'Achieving results at all costs.', scores: { autocratic: 4 } },
+          { id: 'b', text: 'Maintaining harmony and consensus in the group.', scores: { democratic: 4 } },
+          { id: 'c', text: 'Avoiding interfering with others\' work.', scores: { laissez: 4 } },
+          { id: 'd', text: 'Inspiring deep and lasting change.', scores: { transform: 4 } },
+        ],
+      },
+      {
+        id: 'ld4',
+        text: 'How do you prefer to communicate with your team?',
+        answers: [
+          { id: 'a', text: 'Through clear orders and written directives.', scores: { autocratic: 4 } },
+          { id: 'b', text: 'With meetings open to debate and comparison.', scores: { democratic: 4 } },
+          { id: 'c', text: 'Only when strictly necessary or requested.', scores: { laissez: 4 } },
+          { id: 'd', text: 'With motivational speeches and overall visions.', scores: { transform: 4 } },
+        ],
+      },
+      {
+        id: 'ld5',
+        text: 'In case of conflict between two collaborators, you...',
+        answers: [
+          { id: 'a', text: 'I decide who is right and close the matter.', scores: { autocratic: 4 } },
+          { id: 'b', text: 'I act as a mediator to find a compromise.', scores: { democratic: 4 } },
+          { id: 'c', text: 'I let them handle it themselves.', scores: { laissez: 4 } },
+          { id: 'd', text: 'I try to transform the conflict into a learning moment.', scores: { transform: 4 } },
+        ],
+      },
+      {
+        id: 'ld6',
+        text: 'How do you see innovation?',
+        answers: [
+          { id: 'a', text: 'A tool to increase control and efficiency.', scores: { autocratic: 4 } },
+          { id: 'b', text: 'A collective process that starts from the bottom.', scores: { democratic: 4 } },
+          { id: 'c', text: 'Something that happens naturally if left free.', scores: { laissez: 4 } },
+          { id: 'd', text: 'The main mission to constantly evolve.', scores: { transform: 4 } },
+        ],
+      },
+      {
+        id: 'ld7',
+        text: 'What is your relationship with power?',
+        answers: [
+          { id: 'a', text: 'It is necessary to maintain order.', scores: { autocratic: 4 } },
+          { id: 'b', text: 'It should be shared as much as possible.', scores: { democratic: 4 } },
+          { id: 'c', text: 'It is a burden I would gladly do without.', scores: { laissez: 4 } },
+          { id: 'd', text: 'It is a means to serve a larger cause.', scores: { transform: 4 } },
+        ],
+      },
+      {
+        id: 'ld8',
+        text: 'What makes you most proud of your work?',
+        answers: [
+          { id: 'a', text: 'Having perfectly met deadlines and budgets.', scores: { autocratic: 4 } },
+          { id: 'b', text: 'Having created a united and happy team.', scores: { democratic: 4 } },
+          { id: 'c', text: 'Seeing my collaborators become independent.', scores: { laissez: 4 } },
+          { id: 'd', text: 'Seeing the positive impact of my work on society.', scores: { transform: 4 } },
+        ],
+      },
+      {
+        id: 'ld9',
+        text: 'When a project fails, your first thought is...',
+        answers: [
+          { id: 'a', text: 'Who failed to follow the instructions?', scores: { autocratic: 4 } },
+          { id: 'b', text: 'How can we discuss this as a team to improve?', scores: { democratic: 4 } },
+          { id: 'c', text: 'It\'s part of the learning process, let\'s move on.', scores: { laissez: 4 } },
+          { id: 'd', text: 'How can we use this failure to inspire a new direction?', scores: { transform: 4 } },
+        ],
+      },
+      {
+        id: 'ld10',
+        text: 'Your ideal team is one that...',
+        answers: [
+          { id: 'a', text: 'Follows my lead without hesitation.', scores: { autocratic: 4 } },
+          { id: 'b', text: 'Collaborates and makes decisions together.', scores: { democratic: 4 } },
+          { id: 'c', text: 'Operates independently with minimal supervision.', scores: { laissez: 4 } },
+          { id: 'd', text: 'Is constantly growing and challenging the status quo.', scores: { transform: 4 } },
+        ],
+      },
+    ],
+    results: [
+      {
+        id: 'autocratico',
+        type: 'autocratic',
+        title: 'Autocratic Leader',
+        description: 'You make decisions independently and expect them to be followed. You are excellent in crises and where maximum efficiency is needed, but you risk demotivating more creative collaborators.',
+        icon: 'gavel',
+      },
+      {
+        id: 'democratico',
+        type: 'democratic',
+        title: 'Democratic Leader',
+        description: 'You involve the team in every important decision. You favor collaboration and high morale. The process may be slower, but the results are more shared and lasting.',
+        icon: 'groups',
+      },
+      {
+        id: 'laissez-faire',
+        type: 'laissez',
+        title: 'Laissez-faire Leader',
+        description: 'You give maximum autonomy to your collaborators. You function well with highly motivated teams of experts who do not need constant guidance. However, you risk a lack of direction if the team is inexperienced.',
+        icon: 'auto_awesome',
+      },
+      {
+        id: 'trasformazionale',
+        type: 'transform',
+        title: 'Transformational Leader',
+        description: 'You are a visionary who inspires and motivates through enthusiasm and example. You focus on the growth of individuals and positive long-term change.',
+        icon: 'trending_up',
+      },
+    ],
+  },
+  {
+    id: 'multiple-intelligences-gardner',
+    categoryId: 'cognitive',
+    type: 'personality',
+    title: "What Is Your Dominant Intelligence?",
+    description: "Discover your strongest cognitive areas based on Gardner's theory.",
+    icon: 'psychology',
+    estimatedMinutes: 10,
+    version: 'v1.1',
+    tag: 'NEW',
+    questions: [
+      {
+        id: 'mi1',
+        text: 'What comes most naturally to you in your free time?',
+        answers: [
+          { id: 'a', text: 'Reading, writing, or playing word games.', scores: { linguistic: 4 } },
+          { id: 'b', text: 'Solving logical puzzles or doing calculations.', scores: { logical: 4 } },
+          { id: 'c', text: 'Drawing, photographing, or navigating with maps.', scores: { spatial: 4 } },
+          { id: 'd', text: 'Playing sports, dancing, or manual work.', scores: { kinesthetic: 4 } },
+        ],
+      },
+      {
+        id: 'mi2',
+        text: 'Which of these activities are you most passionate about?',
+        answers: [
+          { id: 'a', text: 'Listening to or composing music.', scores: { musical: 4 } },
+          { id: 'b', text: 'Mediating conflicts between friends or organizing events.', scores: { interpersonal: 4 } },
+          { id: 'c', text: 'Reflecting on my goals and inner life.', scores: { intrapersonal: 4 } },
+          { id: 'd', text: 'Being outdoors, caring for plants, or observing animals.', scores: { naturalist: 4 } },
+        ],
+      },
+      {
+        id: 'mi3',
+        text: 'In school, which subject did you excel in?',
+        answers: [
+          { id: 'a', text: 'Literature, foreign languages, or history.', scores: { linguistic: 4 } },
+          { id: 'b', text: 'Mathematics, physics, or science.', scores: { logical: 4 } },
+          { id: 'c', text: 'Art or geometry.', scores: { spatial: 4 } },
+          { id: 'd', text: 'Physical education or technical workshops.', scores: { kinesthetic: 4 } },
+        ],
+      },
+      {
+        id: 'mi4',
+        text: 'How do you prefer to spend an ideal evening?',
+        answers: [
+          { id: 'a', text: 'Going to a concert or playing an instrument.', scores: { musical: 4 } },
+          { id: 'b', text: 'Attending a crowded party or a debate.', scores: { interpersonal: 4 } },
+          { id: 'c', text: 'Writing a diary or meditating in solitude.', scores: { intrapersonal: 4 } },
+          { id: 'd', text: 'Camping or a trip to the mountains.', scores: { naturalist: 4 } },
+        ],
+      },
+      {
+        id: 'mi5',
+        text: 'What is your favorite way to learn something new?',
+        answers: [
+          { id: 'a', text: 'Reading books or in-depth articles.', scores: { linguistic: 4 } },
+          { id: 'b', text: 'Analyzing data, statistics, and logical patterns.', scores: { logical: 4 } },
+          { id: 'c', text: 'Looking at diagrams, maps, and videos.', scores: { spatial: 4 } },
+          { id: 'd', text: 'Physically trying the activity.', scores: { kinesthetic: 4 } },
+        ],
+      },
+      {
+        id: 'mi6',
+        text: 'What do you notice first when you enter a new room?',
+        answers: [
+          { id: 'a', text: 'The sounds, background music, or acoustics.', scores: { musical: 4 } },
+          { id: 'b', text: 'The people present and their interactions.', scores: { interpersonal: 4 } },
+          { id: 'c', text: 'The atmosphere and how it makes me feel inside.', scores: { intrapersonal: 4 } },
+          { id: 'd', text: 'The plants, natural light, or natural materials.', scores: { naturalist: 4 } },
+        ],
+      },
+      {
+        id: 'mi7',
+        text: 'Which of these problems do you feel most capable of solving?',
+        answers: [
+          { id: 'a', text: 'Writing a convincing speech.', scores: { linguistic: 4 } },
+          { id: 'b', text: 'Solving a complex chess problem.', scores: { logical: 4 } },
+          { id: 'c', text: 'Assembling complicated furniture without instructions.', scores: { spatial: 4 } },
+          { id: 'd', text: 'Repairing a broken object using my hands.', scores: { kinesthetic: 4 } },
+        ],
+      },
+      {
+        id: 'mi8',
+        text: 'What gives you the most satisfaction?',
+        answers: [
+          { id: 'a', text: 'Recognizing a complex melody.', scores: { musical: 4 } },
+          { id: 'b', text: 'Helping a friend solve a personal problem.', scores: { interpersonal: 4 } },
+          { id: 'c', text: 'Deeply understanding one of my emotions.', scores: { intrapersonal: 4 } },
+          { id: 'd', text: 'Identifying a rare species of bird or plant.', scores: { naturalist: 4 } },
+        ],
+      },
+      {
+        id: 'mi9',
+        text: 'When you are in a new city, you prefer to...',
+        answers: [
+          { id: 'a', text: 'Read about its history and local stories.', scores: { linguistic: 4 } },
+          { id: 'b', text: 'Study the map and understand the layout.', scores: { spatial: 4 } },
+          { id: 'c', text: 'Interact with locals to understand the culture.', scores: { interpersonal: 4 } },
+          { id: 'd', text: 'Visit local parks and natural areas.', scores: { naturalist: 4 } },
+        ],
+      },
+      {
+        id: 'mi10',
+        text: 'How do you best remember information?',
+        answers: [
+          { id: 'a', text: 'By repeating it out loud or writing it down.', scores: { linguistic: 4 } },
+          { id: 'b', text: 'By creating a mental image or diagram.', scores: { spatial: 4 } },
+          { id: 'c', text: 'By associating it with a rhythm or song.', scores: { musical: 4 } },
+          { id: 'd', text: 'By relating it to a personal experience.', scores: { intrapersonal: 4 } },
+        ],
+      },
+    ],
+    results: [
+      { id: 'linguistica', type: 'linguistic', title: 'Linguistic Intelligence', description: 'Mastery of language, love for reading and writing.', icon: 'menu_book' },
+      { id: 'logico-matematica', type: 'logical', title: 'Logical-Mathematical Intelligence', description: 'You excel in abstract reasoning and calculation.', icon: 'calculate' },
+      { id: 'spaziale', type: 'spatial', title: 'Visual-Spatial Intelligence', description: 'Excellent visualization and orientation skills.', icon: 'architecture' },
+      { id: 'corporeo-cinestetica', type: 'kinesthetic', title: 'Bodily-Kinesthetic Intelligence', description: 'Great coordination and manual skills.', icon: 'fitness_center' },
+      { id: 'musicale', type: 'musical', title: 'Musical Intelligence', description: 'Sensitivity to rhythms, tones, and harmonies.', icon: 'music_note' },
+      { id: 'interpersonale', type: 'interpersonal', title: 'Interpersonal Intelligence', description: 'Ability to understand and relate to others.', icon: 'forum' },
+      { id: 'intrapersonale', type: 'intrapersonale', title: 'Intrapersonal Intelligence', description: 'Deep knowledge of self and one\'s own feelings.', icon: 'person' },
+      { id: 'naturalistica', type: 'naturalist', title: 'Naturalistic Intelligence', description: 'Connection with the natural world and living beings.', icon: 'nature' },
+    ],
   },
 ];
 

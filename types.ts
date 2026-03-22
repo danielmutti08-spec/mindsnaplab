@@ -22,6 +22,7 @@ export interface Question {
   matrixSVG?: string;
   type?: string;
   question?: string;
+  readingPassage?: string;
 }
 
 export interface PersonalityResult {
@@ -46,7 +47,6 @@ export interface Quiz {
   estimatedMinutes: number;
   version: string;
   tag?: string | null;         // "NEW PROTOCOL" | "POPULAR" | "DIFFICULT"
-  participants?: string; // "12k participants"
   questions: Question[];
   results?: PersonalityResult[];
   passingScore?: number;

@@ -4,6 +4,7 @@ import { Page, Quiz } from '../types';
 import { getQuizById } from '../data/quizzes';
 import { useQuiz } from '../hooks/useQuiz';
 import { calcPersonality, calcTrivia, calcPolitical } from '../utils/scoring';
+import { calculateIQFromScore } from '../utils/iqScoring';
 import { logSecurityEvent, checkRateLimit } from '../utils/security';
 
 interface Props {
@@ -59,6 +60,22 @@ const QuizPlayerPage: React.FC<Props> = ({ navigate, quizId }) => {
     } else if (quiz.type === 'political') {
       const result = calcPolitical(quiz, session);
       navigate({ name: 'political-result', ...result });
+    } else if (quiz.type === 'iq-test') {
+      const correct = quiz.questions.filter(q =>
+        q.answers.find(a => a.id === session.answers[q.id])?.correct
+      ).length;
+      const resultData = calculateIQFromScore(correct);
+      navigate({ name: 'result', quizId: quiz.id, resultData });
+    }
+  };
+
+  const handleNext = () => {
+    if (!selected) return;
+    handleCommit();
+    if (isLast) {
+      setTimeout(handleFinalize, 100);
+    } else {
+      setTimeout(next, 100);
     }
   };
 
@@ -72,7 +89,7 @@ const QuizPlayerPage: React.FC<Props> = ({ navigate, quizId }) => {
             className="flex items-center gap-2 text-primary/60 hover:text-primary transition-colors group"
           >
             <span className="material-icons text-lg">arrow_back</span>
-            <span className="text-[10px] font-mono uppercase tracking-[0.2em]">Back to Home</span>
+            <span className="text-[10px] font-mono uppercase tracking-[0.2em]">Torna alla Home</span>
           </button>
           <div className="h-6 w-px bg-primary/10"></div>
           <div className="flex items-center gap-4">
@@ -83,16 +100,16 @@ const QuizPlayerPage: React.FC<Props> = ({ navigate, quizId }) => {
                 <span className="text-primary text-xs font-mono font-bold">MS</span>
               </div>
             )}
-            <h1 className="uppercase tracking-widest text-xs font-medium text-primary/60">Neural Assessment: {quiz.title}</h1>
+            <h1 className="uppercase tracking-widest text-xs font-medium text-primary/60">Analisi Neurale: {quiz.title}</h1>
           </div>
         </div>
         <div className="flex items-center gap-12">
           <div className="flex flex-col items-end">
-            <span className="text-[10px] uppercase tracking-tighter text-primary/40 leading-none">Progress</span>
+            <span className="text-[10px] uppercase tracking-tighter text-primary/40 leading-none">Progresso</span>
             <span className="text-primary font-mono text-xl leading-none">{qLabel}</span>
           </div>
           <div className="flex flex-col items-end">
-            <span className="text-[10px] uppercase tracking-tighter text-danger/40 leading-none">Time Remaining</span>
+            <span className="text-[10px] uppercase tracking-tighter text-danger/40 leading-none">Tempo Rimanente</span>
             <span className="text-danger font-mono text-xl leading-none tracking-wider">{formatTime(time)}</span>
           </div>
         </div>
@@ -106,7 +123,7 @@ const QuizPlayerPage: React.FC<Props> = ({ navigate, quizId }) => {
       {/* Main Interface */}
       <main className="flex-1 flex flex-col items-center justify-center px-4 max-w-6xl mx-auto w-full">
         <div className="text-center mb-16">
-          <span className="text-xs font-mono text-primary/40 uppercase tracking-[0.4em] mb-4 block animate-pulse">Analyzing Response Patterns...</span>
+          <span className="text-xs font-mono text-primary/40 uppercase tracking-[0.4em] mb-4 block animate-pulse">Analisi dei pattern di risposta...</span>
           <h2 className="font-syne text-4xl md:text-5xl lg:text-6xl text-white max-w-4xl leading-tight uppercase">
             {question.text}
           </h2>
@@ -141,7 +158,7 @@ const QuizPlayerPage: React.FC<Props> = ({ navigate, quizId }) => {
                     {ans.text}
                   </p>
                   {state === 'selected' && (
-                    <span className="text-[10px] font-mono text-primary/40 uppercase mt-4 block tracking-widest">Selected Core Parameter</span>
+                    <span className="text-[10px] font-mono text-primary/40 uppercase mt-4 block tracking-widest">Parametro Selezionato</span>
                   )}
                 </div>
                 {state === 'selected' && (
@@ -155,20 +172,13 @@ const QuizPlayerPage: React.FC<Props> = ({ navigate, quizId }) => {
         </div>
 
         {/* Actions */}
-        <div className="mt-16 flex items-center gap-8">
-          <button 
-            disabled={!selected}
-            onClick={confirmed ? (isLast ? handleFinalize : next) : handleCommit}
-            className="px-10 py-4 bg-primary text-background-dark font-bold uppercase tracking-widest rounded-lg hover:bg-white hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all disabled:opacity-30 disabled:cursor-not-allowed"
-          >
-            {confirmed ? (isLast ? 'View Results' : 'Next Module') : 'Commit Response'}
-          </button>
-          {!confirmed && (
+        <div className="mt-16 flex items-center gap-8 h-20">
+          {selected && (
             <button 
-              onClick={() => isLast ? handleFinalize() : next()}
-              className="px-8 py-4 border border-white/10 text-white/40 uppercase tracking-widest rounded-lg hover:text-white hover:border-white transition-all text-sm"
+              onClick={handleNext}
+              className="px-12 py-5 bg-primary text-background-dark font-black uppercase tracking-[0.2em] rounded-lg hover:bg-white hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] transition-all animate-in fade-in zoom-in duration-300"
             >
-              Skip Module
+              {isLast ? 'Vedi Risultato' : 'Prossima Domanda'}
             </button>
           )}
         </div>

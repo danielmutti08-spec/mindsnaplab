@@ -1,13 +1,47 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Page } from '../types';
 import { quizzes } from '../data/quizzes';
+import { getTotalCompletions, getQuizCompletions, formatParticipants } from '../utils/stats';
+import { shareResults } from '../utils/share';
 
 interface Props {
   navigate: (p: Page) => void;
 }
 
+const Modal: React.FC<{ isOpen: boolean; onClose: () => void; title: string; children: React.ReactNode }> = ({ isOpen, onClose, title, children }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+      <div className="absolute inset-0 bg-background-dark/90 backdrop-blur-md" onClick={onClose}></div>
+      <div className="relative bg-zinc-900 border border-primary/20 p-8 max-w-2xl w-full rounded-sm shadow-2xl shadow-primary/10 overflow-y-auto max-h-[80vh]">
+        <div className="flex justify-between items-center mb-6 border-b border-primary/10 pb-4">
+          <h3 className="text-xl font-bold uppercase italic tracking-widest text-primary">{title}</h3>
+          <button onClick={onClose} className="text-white/40 hover:text-primary transition-colors">
+            <span className="material-icons">close</span>
+          </button>
+        </div>
+        <div className="text-slate-300 leading-relaxed font-mono text-sm space-y-4">
+          {children}
+        </div>
+        <div className="mt-8 pt-6 border-t border-primary/10 flex justify-end">
+          <button onClick={onClose} className="bg-primary/10 border border-primary/30 text-primary px-6 py-2 uppercase text-xs font-bold tracking-widest hover:bg-primary/20 transition-all">
+            Close Protocol
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const HomePage: React.FC<Props> = ({ navigate }) => {
+  const [totalCompletions, setTotalCompletions] = useState(0);
+  const [modalType, setModalType] = useState<'how' | 'privacy' | null>(null);
+
+  useEffect(() => {
+    setTotalCompletions(getTotalCompletions());
+  }, []);
+
   const categories = [
     { id: 'personality', title: 'Personality Tests', icon: 'fingerprint', desc: 'Discover your traits, behavior patterns, and psychological profile.', time: '12M' },
     { id: 'cognitive', title: 'Cognitive Tests', icon: 'settings_input_component', desc: 'Challenge your IQ, logic, memory, and reasoning abilities.', time: '8M' },
@@ -37,11 +71,6 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
             <button onClick={() => navigate({ name: 'quiz-list', categoryId: 'cognitive' })} className="text-sm font-medium hover:text-primary transition-colors uppercase tracking-widest cursor-pointer">Cognitive</button>
           </div>
           <div>
-            <button 
-              onClick={() => navigate({ name: 'quiz-list', categoryId: 'memory' })}
-              className="px-6 py-2 border border-primary text-primary text-sm font-bold uppercase tracking-widest hover:bg-primary hover:text-background-dark transition-all rounded-sm">
-              Games & Tests
-            </button>
           </div>
         </div>
       </nav>
@@ -120,8 +149,10 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
         <section className="mt-24 border-y border-white/5 bg-white/[0.02]">
           <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
             <div className="flex flex-col items-center md:items-start px-8 py-6 md:py-0">
-              <span className="font-mono text-primary text-4xl font-bold mb-2">1.2M+</span>
-              <span className="font-mono text-xs text-white/40 uppercase tracking-widest">Total Test Takers</span>
+              <span className="font-mono text-primary text-4xl font-bold mb-2">
+                {totalCompletions === 0 ? '0' : totalCompletions.toLocaleString()}
+              </span>
+              <span className="font-mono text-xs text-white/40 uppercase tracking-widest">Total Test Completions</span>
             </div>
             <div className="flex flex-col items-center md:items-start px-8 py-6 md:py-0">
               <span className="font-mono text-primary text-4xl font-bold mb-2">50+</span>
@@ -192,7 +223,9 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
                   <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-700"></div>
                   <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-600"></div>
                 </div>
-                <span className="font-mono text-[10px] text-white/40 uppercase">12k participants</span>
+                <span className="font-mono text-[10px] text-white/40 uppercase">
+                  {formatParticipants(getQuizCompletions('architect-persona'))}
+                </span>
               </div>
             </div>
             {/* Professional IQ Assessment */}
@@ -217,7 +250,9 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
                   <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-600"></div>
                   <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-500"></div>
                 </div>
-                <span className="font-mono text-[10px] text-white/40 uppercase">127k participants</span>
+                <span className="font-mono text-[10px] text-white/40 uppercase">
+                  {formatParticipants(getQuizCompletions('iq-test-professional'))}
+                </span>
               </div>
             </div>
             {/* Rapid Response IQ */}
@@ -237,7 +272,9 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
                   <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-800"></div>
                   <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-700"></div>
                 </div>
-                <span className="font-mono text-[10px] text-white/40 uppercase">45k participants</span>
+                <span className="font-mono text-[10px] text-white/40 uppercase">
+                  {formatParticipants(getQuizCompletions('rapid-response-iq'))}
+                </span>
               </div>
             </div>
           </div>
@@ -260,19 +297,19 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
             </p>
           </div>
           <div>
-            <h5 className="text-xs font-mono font-bold uppercase tracking-[0.2em] mb-6 text-primary">Protocol</h5>
+            <h5 className="text-xs font-mono font-bold uppercase tracking-[0.2em] mb-6 text-primary">Explore</h5>
             <ul className="space-y-4 text-sm text-white/40 uppercase tracking-widest font-medium">
-              <li><a className="hover:text-white transition-colors cursor-pointer">Cognitive Bias</a></li>
-              <li><a className="hover:text-white transition-colors cursor-pointer">Reaction Matrix</a></li>
-              <li><a className="hover:text-white transition-colors cursor-pointer">Neural Load</a></li>
+              <li><button onClick={() => navigate({ name: 'quiz-list' })} className="hover:text-white transition-colors cursor-pointer text-left">All Tests</button></li>
+              <li><button onClick={() => navigate({ name: 'quiz-list', categoryId: 'personality' })} className="hover:text-white transition-colors cursor-pointer text-left">Personality</button></li>
+              <li><button onClick={() => navigate({ name: 'quiz-list', categoryId: 'cognitive' })} className="hover:text-white transition-colors cursor-pointer text-left">Cognitive</button></li>
             </ul>
           </div>
           <div>
-            <h5 className="text-xs font-mono font-bold uppercase tracking-[0.2em] mb-6 text-primary">Lab Info</h5>
+            <h5 className="text-xs font-mono font-bold uppercase tracking-[0.2em] mb-6 text-primary">Info</h5>
             <ul className="space-y-4 text-sm text-white/40 uppercase tracking-widest font-medium">
-              <li><a className="hover:text-white transition-colors cursor-pointer">Documentation</a></li>
-              <li><a className="hover:text-white transition-colors cursor-pointer">API Access</a></li>
-              <li><a className="hover:text-white transition-colors cursor-pointer">Privacy Vault</a></li>
+              <li><button onClick={() => setModalType('how')} className="hover:text-white transition-colors cursor-pointer text-left">How It Works</button></li>
+              <li><button onClick={() => shareResults({ name: 'MindSnapLab', score: totalCompletions, label: 'Completions' })} className="hover:text-white transition-colors cursor-pointer text-left">Share Results</button></li>
+              <li><button onClick={() => setModalType('privacy')} className="hover:text-white transition-colors cursor-pointer text-left">Privacy Policy</button></li>
             </ul>
           </div>
         </div>
@@ -284,6 +321,35 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
           </div>
         </div>
       </footer>
+
+      {/* Modals */}
+      <Modal 
+        isOpen={modalType === 'how'} 
+        onClose={() => setModalType(null)} 
+        title="Protocol: How It Works"
+      >
+        <p>MindSnapLab utilizes advanced neuro-metric protocols to quantify cognitive architecture. Each test is designed to measure specific mental dimensions:</p>
+        <ul className="list-disc pl-5 space-y-2">
+          <li><span className="text-primary">Neural Scans:</span> Deep psychological profiling based on established behavioral models.</li>
+          <li><span className="text-primary">Logic Protocols:</span> Algorithmic challenges that stress-test deductive reasoning.</li>
+          <li><span className="text-primary">Reaction Matrix:</span> Real-time measurement of processing lag and context-switching flexibility.</li>
+        </ul>
+        <p>Results are calculated using proprietary weighting systems and stored locally on your device for maximum privacy.</p>
+      </Modal>
+
+      <Modal 
+        isOpen={modalType === 'privacy'} 
+        onClose={() => setModalType(null)} 
+        title="Protocol: Privacy Vault"
+      >
+        <p>Your cognitive data is your own. MindSnapLab operates on a "Local First" architecture:</p>
+        <div className="bg-primary/5 border-l-2 border-primary p-4 my-4">
+          <p className="text-primary font-bold uppercase text-xs mb-2">Encryption Standard: AES-256 (Local)</p>
+          <p className="text-xs">All test results and statistics are stored exclusively in your browser's <span className="font-bold">localStorage</span>.</p>
+        </div>
+        <p>We do not transmit your individual scores to any central server. The completion counts you see are aggregated locally. Clearing your browser cache will reset your laboratory history.</p>
+        <p>No tracking cookies. No third-party data harvesting. Just science.</p>
+      </Modal>
     </div>
   );
 };

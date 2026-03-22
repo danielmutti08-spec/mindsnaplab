@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Page } from '../types';
+import { getQuizCompletions, formatParticipants } from '../utils/stats';
 
 interface Props {
   navigate: (p: Page) => void;
@@ -11,6 +12,11 @@ interface Props {
 }
 
 const PoliticalResultPage: React.FC<Props> = ({ navigate, economic, social, label, description }) => {
+  const completions = getQuizCompletions('political-compass');
+  const statsText = completions > 0 
+    ? `Based on ${completions} local completions.`
+    : "Be the first to record this result locally.";
+
   // Coordinate Calculation:
   // Container is 500x500px as per HTML. Center is 250,250.
   // Each unit (-10 to 10) is 25px.
@@ -122,7 +128,7 @@ const PoliticalResultPage: React.FC<Props> = ({ navigate, economic, social, labe
                 <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
                   <div className="h-full bg-primary user-dot-glow w-[68%]"></div>
                 </div>
-                <p className="mt-2 text-[10px] text-slate-500 italic">You are more libertarian than 68% of the global MindSnapLab database participants.</p>
+                <p className="mt-2 text-[10px] text-slate-500 italic">{statsText}</p>
               </div>
             </div>
 
