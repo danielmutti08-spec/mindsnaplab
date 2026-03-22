@@ -1570,64 +1570,64 @@ Traditional psychopaths lack empathy. You have cognitive AND affective empathy, 
     results: [
       {
         id: 'genius-level',
-        title: 'Intelligenza di Livello Genio',
-        description: 'Il tuo punteggio ti colloca nel top 2% della popolazione. Dimostri eccezionali capacità di riconoscimento di pattern, ragionamento logico e pensiero astratto.',
+        title: 'Genius Level Intelligence',
+        description: 'Your score places you in the top 2% of the population. You demonstrate exceptional pattern recognition, logical reasoning, and abstract thinking skills.',
         minScore: 130,
         maxScore: 160,
         recommendation: `
-**Punti di Forza Cognitivi:**
+**Cognitive Strengths:**
 - Superior fluid intelligence and pattern recognition
 - Exceptional abstract reasoning and logical deduction
 
-**Percorsi di Carriera:**
-Ricerca, data science, ingegneria, matematica, fisica teorica
+**Career Paths:**
+Research, data science, engineering, mathematics, theoretical physics
 
-**Suggerimenti di Sviluppo:**
-- Sfida te stesso con matematica avanzata
-- Partecipa a competizioni di programmazione
-- Studia giochi di strategia complessi
+**Development Suggestions:**
+- Challenge yourself with advanced mathematics
+- Participate in programming competitions
+- Study complex strategy games
       `,
       },
       {
         id: 'above-average',
-        title: 'Intelligenza Sopra la Media',
-        description: 'Hai ottenuto un risultato migliore del 70% dei partecipanti. Hai forti capacità analitiche e un buon riconoscimento di pattern.',
+        title: 'Above Average Intelligence',
+        description: 'You achieved a result better than 70% of participants. You have strong analytical skills and good pattern recognition.',
         minScore: 110,
         maxScore: 129,
         recommendation: `
-**Punti di Forza Cognitivi:**
-- Buon ragionamento logico e problem-solving
-- Solida rilevazione di pattern
+**Cognitive Strengths:**
+- Good logical reasoning and problem-solving
+- Solid pattern detection
 
-**Suggerimenti di Sviluppo:**
-- Esercitati con puzzle logici
-- Impara un linguaggio di programmazione
+**Development Suggestions:**
+- Practice with logic puzzles
+- Learn a programming language
       `,
       },
       {
         id: 'average-range',
-        title: 'Fascia di Intelligenza Media',
-        description: 'La tua performance è nella fascia tipica, simile al 50% della popolazione.',
+        title: 'Average Intelligence Range',
+        description: 'Your performance is in the typical range, similar to 50% of the population.',
         minScore: 90,
         maxScore: 109,
         recommendation: `
-**Suggerimenti di Sviluppo:**
-- Allenamento cerebrale quotidiano
-- Pratica con i pattern
-- Esercizi di memoria
+**Development Suggestions:**
+- Daily brain training
+- Practice with patterns
+- Memory exercises
       `,
       },
       {
         id: 'below-average',
-        title: 'Fascia Sotto la Media',
-        description: 'Il tuo punteggio è inferiore alla media. Ciò potrebbe essere dovuto all\'ansia da test o alla scarsa familiarità con il formato.',
+        title: 'Below Average Range',
+        description: 'Your score is below average. This could be due to test anxiety or lack of familiarity with the format.',
         minScore: 0,
         maxScore: 89,
         recommendation: `
-**Azioni Immediate:**
-1. Ripeti il test quando sei riposato
-2. Pratica con il formato del test
-3. Controllo dello stato di salute generale
+**Immediate Actions:**
+1. Retake the test when you are rested
+2. Practice with the test format
+3. General health check
       `,
       },
     ],
