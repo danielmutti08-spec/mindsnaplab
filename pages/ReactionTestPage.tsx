@@ -12,13 +12,13 @@ interface Props {
 
 const ReactionTestPage: React.FC<Props> = ({ navigate }) => {
   const { phase, lastMs, round, totalRounds, startRound, handleClick, nextRound, getFinalStats, reset } = useReactionTest(5);
-  const quiz = quizzes.find(q => q.id === 'rapid-response-iq')!;
+  const quiz = quizzes.find(q => q.id === 'reaction-time-test')!;
 
   const stats = getFinalStats();
 
   React.useEffect(() => {
     if (phase === 'result') {
-      incrementQuizCompletions('rapid-response-iq');
+      incrementQuizCompletions('reaction-time-test');
     }
   }, [phase]);
 
@@ -29,7 +29,7 @@ const ReactionTestPage: React.FC<Props> = ({ navigate }) => {
         className={`relative z-[90] h-screen w-screen flex flex-col items-center justify-center transition-colors duration-75 cursor-crosshair select-none mt-20 ${
           phase === 'ready' ? 'acid-overlay' : 'bg-background-dark'
         }`}
-        onClick={phase === 'idle' ? startRound : handleClick}
+        onPointerDown={phase === 'idle' ? startRound : handleClick}
       >
       {/* Background Dots */}
       <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '30px 30px' }}></div>

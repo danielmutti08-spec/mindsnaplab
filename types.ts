@@ -11,6 +11,8 @@ export interface Answer {
   economic?: number;                  // political (-10 to +10)
   social?: number;                    // political (-10 to +10)
   svg?: string;                       // iq-test
+  value?: number;                     // likert scale
+  shape?: string;                     // visual patterns
 }
 
 export interface Question {
@@ -22,6 +24,7 @@ export interface Question {
   matrixSVG?: string;
   type?: string;
   question?: string;
+  points?: number;
   readingPassage?: string;
 }
 

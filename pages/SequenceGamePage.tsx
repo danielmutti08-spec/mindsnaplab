@@ -92,16 +92,19 @@ export function SequenceGamePage({ navigate }: Props) {
     clearTimeout(timeoutRef.current);
   }, []);
 
-  // Tastiera: A-Z e 0-9
+  // Tastiera: A-Z e 0-9 (ottimizzata per mobile con righe più corte)
   const keyboardRows = [
-    'ABCDEFGHIJ'.split(''),
-    'KLMNPQRSTU'.split(''),
-    'VWXYZ01234'.split(''),
-    '56789'.split(''),
+    'ABCDE'.split(''),
+    'FGHIJ'.split(''),
+    'KLMNO'.split(''),
+    'PQRST'.split(''),
+    'UVWXY'.split(''),
+    'Z0123'.split(''),
+    '456789'.split(''),
   ];
 
   return (
-    <div className="min-h-screen bg-[#080B0F] text-white font-display flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-[#080B0F] text-white font-display flex flex-col items-center justify-center relative">
       <Navbar navigate={navigate} />
       <div className="scanlines fixed inset-0 pointer-events-none z-50 mt-20" />
       <div className="grid-overlay fixed inset-0 pointer-events-none z-40" />

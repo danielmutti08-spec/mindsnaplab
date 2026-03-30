@@ -1,15 +1,98 @@
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Page, PersonalityResult } from '../types';
 import { shareOnX, shareOnWhatsApp, copyLink } from '../utils/share';
 import Navbar from '../components/Navbar';
 import Logo from '../components/Logo';
+import { motion } from 'motion/react';
 
 interface Props {
   navigate: (p: Page) => void;
   quizId: string;
   resultData: any;
 }
+
+const RadarChart = ({ stats }: { stats: { label: string; value: number }[] }) => {
+  const size = 300;
+  const center = size / 2;
+  const radius = size * 0.4;
+  const angleStep = (Math.PI * 2) / stats.length;
+
+  const points = stats.map((stat, i) => {
+    const angle = i * angleStep - Math.PI / 2;
+    const r = (stat.value / 100) * radius;
+    return {
+      x: center + r * Math.cos(angle),
+      y: center + r * Math.sin(angle),
+      labelX: center + (radius + 20) * Math.cos(angle),
+      labelY: center + (radius + 20) * Math.sin(angle),
+    };
+  });
+
+  const polygonPoints = points.map(p => `${p.x},${p.y}`).join(' ');
+
+  return (
+    <div className="flex justify-center my-8">
+      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} className="overflow-visible">
+        {/* Grid lines */}
+        {[0.2, 0.4, 0.6, 0.8, 1].map((scale) => (
+          <polygon
+            key={scale}
+            points={stats.map((_, i) => {
+              const angle = i * angleStep - Math.PI / 2;
+              const r = scale * radius;
+              return `${center + r * Math.cos(angle)},${center + r * Math.sin(angle)}`;
+            }).join(' ')}
+            fill="none"
+            stroke="rgba(0, 229, 255, 0.1)"
+            strokeWidth="1"
+          />
+        ))}
+        {/* Axis lines */}
+        {stats.map((_, i) => {
+          const angle = i * angleStep - Math.PI / 2;
+          return (
+            <line
+              key={i}
+              x1={center}
+              y1={center}
+              x2={center + radius * Math.cos(angle)}
+              y2={center + radius * Math.sin(angle)}
+              stroke="rgba(0, 229, 255, 0.1)"
+              strokeWidth="1"
+            />
+          );
+        })}
+        {/* Data polygon */}
+        <motion.polygon
+          initial={{ opacity: 0, scale: 0 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          points={polygonPoints}
+          fill="rgba(0, 229, 255, 0.2)"
+          stroke="rgba(0, 229, 255, 0.8)"
+          strokeWidth="2"
+        />
+        {/* Labels */}
+        {stats.map((stat, i) => {
+          const p = points[i];
+          return (
+            <text
+              key={i}
+              x={p.labelX}
+              y={p.labelY}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              className="fill-primary/60 font-mono text-[8px] uppercase tracking-tighter"
+            >
+              {stat.label}
+            </text>
+          );
+        })}
+      </svg>
+    </div>
+  );
+};
 
 const ResultPage: React.FC<Props> = ({ navigate, quizId, resultData }) => {
   // resultData can be PersonalityResult or trivia stats
@@ -85,26 +168,54 @@ const ResultPage: React.FC<Props> = ({ navigate, quizId, resultData }) => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 text-left border-t border-primary/10 pt-10">
-              {result.stats?.map((stat) => (
-                <div key={stat.label} className="space-y-2">
-                  <div className="flex justify-between items-end">
-                    <span className="font-mono text-xs text-primary uppercase tracking-widest">{stat.label}</span>
-                    <span className="font-mono text-sm text-white">{stat.value}%</span>
+            {quizId === 'multiple-intelligences-gardner' || quizId === 'five-dominant-traits-ocean' ? (
+              <RadarChart stats={result.stats || []} />
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 text-left border-t border-primary/10 pt-10">
+                {result.stats?.map((stat) => (
+                  <div key={stat.label} className="space-y-2">
+                    <div className="flex justify-between items-end">
+                      <span className="font-mono text-xs text-primary uppercase tracking-widest">{stat.label}</span>
+                      <span className="font-mono text-sm text-white">{stat.value}%</span>
+                    </div>
+                    <div className="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden">
+                      <div 
+                        className="h-full bg-gradient-to-r from-primary/40 to-primary transition-all duration-1000 ease-out" 
+                        style={{ width: `${stat.value}%` }}
+                      ></div>
+                    </div>
                   </div>
-                  <div className="h-1.5 w-full bg-primary/10 rounded-full overflow-hidden">
-                    <div 
-                      className="h-full bg-gradient-to-r from-primary/40 to-primary transition-all duration-1000 ease-out" 
-                      style={{ width: `${stat.value}%` }}
-                    ></div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
 
             <div className="mt-12 text-slate-400 text-sm leading-relaxed max-w-xl mx-auto font-light">
               {result.description}
             </div>
+
+            {quizId === 'dark-triad-index' && (
+              <div className="mt-8 p-6 bg-red-500/5 border border-red-500/20 rounded-sm text-left">
+                <div className="flex items-center gap-2 mb-3 text-red-400">
+                  <span className="material-icons text-sm">warning</span>
+                  <span className="font-mono text-[10px] uppercase tracking-widest font-bold">Disclaimer</span>
+                </div>
+                <p className="text-red-400/70 text-xs leading-relaxed italic">
+                  This assessment is for informational purposes only and does not constitute a clinical diagnosis. High scores on these traits do not necessarily indicate a personality disorder. For a professional evaluation, please consult a licensed mental health professional.
+                </p>
+              </div>
+            )}
+
+            {quizId === 'professional-iq-assessment' && (
+              <div className="mt-8 p-6 bg-primary/5 border border-primary/20 rounded-sm text-left">
+                <div className="flex items-center gap-2 mb-3 text-primary">
+                  <span className="material-icons text-sm">info</span>
+                  <span className="font-mono text-[10px] uppercase tracking-widest font-bold">IQ Disclaimer</span>
+                </div>
+                <p className="text-primary/70 text-xs leading-relaxed italic">
+                  This test provides an informal estimate of fluid intelligence based on pattern recognition and logic. IQ scores can vary based on many factors including environment, health, and test-taking conditions. For an official IQ score, a supervised clinical assessment is required.
+                </p>
+              </div>
+            )}
 
             {result.recommendation && (
               <div className="mt-8 p-6 bg-primary/5 border border-primary/20 rounded-sm text-left">

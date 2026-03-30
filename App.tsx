@@ -7,9 +7,9 @@ import QuizPlayerPage from './pages/QuizPlayerPage';
 import ResultPage from './pages/ResultPage';
 import PoliticalResultPage from './pages/PoliticalResultPage';
 import ReactionTestPage from './pages/ReactionTestPage';
+import { IQTestPage } from './pages/IQTestPage';
 import { MemoryGamePage } from './pages/MemoryGamePage';
 import { SequenceGamePage } from './pages/SequenceGamePage';
-import { IQTestPage } from './pages/IQTestPage';
 import ReadingSpeedPage from './pages/ReadingSpeedPage';
 import { checkSessionExpiry, generateCSRFToken } from './utils/security';
 
@@ -64,9 +64,9 @@ export default function App() {
         />
       )}
       {page.name === 'reaction-test' && <ReactionTestPage navigate={navigate} />}
+      {page.name === 'iq-test' && <IQTestPage navigate={navigate} />}
       {page.name === 'memory-game' && <MemoryGamePage navigate={navigate} />}
       {page.name === 'sequence-game' && <SequenceGamePage navigate={navigate} />}
-      {page.name === 'iq-test' && <IQTestPage navigate={navigate} />}
       {page.name === 'reading-speed' && <ReadingSpeedPage navigate={navigate} />}
     </div>
   );

@@ -18,132 +18,132 @@ export const quizzes: Quiz[] = [
         id: 'q1',
         text: 'What describes your decision-making process?',
         answers: [
-          { id: 'a', text: 'Rapid, instinct-driven execution.',    scores: { executor: 2 } },
-          { id: 'b', text: 'Cold, calculated logic chains.',       scores: { strategist: 2 } },
-          { id: 'c', text: 'Collaborative data-gathering.',        scores: { connector: 2 } },
-          { id: 'd', text: 'Chaotic, experimental trial-and-error.', scores: { innovator: 2 } },
+          { id: 'a', text: 'Rapid, instinct-driven execution.',    scores: { sentinel: 2 } },
+          { id: 'b', text: 'Cold, calculated logic chains.',       scores: { analyst: 2 } },
+          { id: 'c', text: 'Collaborative data-gathering.',        scores: { diplomat: 2 } },
+          { id: 'd', text: 'Chaotic, experimental trial-and-error.', scores: { explorer: 2 } },
         ],
       },
       {
         id: 'q2',
         text: 'When facing a complex problem, you first...',
         answers: [
-          { id: 'a', text: 'Break it into sequential steps.',      scores: { strategist: 2 } },
-          { id: 'b', text: 'Look for patterns from past experience.', scores: { executor: 2 } },
-          { id: 'c', text: 'Discuss it with trusted peers.',       scores: { connector: 2 } },
-          { id: 'd', text: 'Experiment and iterate rapidly.',      scores: { innovator: 2 } },
+          { id: 'a', text: 'Break it into sequential steps.',      scores: { analyst: 2 } },
+          { id: 'b', text: 'Look for patterns from past experience.', scores: { sentinel: 2 } },
+          { id: 'c', text: 'Discuss it with trusted peers.',       scores: { diplomat: 2 } },
+          { id: 'd', text: 'Experiment and iterate rapidly.',      scores: { explorer: 2 } },
         ],
       },
       {
         id: 'q3',
         text: 'Your ideal work environment is...',
         answers: [
-          { id: 'a', text: 'Structured, with clear processes.',    scores: { strategist: 2 } },
-          { id: 'b', text: 'Fast-paced, with immediate results.',  scores: { executor: 2 } },
-          { id: 'c', text: 'Collaborative, team-focused.',         scores: { connector: 2 } },
-          { id: 'd', text: 'Open, with freedom to experiment.',    scores: { innovator: 2 } },
+          { id: 'a', text: 'Structured, with clear processes.',    scores: { analyst: 2 } },
+          { id: 'b', text: 'Fast-paced, with immediate results.',  scores: { sentinel: 2 } },
+          { id: 'c', text: 'Collaborative, team-focused.',         scores: { diplomat: 2 } },
+          { id: 'd', text: 'Open, with freedom to experiment.',    scores: { explorer: 2 } },
         ],
       },
       {
         id: 'q4',
         text: 'Under pressure, you tend to...',
         answers: [
-          { id: 'a', text: 'Double down on planning.',             scores: { strategist: 2 } },
-          { id: 'b', text: 'Take immediate action.',               scores: { executor: 2 } },
-          { id: 'c', text: 'Seek support from others.',            scores: { connector: 2 } },
-          { id: 'd', text: 'Find creative workarounds.',           scores: { innovator: 2 } },
+          { id: 'a', text: 'Double down on planning.',             scores: { analyst: 2 } },
+          { id: 'b', text: 'Take immediate action.',               scores: { sentinel: 2 } },
+          { id: 'c', text: 'Seek support from others.',            scores: { diplomat: 2 } },
+          { id: 'd', text: 'Find creative workarounds.',           scores: { explorer: 2 } },
         ],
       },
       {
         id: 'q5',
         text: 'You measure success by...',
         answers: [
-          { id: 'a', text: 'Efficiency and optimization.',         scores: { strategist: 2 } },
-          { id: 'b', text: 'Results delivered on time.',           scores: { executor: 2 } },
-          { id: 'c', text: 'Team cohesion and morale.',            scores: { connector: 2 } },
-          { id: 'd', text: 'Novelty and breakthrough.',            scores: { innovator: 2 } },
+          { id: 'a', text: 'Efficiency and optimization.',         scores: { analyst: 2 } },
+          { id: 'b', text: 'Results delivered on time.',           scores: { sentinel: 2 } },
+          { id: 'c', text: 'Team cohesion and morale.',            scores: { diplomat: 2 } },
+          { id: 'd', text: 'Novelty and breakthrough.',            scores: { explorer: 2 } },
         ],
       },
       {
         id: 'q6',
         text: 'How do you handle unexpected changes in a project?',
         answers: [
-          { id: 'a', text: 'I quickly adapt the plan and keep moving.', scores: { strategist: 2 } },
-          { id: 'b', text: 'I take immediate action to address the change.', scores: { executor: 2 } },
-          { id: 'c', text: 'I consult the team to find the best way forward.', scores: { connector: 2 } },
-          { id: 'd', text: 'I see it as an opportunity for a new approach.', scores: { innovator: 2 } },
+          { id: 'a', text: 'I quickly adapt the plan and keep moving.', scores: { analyst: 2 } },
+          { id: 'b', text: 'I take immediate action to address the change.', scores: { sentinel: 2 } },
+          { id: 'c', text: 'I consult the team to find the best way forward.', scores: { diplomat: 2 } },
+          { id: 'd', text: 'I see it as an opportunity for a new approach.', scores: { explorer: 2 } },
         ],
       },
       {
         id: 'q7',
         text: 'In a team setting, you are usually the one who...',
         answers: [
-          { id: 'a', text: 'Provides the long-term vision and strategy.', scores: { strategist: 2 } },
-          { id: 'b', text: 'Ensures tasks are completed efficiently.', scores: { executor: 2 } },
-          { id: 'c', text: 'Facilitates communication and harmony.', scores: { connector: 2 } },
-          { id: 'd', text: 'Challenges the status quo with new ideas.', scores: { innovator: 2 } },
+          { id: 'a', text: 'Provides the long-term vision and strategy.', scores: { analyst: 2 } },
+          { id: 'b', text: 'Ensures tasks are completed efficiently.', scores: { sentinel: 2 } },
+          { id: 'c', text: 'Facilitates communication and harmony.', scores: { diplomat: 2 } },
+          { id: 'd', text: 'Challenges the status quo with new ideas.', scores: { explorer: 2 } },
         ],
       },
       {
         id: 'q8',
         text: 'When learning a new skill, you prefer...',
         answers: [
-          { id: 'a', text: 'A systematic, step-by-step approach.', scores: { strategist: 2 } },
-          { id: 'b', text: 'Learning by doing and immediate practice.', scores: { executor: 2 } },
-          { id: 'c', text: 'Learning through discussion and collaboration.', scores: { connector: 2 } },
-          { id: 'd', text: 'Exploring and experimenting on your own.', scores: { innovator: 2 } },
+          { id: 'a', text: 'A systematic, step-by-step approach.', scores: { analyst: 2 } },
+          { id: 'b', text: 'Learning by doing and immediate practice.', scores: { sentinel: 2 } },
+          { id: 'c', text: 'Learning through discussion and collaboration.', scores: { diplomat: 2 } },
+          { id: 'd', text: 'Exploring and experimenting on your own.', scores: { explorer: 2 } },
         ],
       },
       {
         id: 'q9',
         text: 'Your reaction to a major setback is to...',
         answers: [
-          { id: 'a', text: 'Analyze the failure and revise the strategy.', scores: { strategist: 2 } },
-          { id: 'b', text: 'Work harder and faster to overcome it.', scores: { executor: 2 } },
-          { id: 'c', text: 'Talk it through with others for support.', scores: { connector: 2 } },
-          { id: 'd', text: 'Pivot and try a completely different angle.', scores: { innovator: 2 } },
+          { id: 'a', text: 'Analyze the failure and revise the strategy.', scores: { analyst: 2 } },
+          { id: 'b', text: 'Work harder and faster to overcome it.', scores: { sentinel: 2 } },
+          { id: 'c', text: 'Talk it through with others for support.', scores: { diplomat: 2 } },
+          { id: 'd', text: 'Pivot and try a completely different angle.', scores: { explorer: 2 } },
         ],
       },
       {
         id: 'q10',
         text: 'You feel most energized when...',
         answers: [
-          { id: 'a', text: 'A complex plan comes together perfectly.', scores: { strategist: 2 } },
-          { id: 'b', text: 'You hit a difficult deadline ahead of time.', scores: { executor: 2 } },
-          { id: 'c', text: 'The team achieves a goal together.', scores: { connector: 2 } },
-          { id: 'd', text: 'You discover a truly original solution.', scores: { innovator: 2 } },
+          { id: 'a', text: 'A complex plan comes together perfectly.', scores: { analyst: 2 } },
+          { id: 'b', text: 'You hit a difficult deadline ahead of time.', scores: { sentinel: 2 } },
+          { id: 'c', text: 'The team achieves a goal together.', scores: { diplomat: 2 } },
+          { id: 'd', text: 'You discover a truly original solution.', scores: { explorer: 2 } },
         ],
       },
     ],
     results: [
       {
-        id: 'strategist',
-        type: 'strategist',
-        title: 'The Strategic Thinker',
+        id: 'analyst',
+        type: 'analyst',
+        title: 'The Analyst',
         subtitle: 'INTJ · Analytical · Decisive',
         description: 'You possess a rare combination of imaginative vision and logistical precision. Your mind functions like a complex grandmaster board, calculating three steps ahead of the curve.',
         icon: '♟',
       },
       {
-        id: 'executor',
-        type: 'executor',
-        title: 'The Rapid Executor',
+        id: 'sentinel',
+        type: 'sentinel',
+        title: 'The Sentinel',
         subtitle: 'ESTP · Action-Oriented · Pragmatic',
         description: 'You thrive in high-pressure environments where speed matters. Your instincts are finely calibrated, and you trust them to navigate complex situations with efficiency.',
         icon: '⚡',
       },
       {
-        id: 'connector',
-        type: 'connector',
-        title: 'The Network Connector',
+        id: 'diplomat',
+        type: 'diplomat',
+        title: 'The Diplomat',
         subtitle: 'ENFJ · Empathic · Influential',
         description: 'Your greatest strength is your ability to understand and align people. You naturally build bridges between individuals and ideas, creating powerful collaborative systems.',
         icon: '◎',
       },
       {
-        id: 'innovator',
-        type: 'innovator',
-        title: 'The Chaotic Innovator',
+        id: 'explorer',
+        type: 'explorer',
+        title: 'The Explorer',
         subtitle: 'ENTP · Creative · Disruptive',
         description: 'Rules are suggestions to you. You generate breakthrough ideas by connecting dots others miss, thriving in environments where experimentation is encouraged.',
         icon: '◈',
@@ -163,6 +163,7 @@ export const quizzes: Quiz[] = [
     questions: [
       {
         id: 'bf1',
+        type: 'likert',
         text: 'I am the life of the party.',
         answers: [
           { id: '1', text: 'Strongly Disagree', scores: { extraversion: 0 } },
@@ -174,6 +175,7 @@ export const quizzes: Quiz[] = [
       },
       {
         id: 'bf2',
+        type: 'likert',
         text: 'I feel comfortable around people.',
         answers: [
           { id: '1', text: 'Strongly Disagree', scores: { extraversion: 0 } },
@@ -185,6 +187,7 @@ export const quizzes: Quiz[] = [
       },
       {
         id: 'bf3',
+        type: 'likert',
         text: 'I am always prepared.',
         answers: [
           { id: '1', text: 'Strongly Disagree', scores: { conscientiousness: 0 } },
@@ -196,6 +199,7 @@ export const quizzes: Quiz[] = [
       },
       {
         id: 'bf4',
+        type: 'likert',
         text: 'I pay attention to details.',
         answers: [
           { id: '1', text: 'Strongly Disagree', scores: { conscientiousness: 0 } },
@@ -217,6 +221,7 @@ export const quizzes: Quiz[] = [
       },
       {
         id: 'bf6',
+        type: 'likert',
         text: 'I have excellent ideas.',
         answers: [
           { id: '1', text: 'Strongly Disagree', scores: { openness: 0 } },
@@ -228,6 +233,7 @@ export const quizzes: Quiz[] = [
       },
       {
         id: 'bf7',
+        type: 'likert',
         text: 'I sympathize with others\' feelings.',
         answers: [
           { id: '1', text: 'Strongly Disagree', scores: { agreeableness: 0 } },
@@ -239,6 +245,7 @@ export const quizzes: Quiz[] = [
       },
       {
         id: 'bf8',
+        type: 'likert',
         text: 'I am interested in people.',
         answers: [
           { id: '1', text: 'Strongly Disagree', scores: { agreeableness: 0 } },
@@ -361,130 +368,6 @@ Steve Jobs, Marie Curie, Elon Musk, Virginia Woolf
     ],
   },
   // ── TRIVIA ───────────────────────────────────────────────
-  {
-    id: 'rapid-response-iq',
-    categoryId: 'cognitive',
-    type: 'trivia',
-    title: 'Rapid Logic Challenge',
-    description: 'Measure your processing speed under pressure.',
-    icon: 'bolt',
-    estimatedMinutes: 8,
-    version: 'v1.4',
-    tag: 'POPULAR',
-    passingScore: 70,
-    questions: [
-      {
-        id: 't1',
-        text: 'If a train travels 120km in 1.5 hours, what is its speed in km/h?',
-        answers: [
-          { id: 'a', text: '60 km/h',  correct: false },
-          { id: 'b', text: '80 km/h',  correct: true  },
-          { id: 'c', text: '90 km/h',  correct: false },
-          { id: 'd', text: '100 km/h', correct: false },
-        ],
-        explanation: '120km ÷ 1.5h = 80 km/h',
-      },
-      {
-        id: 't2',
-        text: 'What is the next number in the sequence: 2, 6, 18, 54, ?',
-        answers: [
-          { id: 'a', text: '108', correct: false },
-          { id: 'b', text: '144', correct: false },
-          { id: 'c', text: '162', correct: true  },
-          { id: 'd', text: '216', correct: false },
-        ],
-        explanation: 'Each number is multiplied by 3. 54 × 3 = 162.',
-      },
-      {
-        id: 't3',
-        text: 'Which of these is NOT a prime number?',
-        answers: [
-          { id: 'a', text: '17', correct: false },
-          { id: 'b', text: '23', correct: false },
-          { id: 'c', text: '51', correct: true  },
-          { id: 'd', text: '37', correct: false },
-        ],
-        explanation: '51 = 3 × 17, so it is not prime.',
-      },
-      {
-        id: 't4',
-        text: 'A 20% discount is applied to a $150 item. What is the final price?',
-        answers: [
-          { id: 'a', text: '$110', correct: false },
-          { id: 'b', text: '$120', correct: true  },
-          { id: 'c', text: '$130', correct: false },
-          { id: 'd', text: '$125', correct: false },
-        ],
-        explanation: '20% of $150 = $30. $150 - $30 = $120.',
-      },
-      {
-        id: 't5',
-        text: 'If all Bloops are Razzies and all Razzies are Lazzies, are all Bloops definitely Lazzies?',
-        answers: [
-          { id: 'a', text: 'Yes', correct: true  },
-          { id: 'b', text: 'No',  correct: false },
-          { id: 'c', text: 'Cannot be determined', correct: false },
-          { id: 'd', text: 'Only some are',        correct: false },
-        ],
-        explanation: 'Transitive logic: Bloop → Razzie → Lazzie.',
-      },
-      {
-        id: 't6',
-        text: 'A clock shows 3:15. What is the angle between the hour and minute hands?',
-        answers: [
-          { id: 'a', text: '0°', correct: false },
-          { id: 'b', text: '7.5°', correct: true },
-          { id: 'c', text: '15°', correct: false },
-          { id: 'd', text: '90°', correct: false },
-        ],
-        explanation: 'At 3:15, the minute hand is at 90°. The hour hand has moved 1/4 of the way from 3 to 4. 30° / 4 = 7.5°.',
-      },
-      {
-        id: 't7',
-        text: 'If 5 machines take 5 minutes to make 5 widgets, how long would it take 100 machines to make 100 widgets?',
-        answers: [
-          { id: 'a', text: '100 minutes', correct: false },
-          { id: 'b', text: '50 minutes', correct: false },
-          { id: 'c', text: '5 minutes', correct: true },
-          { id: 'd', text: '1 minute', correct: false },
-        ],
-        explanation: 'Each machine takes 5 minutes to make 1 widget.',
-      },
-      {
-        id: 't8',
-        text: 'Which word is the odd one out?',
-        answers: [
-          { id: 'a', text: 'Apple', correct: false },
-          { id: 'b', text: 'Banana', correct: false },
-          { id: 'c', text: 'Carrot', correct: true },
-          { id: 'd', text: 'Grape', correct: false },
-        ],
-        explanation: 'Carrot is a vegetable; the others are fruits.',
-      },
-      {
-        id: 't9',
-        text: 'If you rearrange the letters "CIFAIPC", you get the name of a(n):',
-        answers: [
-          { id: 'a', text: 'City', correct: false },
-          { id: 'b', text: 'Animal', correct: false },
-          { id: 'c', text: 'Ocean', correct: true },
-          { id: 'd', text: 'Country', correct: false },
-        ],
-        explanation: 'PACIFIC is an ocean.',
-      },
-      {
-        id: 't10',
-        text: 'What is the square root of 144?',
-        answers: [
-          { id: 'a', text: '10', correct: false },
-          { id: 'b', text: '11', correct: false },
-          { id: 'c', text: '12', correct: true },
-          { id: 'd', text: '14', correct: false },
-        ],
-        explanation: '12 * 12 = 144.',
-      },
-    ],
-  },
   // ── POLITICAL COMPASS ────────────────────────────────────
   {
     id: 'political-compass',
@@ -499,102 +382,122 @@ Steve Jobs, Marie Curie, Elon Musk, Virginia Woolf
     questions: [
       {
         id: 'p1',
+        type: 'likert',
         text: 'The government should provide universal healthcare funded by taxes.',
         answers: [
-          { id: 'a', text: 'Strongly Agree',    economic: -2, social:  2 },
-          { id: 'b', text: 'Agree',              economic: -1, social:  1 },
-          { id: 'c', text: 'Disagree',           economic:  1, social: -1 },
-          { id: 'd', text: 'Strongly Disagree',  economic:  2, social: -2 },
+          { id: 'a', text: 'Strongly Agree',    economic: -2, social:  2, value: 2 },
+          { id: 'b', text: 'Agree',              economic: -1, social:  1, value: 1 },
+          { id: 'c', text: 'Neutral',            economic:  0, social:  0, value: 0 },
+          { id: 'd', text: 'Disagree',           economic:  1, social: -1, value: -1 },
+          { id: 'e', text: 'Strongly Disagree',  economic:  2, social: -2, value: -2 },
         ],
       },
       {
         id: 'p2',
+        type: 'likert',
         text: 'Free markets produce better outcomes than government-managed economies.',
         answers: [
-          { id: 'a', text: 'Strongly Agree',    economic:  3, social:  1 },
-          { id: 'b', text: 'Agree',              economic:  2, social:  0 },
-          { id: 'c', text: 'Disagree',           economic: -2, social:  0 },
-          { id: 'd', text: 'Strongly Disagree',  economic: -3, social: -1 },
+          { id: 'a', text: 'Strongly Agree',    economic:  3, social:  1, value: 2 },
+          { id: 'b', text: 'Agree',              economic:  2, social:  0, value: 1 },
+          { id: 'c', text: 'Neutral',            economic:  0, social:  0, value: 0 },
+          { id: 'd', text: 'Disagree',           economic: -2, social:  0, value: -1 },
+          { id: 'e', text: 'Strongly Disagree',  economic: -3, social: -1, value: -2 },
         ],
       },
       {
         id: 'p3',
+        type: 'likert',
         text: 'Individual freedom should be prioritized over collective security.',
         answers: [
-          { id: 'a', text: 'Strongly Agree',    social:  3 },
-          { id: 'b', text: 'Agree',              social:  1 },
-          { id: 'c', text: 'Disagree',           social: -1 },
-          { id: 'd', text: 'Strongly Disagree',  social: -3 },
+          { id: 'a', text: 'Strongly Agree',    social:  3, value: 2 },
+          { id: 'b', text: 'Agree',              social:  1, value: 1 },
+          { id: 'c', text: 'Neutral',            social:  0, value: 0 },
+          { id: 'd', text: 'Disagree',           social: -1, value: -1 },
+          { id: 'e', text: 'Strongly Disagree',  social: -3, value: -2 },
         ],
       },
       {
         id: 'p4',
+        type: 'likert',
         text: 'Strict law and order is more important than civil liberties.',
         answers: [
-          { id: 'a', text: 'Strongly Agree',    social: -3 },
-          { id: 'b', text: 'Agree',              social: -1 },
-          { id: 'c', text: 'Disagree',           social:  1 },
-          { id: 'd', text: 'Strongly Disagree',  social:  3 },
+          { id: 'a', text: 'Strongly Agree',    social: -3, value: 2 },
+          { id: 'b', text: 'Agree',              social: -1, value: 1 },
+          { id: 'c', text: 'Neutral',            social:  0, value: 0 },
+          { id: 'd', text: 'Disagree',           social:  1, value: -1 },
+          { id: 'e', text: 'Strongly Disagree',  social:  3, value: -2 },
         ],
       },
       {
         id: 'p5',
+        type: 'likert',
         text: 'Wealthy individuals and corporations should pay significantly higher taxes.',
         answers: [
-          { id: 'a', text: 'Strongly Agree',    economic: -3 },
-          { id: 'b', text: 'Agree',              economic: -1 },
-          { id: 'c', text: 'Disagree',           economic:  1 },
-          { id: 'd', text: 'Strongly Disagree',  economic:  3 },
+          { id: 'a', text: 'Strongly Agree',    economic: -3, value: 2 },
+          { id: 'b', text: 'Agree',              economic: -1, value: 1 },
+          { id: 'c', text: 'Neutral',            economic:  0, value: 0 },
+          { id: 'd', text: 'Disagree',           economic:  1, value: -1 },
+          { id: 'e', text: 'Strongly Disagree',  economic:  3, value: -2 },
         ],
       },
       {
         id: 'p6',
+        type: 'likert',
         text: 'Immigration should be significantly restricted to protect national identity.',
         answers: [
-          { id: 'a', text: 'Strongly Agree',    social: -3 },
-          { id: 'b', text: 'Agree',              social: -1 },
-          { id: 'c', text: 'Disagree',           social:  1 },
-          { id: 'd', text: 'Strongly Disagree',  social:  3 },
+          { id: 'a', text: 'Strongly Agree',    social: -3, value: 2 },
+          { id: 'b', text: 'Agree',              social: -1, value: 1 },
+          { id: 'c', text: 'Neutral',            social:  0, value: 0 },
+          { id: 'd', text: 'Disagree',           social:  1, value: -1 },
+          { id: 'e', text: 'Strongly Disagree',  social:  3, value: -2 },
         ],
       },
       {
         id: 'p7',
+        type: 'likert',
         text: 'Climate change requires major government regulation of industry.',
         answers: [
-          { id: 'a', text: 'Strongly Agree',    economic: -2, social:  1 },
-          { id: 'b', text: 'Agree',              economic: -1, social:  0 },
-          { id: 'c', text: 'Disagree',           economic:  1, social: -1 },
-          { id: 'd', text: 'Strongly Disagree',  economic:  2, social: -1 },
+          { id: 'a', text: 'Strongly Agree',    economic: -2, social:  1, value: 2 },
+          { id: 'b', text: 'Agree',              economic: -1, social:  0, value: 1 },
+          { id: 'c', text: 'Neutral',            economic:  0, social:  0, value: 0 },
+          { id: 'd', text: 'Disagree',           economic:  1, social: -1, value: -1 },
+          { id: 'e', text: 'Strongly Disagree',  economic:  2, social: -1, value: -2 },
         ],
       },
       {
         id: 'p8',
+        type: 'likert',
         text: 'Drug use between consenting adults should be decriminalized.',
         answers: [
-          { id: 'a', text: 'Strongly Agree',    social:  3 },
-          { id: 'b', text: 'Agree',              social:  1 },
-          { id: 'c', text: 'Disagree',           social: -1 },
-          { id: 'd', text: 'Strongly Disagree',  social: -3 },
+          { id: 'a', text: 'Strongly Agree',    social:  3, value: 2 },
+          { id: 'b', text: 'Agree',              social:  1, value: 1 },
+          { id: 'c', text: 'Neutral',            social:  0, value: 0 },
+          { id: 'd', text: 'Disagree',           social: -1, value: -1 },
+          { id: 'e', text: 'Strongly Disagree',  social: -3, value: -2 },
         ],
       },
       {
         id: 'p9',
+        type: 'likert',
         text: 'The death penalty should be an option for the most serious crimes.',
         answers: [
-          { id: 'a', text: 'Strongly Agree',    social: -3 },
-          { id: 'b', text: 'Agree',              social: -1 },
-          { id: 'c', text: 'Disagree',           social:  1 },
-          { id: 'd', text: 'Strongly Disagree',  social:  3 },
+          { id: 'a', text: 'Strongly Agree',    social: -3, value: 2 },
+          { id: 'b', text: 'Agree',              social: -1, value: 1 },
+          { id: 'c', text: 'Neutral',            social:  0, value: 0 },
+          { id: 'd', text: 'Disagree',           social:  1, value: -1 },
+          { id: 'e', text: 'Strongly Disagree',  social:  3, value: -2 },
         ],
       },
       {
         id: 'p10',
+        type: 'likert',
         text: 'Military spending should be increased to ensure national security.',
         answers: [
-          { id: 'a', text: 'Strongly Agree',    economic:  1, social: -2 },
-          { id: 'b', text: 'Agree',              economic:  0, social: -1 },
-          { id: 'c', text: 'Disagree',           economic:  0, social:  1 },
-          { id: 'd', text: 'Strongly Disagree',  economic: -1, social:  2 },
+          { id: 'a', text: 'Strongly Agree',    economic:  1, social: -2, value: 2 },
+          { id: 'b', text: 'Agree',              economic:  0, social: -1, value: 1 },
+          { id: 'c', text: 'Neutral',            economic:  0, social:  0, value: 0 },
+          { id: 'd', text: 'Disagree',           economic:  0, social:  1, value: -1 },
+          { id: 'e', text: 'Strongly Disagree',  economic: -1, social:  2, value: -2 },
         ],
       },
     ],
@@ -703,6 +606,7 @@ Steve Jobs, Marie Curie, Elon Musk, Virginia Woolf
       },
       {
         id: 'dt10',
+        type: 'likert',
         text: 'I tend to want others to admire me.',
         answers: [
           { id: 'a', text: 'Strongly Disagree', scores: { narcissism: 0 } },
@@ -713,6 +617,7 @@ Steve Jobs, Marie Curie, Elon Musk, Virginia Woolf
       },
       {
         id: 'dt11',
+        type: 'likert',
         text: 'I am not particularly concerned with the morality of my actions.',
         answers: [
           { id: 'a', text: 'Strongly Disagree', scores: { psychopathy: 0 } },
@@ -723,6 +628,7 @@ Steve Jobs, Marie Curie, Elon Musk, Virginia Woolf
       },
       {
         id: 'dt12',
+        type: 'likert',
         text: 'It is wise to keep track of information that you can use against people later.',
         answers: [
           { id: 'a', text: 'Strongly Disagree', scores: { machiavellianism: 0 } },
@@ -1309,263 +1215,311 @@ Traditional psychopaths lack empathy. You have cognitive AND affective empathy, 
     version: 'v3.0',
     tag: 'VERIFIED',
     questions: [
-      // ═══ TIPO 1: MATRIX 3×3 (6 domande) ═══
+      // ═══ CATEGORY 1: NUMERICAL SEQUENCES (5 questions) ═══
       {
-        id: 'iq1',
-        type: 'matrix-3x3',
-        text: 'Complete the matrix by finding the missing pattern.',
-        matrixSVG: `
-<svg width="360" height="360" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
-  <style>
-    .border { fill: none; stroke: #00E5FF; stroke-width: 1; }
-    .shape { fill: none; stroke: #00E5FF; stroke-width: 3; }
-    .dot { fill: #39FF14; }
-  </style>
-  <g transform="translate(10,10)">
-    <rect class="border" width="110" height="110"/>
-    <polygon class="shape" points="55,30 75,70 35,70"/>
-  </g>
-  <g transform="translate(130,10)">
-    <rect class="border" width="110" height="110"/>
-    <polygon class="shape" points="75,55 35,75 35,35"/>
-  </g>
-  <g transform="translate(250,10)">
-    <rect class="border" width="110" height="110"/>
-    <polygon class="shape" points="55,75 35,35 75,35"/>
-  </g>
-  <g transform="translate(10,130)">
-    <rect class="border" width="110" height="110"/>
-    <rect class="shape" x="30" y="30" width="50" height="50"/>
-    <circle class="dot" cx="55" cy="35" r="5"/>
-  </g>
-  <g transform="translate(130,130)">
-    <rect class="border" width="110" height="110"/>
-    <rect class="shape" x="30" y="30" width="50" height="50"/>
-    <circle class="dot" cx="75" cy="55" r="5"/>
-  </g>
-  <g transform="translate(250,130)">
-    <rect class="border" width="110" height="110"/>
-    <rect class="shape" x="30" y="30" width="50" height="50"/>
-    <circle class="dot" cx="55" cy="75" r="5"/>
-  </g>
-  <g transform="translate(10,250)">
-    <rect class="border" width="110" height="110"/>
-    <circle class="shape" cx="55" cy="55" r="25"/>
-    <line class="shape" x1="55" y1="30" x2="55" y2="45" stroke-width="3"/>
-  </g>
-  <g transform="translate(130,250)">
-    <rect class="border" width="110" height="110"/>
-    <circle class="shape" cx="55" cy="55" r="25"/>
-    <line class="shape" x1="70" y1="55" x2="55" y2="55" stroke-width="3"/>
-  </g>
-  <g transform="translate(250,250)">
-    <rect class="border" width="110" height="110"/>
-    <text x="55" y="65" text-anchor="middle" fill="#00E5FF" font-size="50" font-family="DM Mono">?</text>
-  </g>
-</svg>`,
-        answers: [
-          { id: 'a', correct: true, svg: `<svg width="110" height="110"><circle cx="55" cy="55" r="25" fill="none" stroke="#00E5FF" stroke-width="3"/><line x1="55" y1="70" x2="55" y2="55" stroke="#00E5FF" stroke-width="3"/></svg>` },
-          { id: 'b', correct: false, svg: `<svg width="110" height="110"><circle cx="55" cy="55" r="25" fill="none" stroke="#00E5FF" stroke-width="3"/><line x1="40" y1="55" x2="55" y2="55" stroke="#00E5FF" stroke-width="3"/></svg>` },
-          { id: 'c', correct: false, svg: `<svg width="110" height="110"><circle cx="55" cy="55" r="25" fill="none" stroke="#00E5FF" stroke-width="3"/><line x1="55" y1="30" x2="55" y2="45" stroke="#00E5FF" stroke-width="3"/></svg>` },
-          { id: 'd', correct: false, svg: `<svg width="110" height="110"><rect x="30" y="30" width="50" height="50" fill="none" stroke="#00E5FF" stroke-width="3"/><circle cx="40" cy="70" r="5" fill="#39FF14"/></svg>` },
-          { id: 'e', correct: false, svg: `<svg width="110" height="110"><polygon points="40,55 55,75 70,55" fill="none" stroke="#00E5FF" stroke-width="3"/></svg>` },
-          { id: 'f', correct: false, svg: `<svg width="110" height="110"><circle cx="55" cy="55" r="25" fill="#00E5FF"/></svg>` },
-        ],
-      },
-      // ═══ TIPO 2: NUMBER SERIES (8 domande) ═══
-      {
-        id: 'iq7',
+        id: 'iq-n1',
         type: 'number-series',
-        text: 'What number comes next in this series?',
-        question: '2, 4, 8, 16, 32, ?',
+        text: 'What number comes next in the sequence?',
+        question: '2, 6, 12, 20, 30, ?',
         answers: [
-          { id: 'a', text: '48',  correct: false },
-          { id: 'b', text: '64',  correct: true  },
-          { id: 'c', text: '62',  correct: false },
-          { id: 'd', text: '128', correct: false },
-          { id: 'e', text: '40',  correct: false },
-          { id: 'f', text: '52',  correct: false },
+          { id: 'a', text: '40', correct: false },
+          { id: 'b', text: '42', correct: true },
+          { id: 'c', text: '44', correct: false },
+          { id: 'd', text: '38', correct: false },
         ],
       },
       {
-        id: 'iq8',
+        id: 'iq-n2',
+        type: 'number-series',
+        text: 'Complete the pattern:',
+        question: '1, 4, 9, 16, 25, ?',
+        answers: [
+          { id: 'a', text: '30', correct: false },
+          { id: 'b', text: '35', correct: false },
+          { id: 'c', text: '36', correct: true },
+          { id: 'd', text: '49', correct: false },
+        ],
+      },
+      {
+        id: 'iq-n3',
+        type: 'number-series',
+        text: 'Find the missing number:',
+        question: '100, 95, 85, 70, 50, ?',
+        answers: [
+          { id: 'a', text: '25', correct: true },
+          { id: 'b', text: '30', correct: false },
+          { id: 'c', text: '20', correct: false },
+          { id: 'd', text: '35', correct: false },
+        ],
+      },
+      {
+        id: 'iq-n4',
+        type: 'number-series',
+        text: 'Identify the next value:',
+        question: '3, 6, 11, 18, 27, ?',
+        answers: [
+          { id: 'a', text: '36', correct: false },
+          { id: 'b', text: '38', correct: true },
+          { id: 'c', text: '40', correct: false },
+          { id: 'd', text: '35', correct: false },
+        ],
+      },
+      {
+        id: 'iq-n5',
         type: 'number-series',
         text: 'Complete the sequence:',
-        question: '3, 7, 15, 31, 63, ?',
+        question: '1, 2, 6, 24, 120, ?',
         answers: [
-          { id: 'a', text: '95',  correct: false },
-          { id: 'b', text: '126', correct: false },
-          { id: 'c', text: '127', correct: true  },
-          { id: 'd', text: '125', correct: false },
-          { id: 'e', text: '131', correct: false },
-          { id: 'f', text: '129', correct: false },
+          { id: 'a', text: '240', correct: false },
+          { id: 'b', text: '600', correct: false },
+          { id: 'c', text: '720', correct: true },
+          { id: 'd', text: '480', correct: false },
         ],
       },
-      // ═══ TIPO 3: VERBAL ANALOGIES (6 domande) ═══
+      // ═══ CATEGORY 2: VERBAL ANALOGIES (5 questions) ═══
       {
-        id: 'iq15',
+        id: 'iq-v1',
         type: 'verbal-analogy',
         text: 'Complete the analogy:',
-        question: 'Cat is to Kitten as Dog is to ?',
+        question: 'Glove is to Hand as Shoe is to ?',
         answers: [
-          { id: 'a', text: 'Wolf',   correct: false },
-          { id: 'b', text: 'Puppy',  correct: true  },
-          { id: 'c', text: 'Pet',    correct: false },
-          { id: 'd', text: 'Canine', correct: false },
-          { id: 'e', text: 'Bark',   correct: false },
-          { id: 'f', text: 'Collar', correct: false },
+          { id: 'a', text: 'Sock', correct: false },
+          { id: 'b', text: 'Foot', correct: true },
+          { id: 'c', text: 'Leg', correct: false },
+          { id: 'd', text: 'Walk', correct: false },
         ],
       },
-      // ═══ TIPO 4: LOGIC PROBLEMS (6 domande) ═══
       {
-        id: 'iq21',
-        type: 'logic-problem',
-        text: 'Solve the logic puzzle:',
-        question: 'All Bloops are Razzies. All Razzies are Lazzies. Therefore:',
+        id: 'iq-v2',
+        type: 'verbal-analogy',
+        text: 'Complete the analogy:',
+        question: 'Ocean is to Water as Desert is to ?',
         answers: [
-          { id: 'a', text: 'All Bloops are Lazzies',  correct: true  },
-          { id: 'b', text: 'Some Bloops are Lazzies', correct: false },
-          { id: 'c', text: 'No Bloops are Lazzies',   correct: false },
-          { id: 'd', text: 'Cannot be determined',    correct: false },
-          { id: 'e', text: 'All Lazzies are Bloops',  correct: false },
-          { id: 'f', text: 'Some Lazzies are not Bloops', correct: false },
+          { id: 'a', text: 'Sand', correct: true },
+          { id: 'b', text: 'Cactus', correct: false },
+          { id: 'c', text: 'Heat', correct: false },
+          { id: 'd', text: 'Dry', correct: false },
         ],
       },
-      // ═══ TIPO 5: ODD ONE OUT (6 domande) ═══
       {
-        id: 'iq27',
-        type: 'odd-one-out',
-        text: 'Which word does NOT belong?',
-        question: 'Mercury, Venus, Earth, Mars, Moon',
+        id: 'iq-v3',
+        type: 'verbal-analogy',
+        text: 'Complete the analogy:',
+        question: 'Author is to Book as Architect is to ?',
         answers: [
-          { id: 'a', text: 'Mercury', correct: false },
-          { id: 'b', text: 'Venus',   correct: false },
-          { id: 'c', text: 'Earth',   correct: false },
-          { id: 'd', text: 'Mars',    correct: false },
-          { id: 'e', text: 'Moon',    correct: true  },
-          { id: 'f', text: 'All belong', correct: false },
+          { id: 'a', text: 'Blueprint', correct: false },
+          { id: 'b', text: 'Building', correct: true },
+          { id: 'c', text: 'Design', correct: false },
+          { id: 'd', text: 'Construction', correct: false },
         ],
       },
-      // ═══ TIPO 6: PATTERN SEQUENCES (6 domande) ═══
       {
-        id: 'iq33',
-        type: 'sequence',
-        text: 'What comes next in the sequence?',
-        matrixSVG: `
-<svg width="660" height="120" viewBox="0 0 660 120">
-  <style>.seq-shape { stroke: #00E5FF; stroke-width: 3; fill: none; }</style>
-  <g transform="translate(10,10)">
-    <rect width="100" height="100" fill="none" stroke="#00E5FF"/>
-    <line class="seq-shape" x1="50" y1="30" x2="50" y2="70"/>
-  </g>
-  <g transform="translate(120,10)">
-    <rect width="100" height="100" fill="none" stroke="#00E5FF"/>
-    <line class="seq-shape" x1="36" y1="36" x2="64" y2="64"/>
-  </g>
-  <g transform="translate(230,10)">
-    <rect width="100" height="100" fill="none" stroke="#00E5FF"/>
-    <line class="seq-shape" x1="30" y1="50" x2="70" y2="50"/>
-  </g>
-  <g transform="translate(340,10)">
-    <rect width="100" height="100" fill="none" stroke="#00E5FF"/>
-    <line class="seq-shape" x1="36" y1="64" x2="64" y2="36"/>
-  </g>
-  <g transform="translate(450,10)">
-    <rect width="100" height="100" fill="none" stroke="#00E5FF"/>
-    <line class="seq-shape" x1="50" y1="70" x2="50" y2="30"/>
-  </g>
-  <g transform="translate(560,10)">
-    <rect width="100" height="100" fill="none" stroke="#00E5FF"/>
-    <text x="50" y="60" text-anchor="middle" fill="#00E5FF" font-size="40">?</text>
-  </g>
-</svg>`,
+        id: 'iq-v4',
+        type: 'verbal-analogy',
+        text: 'Complete the analogy:',
+        question: 'Light is to Dark as Knowledge is to ?',
         answers: [
-          { id: 'a', correct: true, svg: `<svg width="100" height="100"><line x1="64" y1="36" x2="36" y2="64" stroke="#00E5FF" stroke-width="3"/></svg>` },
-          { id: 'b', correct: false, svg: `<svg width="100" height="100"><line x1="30" y1="50" x2="70" y2="50" stroke="#00E5FF" stroke-width="3"/></svg>` },
-          { id: 'c', correct: false, svg: `<svg width="100" height="100"><line x1="50" y1="30" x2="50" y2="70" stroke="#00E5FF" stroke-width="3"/></svg>` },
-          { id: 'd', correct: false, svg: `<svg width="100" height="100"><circle cx="50" cy="50" r="20" fill="none" stroke="#00E5FF" stroke-width="3"/></svg>` },
-          { id: 'e', correct: false, svg: `<svg width="100" height="100"><rect x="30" y="30" width="40" height="40" fill="none" stroke="#00E5FF" stroke-width="3"/></svg>` },
-          { id: 'f', correct: false, svg: `<svg width="100" height="100"><line x1="36" y1="36" x2="64" y2="64" stroke="#00E5FF" stroke-width="3"/></svg>` },
+          { id: 'a', text: 'Ignorance', correct: true },
+          { id: 'b', text: 'Wisdom', correct: false },
+          { id: 'c', text: 'School', correct: false },
+          { id: 'd', text: 'Book', correct: false },
         ],
       },
-      // ═══ TIPO 7: WORD PATTERNS (5 domande) ═══
       {
-        id: 'iq39',
-        type: 'word-pattern',
-        text: 'What letter comes next?',
-        question: 'A, C, F, J, O, ?',
+        id: 'iq-v5',
+        type: 'verbal-analogy',
+        text: 'Complete the analogy:',
+        question: 'Bird is to Fly as Fish is to ?',
         answers: [
-          { id: 'a', text: 'Q', correct: false },
-          { id: 'b', text: 'T', correct: false },
-          { id: 'c', text: 'U', correct: true  },
-          { id: 'd', text: 'P', correct: false },
-          { id: 'e', text: 'S', correct: false },
-          { id: 'f', text: 'V', correct: false },
+          { id: 'a', text: 'Water', correct: false },
+          { id: 'b', text: 'Swim', correct: true },
+          { id: 'c', text: 'Gill', correct: false },
+          { id: 'd', text: 'Fin', correct: false },
         ],
       },
-      // ═══ TIPO 8: SPATIAL REASONING (5 domande) ═══
+      // ═══ CATEGORY 3: DEDUCTIVE LOGIC (5 questions) ═══
       {
-        id: 'iq44',
+        id: 'iq-l1',
+        type: 'logic',
+        text: 'Logical Conclusion:',
+        question: 'If all A are B, and all B are C, then:',
+        answers: [
+          { id: 'a', text: 'All A are C', correct: true },
+          { id: 'b', text: 'All C are A', correct: false },
+          { id: 'c', text: 'Some C are not A', correct: false },
+          { id: 'd', text: 'No A are C', correct: false },
+        ],
+      },
+      {
+        id: 'iq-l2',
+        type: 'logic',
+        text: 'Logical Deduction:',
+        question: 'If it rains, the ground gets wet. The ground is not wet. Therefore:',
+        answers: [
+          { id: 'a', text: 'It is raining', correct: false },
+          { id: 'b', text: 'It did not rain', correct: true },
+          { id: 'c', text: 'The ground is waterproof', correct: false },
+          { id: 'd', text: 'It might rain later', correct: false },
+        ],
+      },
+      {
+        id: 'iq-l3',
+        type: 'logic',
+        text: 'Identify the odd one out:',
+        question: 'Which word does not belong with the others?',
+        answers: [
+          { id: 'a', text: 'Apple', correct: false },
+          { id: 'b', text: 'Banana', correct: false },
+          { id: 'c', text: 'Carrot', correct: true },
+          { id: 'd', text: 'Grape', correct: false },
+        ],
+      },
+      {
+        id: 'iq-l4',
+        type: 'logic',
+        text: 'Logical Sequence:',
+        question: 'Monday, Wednesday, Friday, ?',
+        answers: [
+          { id: 'a', text: 'Saturday', correct: false },
+          { id: 'b', text: 'Sunday', correct: true },
+          { id: 'c', text: 'Monday', correct: false },
+          { id: 'd', text: 'Thursday', correct: false },
+        ],
+      },
+      {
+        id: 'iq-l5',
+        type: 'logic',
+        text: 'Deduction:',
+        question: 'John is taller than Mike. Mike is taller than Sarah. Who is the shortest?',
+        answers: [
+          { id: 'a', text: 'John', correct: false },
+          { id: 'b', text: 'Mike', correct: false },
+          { id: 'c', text: 'Sarah', correct: true },
+          { id: 'd', text: 'Cannot be determined', correct: false },
+        ],
+      },
+      // ═══ CATEGORY 4: VISUAL PATTERNS (5 questions) ═══
+      {
+        id: 'iq-m1',
+        type: 'matrix-3x3',
+        text: 'Complete the visual pattern.',
+        matrixSVG: `<svg width="200" height="200" viewBox="0 0 200 200"><rect width="200" height="200" fill="none" stroke="#00E5FF"/><line x1="0" y1="100" x2="200" y2="100" stroke="#00E5FF"/><line x1="100" y1="0" x2="100" y2="200" stroke="#00E5FF"/><circle cx="50" cy="50" r="20" fill="#00E5FF"/><circle cx="150" cy="50" r="20" fill="#00E5FF"/><circle cx="50" cy="150" r="20" fill="#00E5FF"/><text x="150" y="165" text-anchor="middle" fill="#00E5FF" font-size="40">?</text></svg>`,
+        answers: [
+          { id: 'a', correct: true, svg: `<svg width="50" height="50"><circle cx="25" cy="25" r="15" fill="#00E5FF"/></svg>` },
+          { id: 'b', correct: false, svg: `<svg width="50" height="50"><rect x="10" y="10" width="30" height="30" fill="#00E5FF"/></svg>` },
+          { id: 'c', correct: false, svg: `<svg width="50" height="50"><polygon points="25,5 45,45 5,45" fill="#00E5FF"/></svg>` },
+          { id: 'd', correct: false, svg: `<svg width="50" height="50"><line x1="5" y1="5" x2="45" y2="45" stroke="#00E5FF" stroke-width="3"/></svg>` },
+        ],
+      },
+      {
+        id: 'iq-m2',
+        type: 'matrix-3x3',
+        text: 'Identify the missing element.',
+        matrixSVG: `<svg width="200" height="200" viewBox="0 0 200 200"><rect width="200" height="200" fill="none" stroke="#00E5FF"/><path d="M20,20 L180,180 M180,20 L20,180" stroke="#00E5FF" stroke-width="2"/><circle cx="100" cy="100" r="30" fill="none" stroke="#39FF14" stroke-width="4"/><text x="100" y="115" text-anchor="middle" fill="#00E5FF" font-size="40">?</text></svg>`,
+        answers: [
+          { id: 'a', correct: true, text: 'A dot in the center', shape: 'circle' },
+          { id: 'b', correct: false, text: 'A square', shape: 'square' },
+          { id: 'c', correct: false, text: 'A triangle', shape: 'triangle' },
+          { id: 'd', correct: false, text: 'Empty' },
+        ],
+      },
+      {
+        id: 'iq-m3',
+        type: 'matrix-3x3',
+        text: 'Which shape completes the sequence?',
+        question: 'Square, Circle, Triangle, Square, Circle, ?',
+        answers: [
+          { id: 'a', text: 'Square', correct: false, shape: 'square' },
+          { id: 'b', text: 'Circle', correct: false, shape: 'circle' },
+          { id: 'c', text: 'Triangle', correct: true, shape: 'triangle' },
+          { id: 'd', text: 'Hexagon', correct: false },
+        ],
+      },
+      {
+        id: 'iq-m4',
+        type: 'matrix-3x3',
+        text: 'Find the pattern.',
+        matrixSVG: `<svg width="100" height="100"><rect width="100" height="100" fill="none" stroke="#00E5FF"/><path d="M10,10 L90,90" stroke="#00E5FF"/><circle cx="50" cy="50" r="10" fill="#39FF14"/></svg>`,
+        answers: [
+          { id: 'a', text: 'Diagonal with dot', correct: true, shape: 'circle' },
+          { id: 'b', text: 'Horizontal line', correct: false },
+          { id: 'c', text: 'Vertical line', correct: false },
+          { id: 'd', text: 'Cross', correct: false },
+        ],
+      },
+      {
+        id: 'iq-m5',
+        type: 'matrix-3x3',
+        text: 'Complete the grid.',
+        matrixSVG: `<svg width="100" height="100"><rect width="100" height="100" fill="none" stroke="#00E5FF"/><rect x="25" y="25" width="50" height="50" fill="#00E5FF" opacity="0.5"/></svg>`,
+        answers: [
+          { id: 'a', text: 'Smaller square', correct: true, shape: 'square' },
+          { id: 'b', text: 'Larger circle', correct: false, shape: 'circle' },
+          { id: 'c', text: 'Triangle', correct: false, shape: 'triangle' },
+          { id: 'd', text: 'Line', correct: false },
+        ],
+      },
+      // ═══ CATEGORY 5: SPATIAL REASONING (5 questions) ═══
+      {
+        id: 'iq-s1',
         type: 'spatial',
-        text: 'Which shape is the same as the first one, just rotated?',
-        matrixSVG: `
-<svg width="660" height="150" viewBox="0 0 660 150">
-  <style>.spatial { stroke: #00E5FF; stroke-width: 3; fill: none; }</style>
-  <g transform="translate(10,25)">
-    <rect width="100" height="100" fill="none" stroke="#00E5FF" stroke-opacity="0.3"/>
-    <text x="50" y="15" text-anchor="middle" fill="#00E5FF" font-size="12">Original</text>
-    <polygon class="spatial" points="30,40 70,40 50,70"/>
-    <circle cx="35" cy="45" r="3" fill="#39FF14"/>
-  </g>
-  <g transform="translate(140,25)">
-    <rect width="80" height="100" fill="none" stroke="#00E5FF" stroke-opacity="0.3"/>
-    <text x="40" y="15" text-anchor="middle" fill="#00E5FF" font-size="12">A</text>
-    <polygon class="spatial" points="25,70 65,70 45,40"/>
-    <circle cx="60" cy="65" r="3" fill="#39FF14"/>
-  </g>
-  <g transform="translate(340,25)">
-    <rect width="80" height="100" fill="none" stroke="#00E5FF" stroke-opacity="0.3"/>
-    <text x="40" y="15" text-anchor="middle" fill="#00E5FF" font-size="12">C</text>
-    <polygon class="spatial" points="25,70 65,70 45,40"/>
-    <circle cx="60" cy="65" r="3" fill="#39FF14"/>
-  </g>
-</svg>`,
+        text: 'Mental Rotation:',
+        question: 'If you rotate a "L" shape 180 degrees, what does it look like?',
         answers: [
-          { id: 'a', text: 'A', correct: false },
-          { id: 'b', text: 'B', correct: false },
-          { id: 'c', text: 'C', correct: true  },
-          { id: 'd', text: 'D', correct: false },
-          { id: 'e', text: 'E', correct: false },
-          { id: 'f', text: 'None', correct: false },
+          { id: 'a', text: 'Upside down L', correct: true },
+          { id: 'b', text: 'Mirror image L', correct: false },
+          { id: 'c', text: 'Same L', correct: false },
+          { id: 'd', text: 'A square', correct: false },
         ],
       },
-      // Generating remaining 40 questions dynamically to ensure 48 total
-      ...Array.from({ length: 40 }, (_, i) => {
-        const idx = i + 8;
-        const typeIdx = idx % 8;
-        const difficulty = idx <= 15 ? 1 : idx <= 35 ? 2 : 3;
-        const color = "#00E5FF";
-        
-        if (typeIdx === 0) {
-          return {
-            id: `iq${idx + 1}`, type: 'matrix-3x3', text: 'Complete the matrix.',
-            matrixSVG: `<svg width="300" height="300"><rect width="300" height="300" fill="none" stroke="${color}"/><text x="150" y="160" text-anchor="middle" fill="${color}" font-size="20">Matrix Puzzle ${idx}</text></svg>`,
-            answers: [{ id: 'a', correct: true, text: 'Correct' }, { id: 'b', correct: false, text: 'Wrong' }]
-          };
-        } else if (typeIdx === 1) {
-          return {
-            id: `iq${idx + 1}`, type: 'number-series', text: 'Next number?',
-            question: `${idx}, ${idx*2}, ${idx*3}, ?`,
-            answers: [{ id: 'a', text: String(idx*4), correct: true }, { id: 'b', text: String(idx*5), correct: false }]
-          };
-        } else {
-          return {
-            id: `iq${idx + 1}`, type: 'logic', text: 'Logic question.',
-            question: `Scenario ${idx}: What is the logical conclusion?`,
-            answers: [{ id: 'a', text: 'Option A', correct: true }, { id: 'b', text: 'Option B', correct: false }]
-          };
-        }
-      })
+      {
+        id: 'iq-s2',
+        type: 'spatial',
+        text: 'Cube Folding:',
+        question: 'Which 2D pattern can be folded into a cube?',
+        answers: [
+          { id: 'a', text: 'A cross shape of 6 squares', correct: true },
+          { id: 'b', text: 'A line of 6 squares', correct: false },
+          { id: 'c', text: 'A 2x3 grid of squares', correct: false },
+          { id: 'd', text: 'A circle', correct: false },
+        ],
+      },
+      {
+        id: 'iq-s3',
+        type: 'spatial',
+        text: 'Perspective:',
+        question: 'Looking at a cylinder from the top, what shape do you see?',
+        answers: [
+          { id: 'a', text: 'Rectangle', correct: false, shape: 'square' },
+          { id: 'b', text: 'Circle', correct: true, shape: 'circle' },
+          { id: 'c', text: 'Triangle', correct: false, shape: 'triangle' },
+          { id: 'd', text: 'Oval', correct: false, shape: 'circle' },
+        ],
+      },
+      {
+        id: 'iq-s4',
+        type: 'spatial',
+        text: 'Mirror Image:',
+        question: 'What is the mirror image of the word "IQ"?',
+        answers: [
+          { id: 'a', text: "QI", correct: true },
+          { id: 'b', text: "IQ", correct: false },
+          { id: 'c', text: "PI", correct: false },
+          { id: 'd', text: "OQ", correct: false },
+        ],
+      },
+      {
+        id: 'iq-s5',
+        type: 'spatial',
+        text: 'Spatial Logic:',
+        question: 'How many faces does a standard 6-sided die have?',
+        answers: [
+          { id: 'a', text: '4', correct: false },
+          { id: 'b', text: '6', correct: true },
+          { id: 'c', text: '8', correct: false },
+          { id: 'd', text: '12', correct: false },
+        ],
+      },
     ],
     results: [
       {
@@ -1631,6 +1585,18 @@ Research, data science, engineering, mathematics, theoretical physics
       `,
       },
     ],
+  },
+  {
+    id: 'reaction-time-test',
+    categoryId: 'cognitive',
+    type: 'reaction',
+    title: 'Reaction Time Test',
+    description: 'A clinical-grade assessment of your visual reflexes and neural processing speed.',
+    icon: 'bolt',
+    estimatedMinutes: 2,
+    version: 'v1.0',
+    tag: 'NEW',
+    questions: [], // Special test handled by ReactionTestPage
   },
   {
     id: 'reading-speed-test',

@@ -50,6 +50,11 @@ export function calcPersonality(quiz: Quiz, session: QuizSession): PersonalityRe
     baseResult = quiz.results!.find(r => 
       totalScore >= (r.minScore ?? 0) && totalScore <= (r.maxScore ?? 100)
     ) ?? quiz.results![0];
+
+    // Special handling for Dark Triad disclaimer
+    if (quiz.id === 'dark-triad-index') {
+      baseResult.description += "\n\nDISCLAIMER: Dark Triad traits exist on a spectrum in all humans. High scores do not indicate a disorder. This is for educational purposes only.";
+    }
   } else {
     // Winner takes all
     const winner = Object.entries(scores).sort(([,a],[,b]) => b - a)[0]?.[0];
@@ -72,31 +77,86 @@ export function calcPersonality(quiz: Quiz, session: QuizSession): PersonalityRe
   return { ...baseResult, stats };
 }
 
-export function calcPolitical(quiz: Quiz, session: QuizSession) {
-  let eco = 0, soc = 0;
-  let maxEco = 0, maxSoc = 0;
+export function calcIQ(quiz: Quiz, session: QuizSession) {
+  const totalPoints = quiz.questions.reduce((acc, q) => {
+    const selectedAnsId = session.answers[q.id];
+    const selectedAns = q.answers.find(a => a.id === selectedAnsId);
+    if (selectedAns?.correct) {
+      return acc + (q.points || 1);
+    }
+    return acc;
+  }, 0);
 
-  quiz.questions.forEach(q => {
-    const ans = q.answers.find(a => a.id === session.answers[q.id]);
-    eco += ans?.economic ?? 0;
-    soc += ans?.social   ?? 0;
+  // Map points to IQ based on user instructions
+  // Max points = 50
+  let iq = 70;
+  let percentile = "2%";
+  let category = "Average";
 
-    // Calculate max possible absolute values for normalization
-    let qMaxEco = 0;
-    let qMaxSoc = 0;
-    q.answers.forEach(a => {
-      if (a.economic !== undefined) qMaxEco = Math.max(qMaxEco, Math.abs(a.economic));
-      if (a.social !== undefined) qMaxSoc = Math.max(qMaxSoc, Math.abs(a.social));
-    });
-    maxEco += qMaxEco;
-    maxSoc += qMaxSoc;
+  if (totalPoints >= 48) { iq = 145; percentile = "99.9%"; category = "Gifted"; }
+  else if (totalPoints >= 45) { iq = 140; percentile = "99.6%"; category = "Very Superior"; }
+  else if (totalPoints >= 40) { iq = 130; percentile = "98%";   category = "Superior"; }
+  else if (totalPoints >= 35) { iq = 120; percentile = "91%";   category = "Above Average"; }
+  else if (totalPoints >= 25) { iq = 110; percentile = "75%";   category = "High Average"; }
+  else if (totalPoints >= 15) { iq = 100; percentile = "50%";   category = "Average"; }
+  else if (totalPoints >= 10) { iq = 90;  percentile = "25%";   category = "Low Average"; }
+  else if (totalPoints >= 5)  { iq = 80;  percentile = "9%";    category = "Borderline"; }
+
+  // Calculate performance by category
+  const categories = [
+    { label: "Numerical", key: "num" },
+    { label: "Verbal", key: "verbal" },
+    { label: "Logic", key: "logic" },
+    { label: "Visual", key: "visual" },
+    { label: "Memory", key: "memory" }
+  ];
+  const stats = categories.map(cat => {
+    const catQuestions = quiz.questions.filter(q => q.id.includes(cat.key));
+    const catPoints = catQuestions.reduce((acc, q) => {
+      const selectedAnsId = session.answers[q.id];
+      const selectedAns = q.answers.find(a => a.id === selectedAnsId);
+      return acc + (selectedAns?.correct ? (q.points || 1) : 0);
+    }, 0);
+    const maxCatPoints = catQuestions.reduce((acc, q) => acc + (q.points || 1), 0);
+    return {
+      label: cat.label,
+      value: Math.round((catPoints / (maxCatPoints || 1)) * 100)
+    };
   });
 
-  // Normalize to -10 to +10 range
-  const e = parseFloat(Math.max(-10, Math.min(10, (eco / (maxEco || 1)) * 10)).toFixed(1));
-  const s = parseFloat(Math.max(-10, Math.min(10, (soc / (maxSoc || 1)) * 10)).toFixed(1));
+  return {
+    title: `Estimated IQ: ${iq}`,
+    subtitle: `Percentile: ${percentile} | Category: ${category}`,
+    description: "This is an indicative test inspired by standardized assessments (Mensa, Wechsler, Raven). It is not a certified clinical evaluation.",
+    stats
+  };
+}
+
+export function calcPolitical(quiz: Quiz, session: QuizSession) {
+  let eco = 0, soc = 0;
+
+  // P1, P5, P9 (R+) minus P2, P6 (L+)
+  // P3, P7, P10 (Auth+) minus P4, P8 (Lib+)
+  const rPlus = ['p1', 'p5', 'p9'];
+  const lPlus = ['p2', 'p6'];
+  const authPlus = ['p3', 'p7', 'p10'];
+  const libPlus = ['p4', 'p8'];
+
+  quiz.questions.forEach(q => {
+    const ansId = session.answers[q.id];
+    const ans = q.answers.find(a => a.id === ansId);
+    const val = (ans as any)?.value ?? 0; // Likert value -2 to +2
+
+    if (rPlus.includes(q.id)) eco += val;
+    if (lPlus.includes(q.id)) eco -= val;
+    if (authPlus.includes(q.id)) soc += val;
+    if (libPlus.includes(q.id)) soc -= val;
+  });
+
+  // Scale is already -10 to +10 for eco (3*2 - 2*(-2) = 10)
+  // Scale is already -10 to +10 for soc (3*2 - 2*(-2) = 10)
   
-  return { economic: e, social: s, label: getLabel(e, s), description: getDesc(e, s) };
+  return { economic: eco, social: soc, label: getLabel(eco, soc), description: getDesc(eco, soc) };
 }
 
 export function calcTrivia(quiz: Quiz, session: QuizSession) {

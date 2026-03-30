@@ -25,6 +25,7 @@ const Navbar: React.FC<Props> = ({ navigate, className = "", activePage = "" }) 
             <button
               key={item.id}
               onClick={item.action}
+              style={{ padding: '12px 16px' }}
               className={`text-sm font-medium transition-colors uppercase tracking-widest cursor-pointer ${
                 activePage === item.id ? 'text-primary' : 'hover:text-primary text-white'
               }`}

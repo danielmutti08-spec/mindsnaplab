@@ -13,6 +13,13 @@ const QuizListPage: React.FC<Props> = ({ navigate, categoryId }) => {
   const [activeFilter, setActiveFilter] = useState<string>(categoryId || 'all');
   const [searchQuery, setSearchQuery] = useState('');
   const [completions, setCompletions] = useState<Record<string, number>>({});
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     if (categoryId) {
@@ -65,7 +72,16 @@ const QuizListPage: React.FC<Props> = ({ navigate, categoryId }) => {
         <div className="flex justify-between items-end border-l-2 border-primary pl-8">
           <div>
             <p className="font-mono text-primary text-xs uppercase tracking-[0.3em] mb-2">Subject Database // Alpha-V2</p>
-            <h1 className="font-syne text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase leading-none tracking-tighter">
+            <h1 
+              className="font-syne text-6xl md:text-7xl lg:text-8xl font-extrabold uppercase leading-none tracking-tighter"
+              style={{
+                fontSize: windowWidth < 480 ? '2rem' : 
+                          windowWidth < 768 ? '3rem' : 
+                          undefined,
+                wordBreak: 'break-word',
+                overflowWrap: 'break-word'
+              }}
+            >
               All <span className="text-primary cyan-glow-text">Quizzes</span>
             </h1>
           </div>
@@ -140,8 +156,6 @@ const QuizListPage: React.FC<Props> = ({ navigate, categoryId }) => {
                     navigate({ name: 'memory-game' });
                   } else if (quiz.type === 'sequence-game') {
                     navigate({ name: 'sequence-game' });
-                  } else if (quiz.type === 'iq-test') {
-                    navigate({ name: 'iq-test' });
                   } else if (quiz.id === 'reading-speed-test') {
                     navigate({ name: 'reading-speed' });
                   } else {

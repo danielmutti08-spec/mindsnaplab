@@ -39,6 +39,15 @@ const Modal: React.FC<{ isOpen: boolean; onClose: () => void; title: string; chi
 const HomePage: React.FC<Props> = ({ navigate }) => {
   const [totalCompletions, setTotalCompletions] = useState(0);
   const [modalType, setModalType] = useState<'how' | 'privacy' | null>(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     setTotalCompletions(getTotalCompletions());
@@ -80,7 +89,7 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
                 onClick={() => navigate({ name: 'quiz-list' })}
                 className="bg-primary text-background-dark px-8 py-4 font-black uppercase tracking-tighter flex items-center gap-3 hover:shadow-[0_0_30px_rgba(0,229,255,0.4)] transition-all"
               >
-                Begin Neural Scan
+                {isMobile ? 'ALL TESTS' : 'BEGIN NEURAL SCAN'}
                 <span className="material-icons">arrow_forward</span>
               </button>
               <button 
@@ -237,17 +246,20 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
                 </span>
               </div>
             </div>
-            {/* Rapid Response IQ */}
-            <div className="min-w-[320px] bg-white/5 border border-white/10 p-6 rounded-sm hover:border-primary/50 transition-all flex flex-col justify-between">
+            {/* Reaction Time Test */}
+            <div 
+              onClick={() => navigate({ name: 'reaction-test' })}
+              className="min-w-[320px] bg-white/5 border border-white/10 p-6 rounded-sm hover:border-primary/50 transition-all flex flex-col justify-between cursor-pointer group"
+            >
               <div>
                 <div className="flex justify-between items-start mb-4">
                   <span className="material-icons text-primary text-4xl select-none">
-                    {quizzes.find(q => q.id === 'rapid-response-iq')?.icon || ''}
+                    {quizzes.find(q => q.id === 'reaction-time-test')?.icon || ''}
                   </span>
                   <span className="font-mono text-[10px] px-2 py-0.5 bg-primary/20 text-primary rounded-sm">POPULAR</span>
                 </div>
-                <h4 className="text-lg font-bold uppercase mb-2">Rapid Response IQ</h4>
-                <p className="text-xs text-white/40 leading-relaxed">Measure processing lag during high-stress decision matrices.</p>
+                <h4 className="text-lg font-bold uppercase mb-2 group-hover:text-primary transition-colors">Reaction Time Test</h4>
+                <p className="text-xs text-white/40 leading-relaxed">Measure processing lag and visual reflexes in real-time.</p>
               </div>
               <div className="mt-6 flex items-center justify-between">
                 <div className="flex -space-x-2">
@@ -255,7 +267,7 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
                   <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-700"></div>
                 </div>
                 <span className="font-mono text-[10px] text-white/40 uppercase">
-                  {formatParticipants(getQuizCompletions('rapid-response-iq'))}
+                  {formatParticipants(getQuizCompletions('reaction-time-test'))}
                 </span>
               </div>
             </div>

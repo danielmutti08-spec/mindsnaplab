@@ -14,7 +14,7 @@ interface Props {
 }
 
 const PoliticalResultPage: React.FC<Props> = ({ navigate, economic, social, label, description }) => {
-  const completions = getQuizCompletions('political-compass');
+  const completions = getQuizCompletions('political-compass-v2');
   const statsText = completions > 0 
     ? `Based on ${completions} local completions.`
     : "Be the first to record this result locally.";

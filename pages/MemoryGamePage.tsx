@@ -89,7 +89,7 @@ export function MemoryGamePage({ navigate }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-[#0f2123] text-white font-display flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen bg-[#0f2123] text-white font-display flex flex-col items-center justify-center relative">
       <Navbar navigate={navigate} />
       {/* Scanlines */}
       <div className="scanlines fixed inset-0 pointer-events-none z-50 mt-20" />

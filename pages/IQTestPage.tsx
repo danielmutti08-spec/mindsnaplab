@@ -18,7 +18,14 @@ export function IQTestPage({ navigate }: Props) {
   const [answers, setAnswers]   = useState<Record<string, string>>({});
   const [timeLeft, setTimeLeft] = useState(TOTAL_TIME);
   const [phase, setPhase]       = useState<'intro' | 'test' | 'result'>('intro');
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
   const timerRef = useRef<ReturnType<typeof setInterval>>();
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const finishTest = useCallback(() => {
     clearInterval(timerRef.current);
@@ -41,13 +48,13 @@ export function IQTestPage({ navigate }: Props) {
   if (!quiz) return <div className="text-primary font-mono p-8">FATAL ERROR: TEST_NOT_FOUND</div>;
 
   const question = quiz.questions[index];
-  const progress = Math.round(((index + 1) / 48) * 100);
+  const progress = Math.round(((index + 1) / 25) * 100);
 
   const startTest = () => { setPhase('test'); setTimeLeft(TOTAL_TIME); };
 
   const selectAndNext = (answerId: string) => {
     setAnswers(prev => ({ ...prev, [question.id]: answerId }));
-    if (index < 47) {
+    if (index < 24) {
       setIndex(i => i + 1);
       setSelected(null);
     } else {
@@ -56,7 +63,7 @@ export function IQTestPage({ navigate }: Props) {
   };
 
   const skipQuestion = () => {
-    if (index < 47) { setIndex(i => i + 1); setSelected(null); }
+    if (index < 24) { setIndex(i => i + 1); setSelected(null); }
     else { finishTest(); }
   };
 
@@ -94,7 +101,7 @@ export function IQTestPage({ navigate }: Props) {
             Professional IQ<br/>Assessment
           </h1>
           <p className="text-primary/60 font-mono text-sm leading-relaxed mb-12">
-            48 questions covering 8 cognitive domains.<br/>
+            25 questions covering 5 cognitive domains.<br/>
             40 minutes total.<br/>
             Matrices, Number Series, Verbal Analogies, Logic.<br/>
             This test measures <strong className="text-primary">general fluid intelligence (g)</strong>.
@@ -142,11 +149,13 @@ export function IQTestPage({ navigate }: Props) {
           </div>
           <div className="flex gap-12 font-mono text-xs">
             <span className="text-primary/60">
-              QUESTION <span className="text-primary">{index + 1}</span> / 48
+              QUESTION <span className="text-primary">{index + 1}</span> / 25
             </span>
-            <span className={timeLeft < 60 ? 'text-danger animate-pulse' : 'text-primary'}>
-              ⏱ {formatTime(timeLeft)}
-            </span>
+            {windowWidth >= 375 && (
+              <span className={timeLeft < 60 ? 'text-danger animate-pulse' : 'text-primary'}>
+                ⏱ {formatTime(timeLeft)}
+              </span>
+            )}
           </div>
         </div>
 
@@ -166,7 +175,19 @@ export function IQTestPage({ navigate }: Props) {
               <div className="flex justify-center" dangerouslySetInnerHTML={{ __html: sanitizeHTML(question.matrixSVG) }} />
             ) : (
               <div className="py-12">
-                <h2 className="text-3xl md:text-4xl font-syne uppercase text-white tracking-tight">{question.question}</h2>
+                <h2 
+                  className="text-3xl md:text-4xl font-syne uppercase text-white tracking-tight"
+                  style={question.type === 'number-series' ? { whiteSpace: 'nowrap' } : {}}
+                >
+                  {question.question}
+                </h2>
+              </div>
+            )}
+            {windowWidth < 375 && (
+              <div className="mt-4 font-mono text-xs">
+                <span className={timeLeft < 60 ? 'text-danger animate-pulse' : 'text-primary'}>
+                  ⏱ {formatTime(timeLeft)}
+                </span>
               </div>
             )}
           </div>
@@ -220,7 +241,7 @@ export function IQTestPage({ navigate }: Props) {
         
         <h1 className="font-syne text-5xl font-extrabold uppercase mb-4 italic tracking-tighter">Cognitive Profile Decoded</h1>
         <p className="font-mono text-primary/60 text-lg mb-2 uppercase tracking-widest">
-          {Object.keys(answers).length} / 48 answered · {result.percentile}th percentile
+          {Object.keys(answers).length} / 25 answered · {result.percentile}th percentile
         </p>
         <p className="font-mono text-primary/40 text-sm mb-12 uppercase">
           Rarity: {result.rarity} people
