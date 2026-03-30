@@ -37,6 +37,9 @@ const QuizPlayerPage: React.FC<Props> = ({ navigate, quizId }) => {
     select, commit, next, answerState, session 
   } = useQuiz(quiz);
 
+  const isTablet = windowWidth >= 480 && windowWidth < 768;
+  const isMobile = windowWidth < 480;
+
   const [time, setTime] = useState(2712); // Mock 45:12 in seconds
 
   useEffect(() => {
@@ -266,11 +269,10 @@ const QuizPlayerPage: React.FC<Props> = ({ navigate, quizId }) => {
               {quiz.type === 'political' ? (
                 <div 
                   style={{ 
-                    display: 'flex', 
-                    flexDirection: windowWidth < 768 ? 'column' : 'row', 
-                    gap: '8px',
-                    width: '100%',
-                    justifyContent: 'center'
+                    display: 'grid',
+                    gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)',
+                    gap: isMobile ? '10px' : '12px',
+                    width: '100%'
                   }}
                 >
                   {[
@@ -279,7 +281,7 @@ const QuizPlayerPage: React.FC<Props> = ({ navigate, quizId }) => {
                     { label: 'NEUTRAL', value: 0 },
                     { label: 'AGREE', value: 1 },
                     { label: 'STRONGLY AGREE', value: 2 },
-                  ].map((opt) => {
+                  ].map((opt, idx) => {
                     const ans = question.answers.find(a => (a as any).value === opt.value);
                     const ansId = ans ? ans.id : (opt.value === 0 ? 'neutral' : `val_${opt.value}`);
                     const isSelected = selected === ansId;
@@ -288,7 +290,12 @@ const QuizPlayerPage: React.FC<Props> = ({ navigate, quizId }) => {
                       <button
                         key={opt.label}
                         onClick={() => select(ansId)}
-                        className={`flex-1 px-4 py-4 text-xs font-bold uppercase tracking-widest border transition-all ${
+                        style={{ 
+                          padding: '18px 12px',
+                          width: '100%',
+                          gridColumn: (isTablet && idx === 4) ? '1 / -1' : 'auto'
+                        }}
+                        className={`px-4 py-4 text-xs font-bold uppercase tracking-widest border transition-all ${
                           isSelected 
                             ? 'border-primary bg-primary/20 text-primary shadow-[0_0_20px_rgba(0,229,255,0.2)]' 
                             : 'border-white/10 bg-surface-dark/40 text-white/60 hover:border-primary/40 hover:text-white'

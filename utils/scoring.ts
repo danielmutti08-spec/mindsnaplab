@@ -135,28 +135,43 @@ export function calcIQ(quiz: Quiz, session: QuizSession) {
 export function calcPolitical(quiz: Quiz, session: QuizSession) {
   let eco = 0, soc = 0;
 
-  // P1, P5, P9 (R+) minus P2, P6 (L+)
-  // P3, P7, P10 (Auth+) minus P4, P8 (Lib+)
-  const rPlus = ['p1', 'p5', 'p9'];
-  const lPlus = ['p2', 'p6'];
-  const authPlus = ['p3', 'p7', 'p10'];
-  const libPlus = ['p4', 'p8'];
+  // Weights based on Political Compass mapping
+  const weights: Record<string, { eco: number; soc: number }> = {
+    p1: { eco: -2, soc: 0 }, // Healthcare
+    p2: { eco: 2, soc: 0 },  // Free markets
+    p3: { eco: 0, soc: -2 }, // Individual freedom
+    p4: { eco: 0, soc: 2 },  // Law and order
+    p5: { eco: -2, soc: 0 }, // Wealthy taxes
+    p6: { eco: 0, soc: 2 },  // Immigration
+    p7: { eco: -2, soc: 0 }, // Climate change
+    p8: { eco: 0, soc: -2 }, // Drug use
+    p9: { eco: 0, soc: 2 },  // Death penalty
+    p10: { eco: 0, soc: 2 }, // Military spending
+  };
 
   quiz.questions.forEach(q => {
     const ansId = session.answers[q.id];
     const ans = q.answers.find(a => a.id === ansId);
     const val = (ans as any)?.value ?? 0; // Likert value -2 to +2
+    const multiplier = val / 2; // -1.0 to 1.0
 
-    if (rPlus.includes(q.id)) eco += val;
-    if (lPlus.includes(q.id)) eco -= val;
-    if (authPlus.includes(q.id)) soc += val;
-    if (libPlus.includes(q.id)) soc -= val;
+    const w = weights[q.id] || { eco: 0, soc: 0 };
+    eco += w.eco * multiplier;
+    soc += w.soc * multiplier;
   });
 
-  // Scale is already -10 to +10 for eco (3*2 - 2*(-2) = 10)
-  // Scale is already -10 to +10 for soc (3*2 - 2*(-2) = 10)
+  // Normalization to -10/+10
+  // Max Eco magnitude: |-2| + |2| + |-2| + |-2| = 8
+  // Max Soc magnitude: |-2| + |2| + |2| + |-2| + |2| + |2| = 12
+  const normalizedEco = (eco / 8) * 10;
+  const normalizedSoc = (soc / 12) * 10;
   
-  return { economic: eco, social: soc, label: getLabel(eco, soc), description: getDesc(eco, soc) };
+  return { 
+    economic: normalizedEco, 
+    social: normalizedSoc, 
+    label: getLabel(normalizedEco, normalizedSoc), 
+    description: getDesc(normalizedEco, normalizedSoc) 
+  };
 }
 
 export function calcTrivia(quiz: Quiz, session: QuizSession) {
@@ -167,29 +182,43 @@ export function calcTrivia(quiz: Quiz, session: QuizSession) {
 }
 
 function getLabel(e: number, s: number): string {
-  const L = e < -2, R = e > 2, Li = s > 2, Au = s < -2;
-  if (L && Li)  return 'Libertarian Left';
-  if (R && Li)  return 'Libertarian Right';
-  if (L && Au)  return 'Authoritarian Left';
-  if (R && Au)  return 'Authoritarian Right';
-  if (L)        return 'Center-Left';
-  if (R)        return 'Center-Right';
-  if (Li)       return 'Libertarian Center';
-  if (Au)       return 'Authoritarian Center';
+  if (Math.abs(e) <= 1 && Math.abs(s) <= 1) return 'Centrist';
+  
+  if (s > 3) {
+    if (e > 3) return 'Authoritarian Right';
+    if (e < -3) return 'Authoritarian Left';
+    return 'Authoritarian Centre';
+  }
+  
+  if (s < -3) {
+    if (e > 3) return 'Libertarian Right';
+    if (e < -3) return 'Libertarian Left';
+    return 'Libertarian Centre';
+  }
+  
+  if (e > 3) return s > 0 ? 'Authoritarian Right' : 'Libertarian Right';
+  if (e < -3) return s > 0 ? 'Authoritarian Left' : 'Libertarian Left';
+  
+  if (s > 1) return 'Authoritarian Centre';
+  if (s < -1) return 'Libertarian Centre';
+  if (e > 1) return 'Right-Wing';
+  if (e < -1) return 'Left-Wing';
+
   return 'Centrist';
 }
 
 function getDesc(e: number, s: number): string {
+  const label = getLabel(e, s);
   const map: Record<string, string> = {
-    'Libertarian Left':     'Your profile indicates a strong preference for personal autonomy combined with a communal approach to economic resource allocation. You prioritize individual civil liberties and social freedom, while remaining skeptical of concentrated market power and centralized state control.',
+    'Authoritarian Right':  'You value tradition, national identity, and firm governance. You believe order and social cohesion require strong leadership and cultural continuity, combined with market-based economic principles.',
     'Libertarian Right':    'You believe in maximum individual freedom — both socially and economically. You support free markets, minimal government intervention, and strong civil liberties.',
-    'Authoritarian Left':   'You believe collective welfare requires strong state direction of both economy and society. You prioritize equality and order over individual freedoms.',
-    'Authoritarian Right':  'You value tradition, national identity, and firm governance. You believe order and social cohesion require strong leadership and cultural continuity.',
-    'Center-Left':          'You lean toward progressive economic policies and social programs, while valuing democratic institutions and pragmatic governance.',
-    'Center-Right':         'You favor market-based solutions and individual responsibility, while supporting essential social programs and rule of law.',
-    'Libertarian Center':   'Personal freedom is your priority. You distrust authoritarian solutions from both left and right, preferring voluntary cooperation.',
-    'Authoritarian Center': 'You value stability and strong governance while remaining pragmatic and non-ideological on economic questions.',
+    'Authoritarian Left':   'You believe collective welfare requires strong state direction of both economy and society. You prioritize equality and order over individual freedoms, supporting centralized resource allocation.',
+    'Libertarian Left':     'Your profile indicates a strong preference for personal autonomy combined with a communal approach to economic resource allocation. You prioritize individual civil liberties and social freedom.',
     'Centrist':             'You sit near the center of the political spectrum, drawing pragmatically from multiple perspectives rather than any single ideology.',
+    'Authoritarian Centre': 'You value stability and strong governance while remaining pragmatic and non-ideological on economic questions.',
+    'Libertarian Centre':   'Personal freedom is your priority. You distrust authoritarian solutions from both left and right, preferring voluntary cooperation and individual autonomy.',
+    'Left-Wing':            'You lean toward progressive economic policies and social programs, valuing collective welfare and equality.',
+    'Right-Wing':           'You favor market-based solutions and individual responsibility, valuing economic freedom and traditional structures.',
   };
-  return map[getLabel(e, s)] ?? '';
+  return map[label] ?? 'Your position on the political compass reflects a nuanced combination of economic and social perspectives.';
 }
