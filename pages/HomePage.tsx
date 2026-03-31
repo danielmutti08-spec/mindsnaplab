@@ -138,7 +138,16 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
 
         {/* Metric Bar */}
         <section className="mt-24 border-y border-white/5 bg-white/[0.02]">
-          <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10">
+          <div 
+            className="max-w-7xl mx-auto px-6 py-12 divide-y md:divide-y-0 md:divide-x divide-white/10"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: window.innerWidth < 480
+                ? '1fr' : 'repeat(3, 1fr)',
+              gap: '16px',
+              textAlign: 'center'
+            }}
+          >
             <div className="flex flex-col items-center md:items-start px-8 py-6 md:py-0">
               <span className="font-mono text-primary text-4xl font-bold mb-2">
                 {totalCompletions === 0 ? '0' : totalCompletions.toLocaleString()}
@@ -168,7 +177,15 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
               <span className="font-mono text-sm text-primary">MS-7742-ALPHA</span>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div 
+            className="gap-6"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: window.innerWidth < 768 
+                ? '1fr' : 'repeat(3, 1fr)',
+              gap: '16px'
+            }}
+          >
             {categories.map((cat) => (
               <div 
                 key={cat.id} 
@@ -196,88 +213,60 @@ const HomePage: React.FC<Props> = ({ navigate }) => {
             <h2 className="text-2xl font-bold uppercase tracking-widest italic">Trending Now</h2>
             <div className="flex-grow h-px bg-white/10 ml-4"></div>
           </div>
-          <div className="flex gap-6 overflow-x-auto pb-8 no-scrollbar">
-            <div className="min-w-[320px] bg-white/5 border border-white/10 p-6 rounded-sm hover:border-primary/50 transition-all flex flex-col justify-between">
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <span className="material-icons text-primary text-4xl select-none">
-                    {quizzes.find(q => q.id === 'architect-persona')?.icon || ''}
+          <div 
+            className="gap-6"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: window.innerWidth < 768 
+                ? '1fr' : 'repeat(3, 1fr)',
+              gap: '16px'
+            }}
+          >
+            {quizzes.slice(0, 3).map((q) => (
+              <div 
+                key={q.id}
+                onClick={() => navigate({ name: q.id === 'reaction-time-test' ? 'reaction-test' : q.id === 'iq-test-professional' ? 'iq-test' : 'quiz-player', quizId: q.id } as any)}
+                className="bg-white/5 border border-white/10 p-6 rounded-sm hover:border-primary/50 transition-all flex flex-col justify-between cursor-pointer group"
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-4">
+                    <span className="material-icons text-primary text-4xl select-none">
+                      {q.icon}
+                    </span>
+                    <span className="font-mono text-[10px] px-2 py-0.5 bg-primary/20 text-primary rounded-sm uppercase">
+                      {q.type === 'iq-test' ? 'CERTIFIED' : 'POPULAR'}
+                    </span>
+                  </div>
+                  <h4 className="text-lg font-bold uppercase mb-2 group-hover:text-primary transition-colors">{q.title}</h4>
+                  <p className="text-xs text-white/40 leading-relaxed">{q.description}</p>
+                </div>
+                <div className="mt-6 flex items-center justify-between">
+                  <div className="flex -space-x-2">
+                    <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-800"></div>
+                    <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-700"></div>
+                    <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-600"></div>
+                  </div>
+                  <span className="font-mono text-[10px] text-white/40 uppercase">
+                    {formatParticipants(getQuizCompletions(q.id))}
                   </span>
-                  <span className="font-mono text-[10px] px-2 py-0.5 bg-acid/20 text-acid rounded-sm">NEW PROTOCOL</span>
                 </div>
-                <h4 className="text-lg font-bold uppercase mb-2">The Architect Persona</h4>
-                <p className="text-xs text-white/40 leading-relaxed">Structural thinking patterns and organizational logic mapping.</p>
               </div>
-              <div className="mt-6 flex items-center justify-between">
-                <div className="flex -space-x-2">
-                  <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-800"></div>
-                  <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-700"></div>
-                  <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-600"></div>
-                </div>
-                <span className="font-mono text-[10px] text-white/40 uppercase">
-                  {formatParticipants(getQuizCompletions('architect-persona'))}
-                </span>
-              </div>
-            </div>
-            {/* Professional IQ Assessment */}
-            <div 
-              onClick={() => navigate({ name: 'iq-test' })}
-              className="min-w-[320px] bg-white/5 border border-white/10 p-6 rounded-sm hover:border-primary/50 transition-all flex flex-col justify-between cursor-pointer group"
-            >
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <span className="material-icons text-primary text-4xl select-none">
-                    {quizzes.find(q => q.id === 'iq-test-professional')?.icon || ''}
-                  </span>
-                  <span className="font-mono text-[10px] px-2 py-0.5 bg-primary/20 text-primary rounded-sm">CERTIFIED</span>
-                </div>
-                <h4 className="text-lg font-bold uppercase mb-2 group-hover:text-primary transition-colors">Professional IQ Assessment</h4>
-                <p className="text-xs text-white/40 leading-relaxed">Comprehensive intelligence test: matrix puzzles, number series, analogies, logic problems.</p>
-              </div>
-              <div className="mt-6 flex items-center justify-between">
-                <div className="flex -space-x-2">
-                  <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-800"></div>
-                  <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-700"></div>
-                  <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-600"></div>
-                  <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-500"></div>
-                </div>
-                <span className="font-mono text-[10px] text-white/40 uppercase">
-                  {formatParticipants(getQuizCompletions('iq-test-professional'))}
-                </span>
-              </div>
-            </div>
-            {/* Reaction Time Test */}
-            <div 
-              onClick={() => navigate({ name: 'reaction-test' })}
-              className="min-w-[320px] bg-white/5 border border-white/10 p-6 rounded-sm hover:border-primary/50 transition-all flex flex-col justify-between cursor-pointer group"
-            >
-              <div>
-                <div className="flex justify-between items-start mb-4">
-                  <span className="material-icons text-primary text-4xl select-none">
-                    {quizzes.find(q => q.id === 'reaction-time-test')?.icon || ''}
-                  </span>
-                  <span className="font-mono text-[10px] px-2 py-0.5 bg-primary/20 text-primary rounded-sm">POPULAR</span>
-                </div>
-                <h4 className="text-lg font-bold uppercase mb-2 group-hover:text-primary transition-colors">Reaction Time Test</h4>
-                <p className="text-xs text-white/40 leading-relaxed">Measure processing lag and visual reflexes in real-time.</p>
-              </div>
-              <div className="mt-6 flex items-center justify-between">
-                <div className="flex -space-x-2">
-                  <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-800"></div>
-                  <div className="w-6 h-6 rounded-full border border-background-dark bg-zinc-700"></div>
-                </div>
-                <span className="font-mono text-[10px] text-white/40 uppercase">
-                  {formatParticipants(getQuizCompletions('reaction-time-test'))}
-                </span>
-              </div>
-            </div>
+            ))}
           </div>
         </section>
       </main>
 
       <footer className="border-t border-white/5 bg-background-dark pt-16 pb-8 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
-          <div className="col-span-1 md:col-span-2">
+        <div 
+          className="max-w-7xl mx-auto px-6 mb-16"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: window.innerWidth < 768 
+              ? '1fr' : 'repeat(3, 1fr)',
+            gap: '24px'
+          }}
+        >
+          <div className="col-span-1 md:col-span-1">
             <div className="flex flex-col gap-6 mb-6">
               <Logo size="sm" />
             </div>

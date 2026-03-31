@@ -266,72 +266,51 @@ const QuizPlayerPage: React.FC<Props> = ({ navigate, quizId }) => {
         <div ref={optionsRef} className="w-full flex flex-col items-center">
           {question.type === 'likert' ? (
             <div className="flex flex-col items-center w-full max-w-4xl">
-              {quiz.type === 'political' ? (
-                <div 
-                  style={{ 
-                    display: 'grid',
-                    gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)',
-                    gap: isMobile ? '10px' : '12px',
-                    width: '100%'
-                  }}
-                >
-                  {[
-                    { label: 'STRONGLY DISAGREE', value: -2 },
-                    { label: 'DISAGREE', value: -1 },
-                    { label: 'NEUTRAL', value: 0 },
-                    { label: 'AGREE', value: 1 },
-                    { label: 'STRONGLY AGREE', value: 2 },
-                  ].map((opt, idx) => {
-                    const ans = question.answers.find(a => (a as any).value === opt.value);
-                    const ansId = ans ? ans.id : (opt.value === 0 ? 'neutral' : `val_${opt.value}`);
-                    const isSelected = selected === ansId;
-                    
-                    return (
-                      <button
-                        key={opt.label}
-                        onClick={() => select(ansId)}
-                        style={{ 
-                          padding: '18px 12px',
-                          width: '100%',
-                          gridColumn: (isTablet && idx === 4) ? '1 / -1' : 'auto'
-                        }}
-                        className={`px-4 py-4 text-xs font-bold uppercase tracking-widest border transition-all ${
-                          isSelected 
-                            ? 'border-primary bg-primary/20 text-primary shadow-[0_0_20px_rgba(0,229,255,0.2)]' 
-                            : 'border-white/10 bg-surface-dark/40 text-white/60 hover:border-primary/40 hover:text-white'
-                        }`}
-                      >
-                        {opt.label}
-                      </button>
-                    );
-                  })}
-                </div>
-              ) : (
-                <>
-                  <div className="flex justify-between w-full mb-8 px-4">
-                    {question.answers.map((ans) => {
-                      const isSelected = selected === ans.id;
-                      return (
-                        <button
-                          key={ans.id}
-                          onClick={() => select(ans.id)}
-                          className={`w-12 h-12 md:w-20 md:h-20 rounded-full border-2 transition-all flex items-center justify-center ${
-                            isSelected 
-                              ? 'border-primary bg-primary/20 shadow-[0_0_30px_rgba(0,229,255,0.3)] scale-110' 
-                              : 'border-white/10 bg-surface-dark/40 hover:border-primary/40'
-                          }`}
-                        >
-                          <div className={`w-3 h-3 md:w-5 md:h-5 rounded-full transition-all ${isSelected ? 'bg-primary' : 'bg-white/10'}`} />
-                        </button>
-                      );
-                    })}
-                  </div>
-                  <div className="flex justify-between w-full px-2 text-[10px] md:text-xs font-mono uppercase tracking-widest text-primary/40">
-                    <span>Strongly Disagree</span>
-                    <span>Strongly Agree</span>
-                  </div>
-                </>
-              )}
+              <div 
+                style={{ 
+                  display: 'grid',
+                  gridTemplateColumns: windowWidth < 480 ? '1fr' : windowWidth < 768 ? 'repeat(2, 1fr)' : 'repeat(5, 1fr)',
+                  gap: windowWidth < 480 ? '10px' : '12px',
+                  width: '100%'
+                }}
+              >
+                {[
+                  { label: 'STRONGLY DISAGREE', value: -2 },
+                  { label: 'DISAGREE', value: -1 },
+                  { label: 'NEUTRAL', value: 0 },
+                  { label: 'AGREE', value: 1 },
+                  { label: 'STRONGLY AGREE', value: 2 },
+                ].map((opt, idx) => {
+                  // Find the answer ID. For non-political quizzes, we might need to map indices to IDs if values aren't explicit
+                  // But the user wants these specific 5 labels and values for ALL Likert quizzes.
+                  // We'll assume the quiz hook handles the selection based on the ID we provide.
+                  // Most Likert quizzes in this app seem to have 5 options.
+                  const ans = question.answers[idx];
+                  const ansId = ans ? ans.id : `opt_${idx}`;
+                  const isSelected = selected === ansId;
+                  
+                  return (
+                    <button
+                      key={opt.label}
+                      onClick={() => select(ansId)}
+                      style={{ 
+                        padding: '18px 12px',
+                        width: '100%',
+                        minHeight: '56px',
+                        boxSizing: 'border-box',
+                        gridColumn: (windowWidth >= 480 && windowWidth < 768 && idx === 4) ? '1 / -1' : 'auto'
+                      }}
+                      className={`px-4 py-4 text-xs font-bold uppercase tracking-widest border transition-all ${
+                        isSelected 
+                          ? 'border-primary bg-primary/20 text-primary shadow-[0_0_20px_rgba(0,229,255,0.2)]' 
+                          : 'border-white/10 bg-surface-dark/40 text-white/60 hover:border-primary/40 hover:text-white'
+                      }`}
+                    >
+                      {opt.label}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-5xl">

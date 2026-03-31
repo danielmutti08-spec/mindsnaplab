@@ -98,7 +98,19 @@ const QuizListPage: React.FC<Props> = ({ navigate, categoryId }) => {
       {/* Sticky Filter & Search Bar */}
       <div className="sticky top-0 z-50 bg-background-dark/80 backdrop-blur-md border-y border-primary/20">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch md:items-center">
-          <nav className="flex overflow-x-auto no-scrollbar font-mono text-sm">
+          <nav 
+            className="flex overflow-x-auto no-scrollbar font-mono text-sm"
+            style={{
+              overflowX: window.innerWidth < 768 
+                ? 'auto' : 'visible',
+              WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: 'none',
+              msOverflowStyle: 'none',
+              display: 'flex',
+              flexWrap: 'nowrap',
+              whiteSpace: 'nowrap'
+            }}
+          >
             {tabs.map(tab => (
               <button
                 key={tab.id}
